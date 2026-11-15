@@ -118,6 +118,9 @@
             "title": "Reasons",
             "type": "array"
           },
+          "routes": {
+            "$ref": "#/components/schemas/DayRoutesOut"
+          },
           "verdict": {
             "enum": [
               "GO",
@@ -135,9 +138,49 @@
           "verdict",
           "best_route",
           "reasons",
-          "low_confidence"
+          "low_confidence",
+          "routes"
         ],
         "title": "DayOut",
+        "type": "object"
+      },
+      "DayRoutesOut": {
+        "description": "Best verdict each highway can achieve that day.",
+        "properties": {
+          "i80": {
+            "enum": [
+              "GO",
+              "CAUTION",
+              "NO GO"
+            ],
+            "title": "I80",
+            "type": "string"
+          },
+          "sr88": {
+            "enum": [
+              "GO",
+              "CAUTION",
+              "NO GO"
+            ],
+            "title": "Sr88",
+            "type": "string"
+          },
+          "us50": {
+            "enum": [
+              "GO",
+              "CAUTION",
+              "NO GO"
+            ],
+            "title": "Us50",
+            "type": "string"
+          }
+        },
+        "required": [
+          "i80",
+          "us50",
+          "sr88"
+        ],
+        "title": "DayRoutesOut",
         "type": "object"
       },
       "Direction": {
@@ -303,6 +346,17 @@
             "title": "Caption",
             "type": "string"
           },
+          "go_until": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Go Until"
+          },
           "segments": {
             "items": {
               "enum": [
@@ -334,7 +388,8 @@
           "verdict",
           "caption",
           "summit_eta",
-          "segments"
+          "segments",
+          "go_until"
         ],
         "title": "RouteOut",
         "type": "object"

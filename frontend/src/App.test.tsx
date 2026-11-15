@@ -4,9 +4,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import plan from "./__fixtures__/plan.json";
 import { App, initialHourIndex } from "./App";
 import { POLL_MS } from "./hooks/usePlan";
-import type { PlanResponse } from "./types";
+import type { PlanResponse, RouteKey } from "./types";
 
 const fixture = plan as PlanResponse;
+const NAMES: Record<RouteKey, string> = { i80: "I-80", us50: "US-50", sr88: "SR-88" };
 
 function mockFetch(impl: (url: string) => Promise<Response>) {
   const fn = vi.fn((url: string) => impl(url));
@@ -15,7 +16,7 @@ function mockFetch(impl: (url: string) => Promise<Response>) {
 }
 
 beforeEach(() => {
-  // Phone layout (tabs + 3-hour pages); happy-dom's default window is desktop-wide.
+  // Phone layout (3-hour pages); happy-dom's default window is desktop-wide.
   vi.stubGlobal("matchMedia", (query: string) => ({
     matches: false,
     media: query,
@@ -36,6 +37,11 @@ const advance = (ms: number) =>
   });
 const flush = () => advance(0);
 
+const highway = (name: RegExp) => screen.getByRole("radio", { name });
+const kicker = () => document.querySelector(".hero-kicker")?.textContent ?? "";
+const pressedHour = () => document.querySelector(".hour[aria-pressed='true']")?.getAttribute("aria-label") ?? "";
+const loaded = () => screen.findByRole("radiogroup", { name: "Highway" });
+
 afterEach(() => {
   vi.useRealTimers();
   cleanup();
@@ -44,15 +50,20 @@ afterEach(() => {
 });
 
 describe("App", () => {
-  it("renders the recommendation, routes and 10-day strip", async () => {
+  it("loads on the recommended highway and says so", async () => {
     mockFetch(() => Promise.resolve(new Response(JSON.stringify(fixture), { status: 200 })));
     render(<App />);
-    expect(await screen.findByText("Take US-50")).toBeTruthy();
-    expect(screen.getByRole("tab", { name: /US-50/ }).getAttribute("aria-selected")).toBe("true");
+    await loaded();
+    const best = NAMES[fixture.hours[0]!.best.route];
+    expect(best).toBe("US-50");
+    expect(highway(/^US-50/).getAttribute("aria-checked")).toBe("true");
+    expect(highway(/^US-50/).getAttribute("aria-label")).toContain("recommended");
+    expect(screen.getByText("★ Recommended leaving now")).toBeTruthy();
+    expect(kicker()).toBe("US-50 · leaving now · ★ recommended");
     expect(screen.getByRole("img", { name: /US-50 elevation profile: GO/ })).toBeTruthy();
-    expect(screen.getByText("10-day outlook")).toBeTruthy();
-    // verdict always has a non-color glyph
-    expect(screen.getByRole("tab", { name: /SR-88/ }).textContent).toContain("✕ NO GO");
+    expect(screen.getByText("10-day outlook · US-50")).toBeTruthy();
+    // every verdict has a non-color glyph
+    expect(highway(/^SR-88/).textContent).toContain("✕ NO GO");
   });
 
   it("never shows a verdict when the API fails with no prior data", async () => {
@@ -62,13 +73,75 @@ describe("App", () => {
     expect(screen.queryByText(/GO/)).toBeNull();
   });
 
-  it("selecting a later hour updates the hero; swapping direction refetches", async () => {
-    const fetchFn = mockFetch(() => Promise.resolve(new Response(JSON.stringify(fixture), { status: 200 })));
+  it("picking another highway switches the whole page and flags it as not recommended", async () => {
+    mockFetch(() => ok(fixture));
     render(<App />);
-    await screen.findByText("Take US-50");
-    fireEvent.click(screen.getByRole("button", { name: "Later hours" }));
-    await waitFor(() => expect(screen.getByText(fixture.hours[3]!.hero.title)).toBeTruthy());
+    await loaded();
+    fireEvent.click(highway(/^SR-88/));
 
+    expect(highway(/^SR-88/).getAttribute("aria-checked")).toBe("true");
+    expect(kicker()).toBe("SR-88 · leaving now");
+    expect(document.querySelector(".hero-title")?.textContent).toBe("NO GO");
+    expect(screen.getByText("Not recommended leaving now")).toBeTruthy();
+    expect(screen.getByRole("img", { name: /SR-88 elevation profile/ })).toBeTruthy();
+    expect(screen.getByText("10-day outlook · SR-88")).toBeTruthy();
+    expect(pressedHour()).toContain("SR-88 NO GO");
+
+    // One tap goes back to the recommended highway.
+    fireEvent.click(screen.getByRole("button", { name: "Use US-50" }));
+    expect(highway(/^US-50/).getAttribute("aria-checked")).toBe("true");
+    expect(screen.getByText("★ Recommended leaving now")).toBeTruthy();
+  });
+
+  it("changing the time keeps the picked highway; changing the highway keeps the time", async () => {
+    mockFetch(() => ok(fixture));
+    render(<App />);
+    await loaded();
+    fireEvent.click(highway(/^I-80/));
+    fireEvent.click(screen.getByRole("button", { name: "Later hours" }));
+    expect(highway(/^I-80/).getAttribute("aria-checked")).toBe("true"); // highway kept
+    expect(pressedHour()).toMatch(/10 AM: I-80/);
+
+    fireEvent.click(highway(/^SR-88/));
+    expect(pressedHour()).toMatch(/10 AM: SR-88/); // time kept
+  });
+
+  it("follows the recommendation until a highway is picked; Auto resumes following", async () => {
+    mockFetch(() => ok(fixture));
+    render(<App />);
+    await loaded();
+    // hours[2] (9 AM): the recommendation moves from US-50 to I-80.
+    expect(fixture.hours[2]!.best.route).toBe("i80");
+    fireEvent.click(screen.getByRole("button", { name: /Leave \w+ 9 AM/ }));
+    expect(highway(/^I-80/).getAttribute("aria-checked")).toBe("true"); // followed
+
+    fireEvent.click(highway(/^I-80/)); // pin it while it's recommended
+    expect(screen.getByRole("button", { name: "Auto" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: /Leave \w+ 8 AM/ }));
+    expect(highway(/^I-80/).getAttribute("aria-checked")).toBe("true"); // pinned stays
+    fireEvent.click(screen.getByRole("button", { name: "Use US-50" }));
+    fireEvent.click(screen.getByRole("button", { name: "Auto" }));
+    fireEvent.click(screen.getByRole("button", { name: /Leave \w+ 9 AM/ }));
+    expect(highway(/^I-80/).getAttribute("aria-checked")).toBe("true"); // following again
+    expect(screen.queryByRole("button", { name: "Auto" })).toBeNull();
+  });
+
+  it("arrow keys move between highways", async () => {
+    mockFetch(() => ok(fixture));
+    render(<App />);
+    await loaded();
+    fireEvent.keyDown(highway(/^US-50/), { key: "ArrowRight" });
+    expect(highway(/^SR-88/).getAttribute("aria-checked")).toBe("true");
+    expect(document.activeElement).toBe(highway(/^SR-88/));
+    fireEvent.keyDown(highway(/^SR-88/), { key: "Home" });
+    expect(highway(/^I-80/).getAttribute("aria-checked")).toBe("true");
+    expect(document.activeElement).toBe(highway(/^I-80/));
+  });
+
+  it("swapping direction refetches and persists the direction", async () => {
+    const fetchFn = mockFetch(() => ok(fixture));
+    render(<App />);
+    await loaded();
     fireEvent.click(screen.getByRole("button", { name: /Swap direction/ }));
     await waitFor(() => expect(fetchFn.mock.calls.some((c) => String(c[0]).includes("sac-reno"))).toBe(true));
     expect(localStorage.getItem("passcheck.direction")).toBe("sac-reno");
@@ -83,31 +156,38 @@ describe("App", () => {
   it("shows the skeleton, not the old verdicts, immediately after a swap", async () => {
     mockFetch((url) => (url.includes("sac-reno") ? never() : ok(fixture)));
     render(<App />);
-    await screen.findByText("Take US-50");
+    await loaded();
     fireEvent.click(screen.getByRole("button", { name: /Swap direction/ }));
     expect(screen.getByLabelText("Loading")).toBeTruthy();
-    expect(screen.queryByText("Take US-50")).toBeNull();
+    expect(screen.queryByRole("radiogroup", { name: "Highway" })).toBeNull();
     expect(screen.queryByText(/NO GO/)).toBeNull();
   });
 
-  it("choosing a day sends date= and opens it at 6 AM", async () => {
+  it("choosing a day sends date= and opens it at 6 AM on the same highway", async () => {
     const day: PlanResponse = {
       ...fixture,
-      hours: fixture.hours.slice(0, 12).map((h, i) => ({
-        ...h,
-        label: i === 6 ? "6 AM" : `${i} AM`,
-        hero: { ...h.hero, title: i === 6 ? "Six AM pick" : `Hour ${i}` },
-      })),
+      hours: fixture.hours.slice(0, 12).map((h, i) => ({ ...h, label: i === 6 ? "6 AM" : `${i} AM` })),
     };
     const fetchFn = mockFetch((url) => ok(url.includes("date=") ? day : fixture));
     render(<App />);
-    await screen.findByText("Take US-50");
+    await loaded();
+    fireEvent.click(highway(/^SR-88/));
 
-    // Day controls may be buttons or radios; their accessible name starts with "Mon 16".
     fireEvent.click(screen.getByLabelText(/^Mon 16/));
     expect(screen.getByLabelText("Loading")).toBeTruthy(); // no stale verdict while the day loads
-    expect(await screen.findByText("Six AM pick")).toBeTruthy();
+    await waitFor(() => expect(pressedHour()).toMatch(/6 AM: SR-88/));
     expect(fetchFn.mock.calls.some(([u]) => u.includes("date=2026-11-16"))).toBe(true);
+  });
+
+  it("the 10-day strip follows the selected highway and stars its best days", async () => {
+    mockFetch(() => ok(fixture));
+    render(<App />);
+    await loaded();
+    const d0 = fixture.days[0]!;
+    const name = NAMES[d0.best_route];
+    expect(screen.getByLabelText(new RegExp(`^${d0.dow} ${d0.day}: ${name} ${d0.routes[d0.best_route]}, best highway`))).toBeTruthy();
+    fireEvent.click(highway(/^SR-88/));
+    expect(screen.getByLabelText(new RegExp(`^${d0.dow} ${d0.day}: SR-88 ${d0.routes.sr88}`))).toBeTruthy();
   });
 
   it("keeps the last plan visible with a stale banner when a refresh fails", async () => {
@@ -116,24 +196,24 @@ describe("App", () => {
     mockFetch(() => (calls++ === 0 ? ok(fixture) : fail()));
     render(<App />);
     await flush();
-    expect(screen.getByText("Take US-50")).toBeTruthy();
-    expect(screen.queryByRole("status")).toBeNull(); // server says fresh -> no banner
+    expect(kicker()).toContain("US-50");
+    expect(screen.queryByText(/Can't refresh right now/)).toBeNull(); // server says fresh
 
     await advance(POLL_MS);
     await flush();
     expect(calls).toBe(2);
-    expect(screen.getByText("Take US-50")).toBeTruthy();
-    expect(screen.getByRole("status").textContent).toContain("Can't refresh right now");
+    expect(kicker()).toContain("US-50");
+    expect(screen.getByText(/Can't refresh right now/)).toBeTruthy();
   });
 
   it("shows the stale banner when the server flags the plan stale", async () => {
     mockFetch(() => ok({ ...fixture, stale: true }));
     render(<App />);
-    await screen.findByText("Take US-50");
-    expect(screen.getByRole("status").textContent).toContain("Some data is delayed");
+    await loaded();
+    expect(screen.getByText(/Some data is delayed/)).toBeTruthy();
   });
 
-  it("keeps the selected departure across an hourly refresh", async () => {
+  it("keeps the selected departure and highway across an hourly refresh", async () => {
     vi.useFakeTimers();
     // Next refresh crosses the hour: the old "Now" rolls off and 8 AM becomes "Now".
     const rolled: PlanResponse = {
@@ -145,32 +225,11 @@ describe("App", () => {
     render(<App />);
     await flush();
     fireEvent.click(screen.getByRole("button", { name: /Leave \w+ 9 AM/ }));
-    expect(screen.getByText(fixture.hours[2]!.hero.title)).toBeTruthy(); // "Take I-80"
-    fireEvent.click(screen.getByRole("tab", { name: /SR-88/ }));
+    fireEvent.click(highway(/^SR-88/));
 
     await advance(POLL_MS);
     await flush();
     expect(calls).toBe(2);
-    expect(screen.getByText("Take I-80")).toBeTruthy(); // still 9 AM, not reset to Now
-    expect(screen.getByRole("tab", { name: /SR-88/ }).getAttribute("aria-selected")).toBe("true");
-  });
-
-  it("moves between route tabs with the arrow keys", async () => {
-    mockFetch(() => ok(fixture));
-    render(<App />);
-    await screen.findByText("Take US-50");
-    const us50 = screen.getByRole("tab", { name: /US-50/ });
-    expect(us50.getAttribute("aria-selected")).toBe("true");
-
-    fireEvent.keyDown(us50, { key: "ArrowRight" });
-    const sr88 = screen.getByRole("tab", { name: /SR-88/ });
-    expect(sr88.getAttribute("aria-selected")).toBe("true");
-    expect(document.activeElement).toBe(sr88);
-
-    fireEvent.keyDown(sr88, { key: "ArrowLeft" });
-    fireEvent.keyDown(screen.getByRole("tab", { name: /US-50/ }), { key: "ArrowLeft" });
-    const i80 = screen.getByRole("tab", { name: /I-80/ });
-    expect(i80.getAttribute("aria-selected")).toBe("true");
-    expect(document.activeElement).toBe(i80);
+    expect(pressedHour()).toMatch(/9 AM: SR-88/); // still 9 AM on SR-88, not reset
   });
 });

@@ -1,18 +1,42 @@
 import { verdictClass, verdictGlyph } from "../lib/verdict";
-import type { HourOut } from "../types";
+import type { HourOut, PlanResponse, RouteKey } from "../types";
 
-export function Hero({ hour, stale }: { hour: HourOut; stale: boolean }) {
-  const v = hour.best.verdict;
-  const kicker = v === "NO GO" ? `Leaving ${hour.label.toLowerCase()}` : `Best route leaving ${hour.label.toLowerCase()}`;
+interface Props {
+  plan: PlanResponse;
+  hour: HourOut;
+  route: RouteKey;
+  recommended: boolean;
+  stale: boolean;
+}
+
+/** The verdict for the selected highway at the selected departure. */
+export function Hero({ plan, hour, route, recommended, stale }: Props) {
+  const r = hour.routes[route];
+  const name = plan.corridors[route].name;
+  const v = r.verdict;
+  const leaving = hour.label === "Now" ? "now" : hour.label;
+  const sub =
+    v === "GO"
+      ? r.go_until
+        ? `GO for departures until ${r.go_until}`
+        : "GO"
+      : v === "CAUTION"
+        ? `Drive with care on ${name}`
+        : `Don’t cross on ${name}`;
   return (
     <section class={`hero ${verdictClass(v)}${stale ? " is-stale" : ""}`} aria-live="polite">
-      <p class="eyebrow hero-kicker">{kicker}</p>
-      <h2 class="hero-title" key={hour.depart}>{hour.hero.title}</h2>
+      <p class="eyebrow hero-kicker">
+        {name} · leaving {leaving}
+        {recommended ? " · ★ recommended" : ""}
+      </p>
+      <h2 class="hero-title" key={`${hour.depart}|${route}`}>
+        {v}
+      </h2>
       <p class="hero-sub">
         <span aria-hidden="true">{verdictGlyph(v)} </span>
-        {hour.hero.sub}
+        {sub}
       </p>
-      <p class="hero-body">{hour.hero.body}</p>
+      <p class="hero-body">{r.caption}</p>
     </section>
   );
 }

@@ -323,3 +323,52 @@ def test_live_window_uses_cache_hour_basis() -> None:
 def test_hour_label() -> None:
     assert hour_label(datetime(2026, 11, 15, 20, 0, tzinfo=UTC)) == "12 PM"
     assert hour_label(datetime(2026, 11, 16, 8, 0, tzinfo=UTC)) == "12 AM"
+
+
+# --- per-highway data for the highway selector ---------------------------------------------
+
+
+def test_go_until_is_reported_for_every_go_route() -> None:
+    # Snow over Carson Pass only: I-80 and US-50 are GO, SR-88 is NO GO.
+    def weather(pid: str, t: datetime) -> RawHour:
+        return snowy(pid, t) if pid == "carson_pass" else clear(pid, t)
+
+    first = build_plan(ctx(weather), Direction.RENO_SAC, None).hours[0]
+    assert first.go_until[RouteId.SR88] is None
+    for r in (RouteId.I80, RouteId.US50):
+        until = first.go_until[r]
+        assert until is not None
+        assert until >= first.depart
+
+
+def test_go_until_matches_hero_for_best_route() -> None:
+    snow_from = NOW + timedelta(hours=5)
+
+    def weather(pid: str, t: datetime) -> RawHour:
+        return snowy(pid, t) if t >= snow_from else clear(pid, t)
+
+    first = build_plan(ctx(weather), Direction.RENO_SAC, None).hours[0]
+    until = first.go_until[first.best_route]
+    assert until is not None
+    assert first.hero.sub == f"GO for departures until {hour_label(until)}"
+
+
+def test_day_route_levels_cover_every_highway() -> None:
+    def weather(pid: str, t: datetime) -> RawHour:
+        return snowy(pid, t) if pid == "carson_pass" else clear(pid, t)
+
+    day = build_plan(ctx(weather), Direction.RENO_SAC, None).days[1]
+    assert day.route_levels == {
+        RouteId.I80: Level.GO,
+        RouteId.US50: Level.GO,
+        RouteId.SR88: Level.NO_GO,
+    }
+    assert day.level is Level.GO
+
+
+def test_wu_hint_downgrades_only_the_hinted_highway() -> None:
+    d = date(2026, 11, 18)
+    plan = build_plan(ctx(hints=[DayHint("carson_pass", d, 3.0)]), Direction.RENO_SAC, None)
+    day = next(x for x in plan.days if x.day == d)
+    assert day.route_levels[RouteId.SR88] is Level.CAUTION
+    assert day.route_levels[RouteId.I80] is Level.GO
