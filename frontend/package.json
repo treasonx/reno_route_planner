@@ -1,0 +1,33 @@
+{
+  "name": "pass-check-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "gen:api": "cd ../backend && uv run python ../scripts/export_openapi.py ../frontend/openapi.json && cd ../frontend && openapi-typescript openapi.json -o src/api.gen.ts",
+    "budget": "node scripts/check-budget.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/atkinson-hyperlegible-next": "^5.3.0",
+    "@fontsource/barlow-condensed": "^5.3.0",
+    "preact": "^11.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@preact/preset-vite": "^2.10.6",
+    "@testing-library/preact": "^3.2.6",
+    "eslint": "^10.15.0",
+    "globals": "^17.14.0",
+    "happy-dom": "^21.0.4",
+    "openapi-typescript": "^7.13.0",
+    "typescript": "~5.9",
+    "typescript-eslint": "^8.72.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  }
+}

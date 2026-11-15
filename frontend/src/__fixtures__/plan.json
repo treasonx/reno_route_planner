@@ -1,0 +1,1758 @@
+{
+ "generated_at": "2026-11-15T07:00:00-08:00",
+ "snapshot_version": 2,
+ "direction": "reno-sac",
+ "corridors": {
+  "i80": {
+   "name": "I-80",
+   "summit": "Donner Summit",
+   "stops": [
+    {
+     "id": "reno",
+     "name": "Reno",
+     "x": 10.0,
+     "y": 75.7,
+     "elevation_ft": 4505,
+     "peak_label": ""
+    },
+    {
+     "id": "truckee",
+     "name": "Truckee",
+     "x": 97.6,
+     "y": 59.2,
+     "elevation_ft": 5820,
+     "peak_label": ""
+    },
+    {
+     "id": "donner",
+     "name": "Donner Summit",
+     "x": 135.2,
+     "y": 41.8,
+     "elevation_ft": 7214,
+     "peak_label": "Donner Summit 7,056′"
+    },
+    {
+     "id": "kingvale",
+     "name": "Kingvale",
+     "x": 152.7,
+     "y": 56.0,
+     "elevation_ft": 6076,
+     "peak_label": ""
+    },
+    {
+     "id": "yuba_gap",
+     "name": "Yuba Gap",
+     "x": 180.3,
+     "y": 59.9,
+     "elevation_ft": 5770,
+     "peak_label": ""
+    },
+    {
+     "id": "colfax",
+     "name": "Colfax",
+     "x": 240.3,
+     "y": 101.7,
+     "elevation_ft": 2421,
+     "peak_label": ""
+    },
+    {
+     "id": "sacramento",
+     "name": "Sacramento",
+     "x": 348.0,
+     "y": 131.6,
+     "elevation_ft": 30,
+     "peak_label": ""
+    }
+   ],
+   "towns": [
+    "Reno",
+    "Truckee",
+    "Colfax",
+    "Sacramento"
+   ]
+  },
+  "us50": {
+   "name": "US-50",
+   "summit": "Echo Summit",
+   "stops": [
+    {
+     "id": "reno",
+     "name": "Reno",
+     "x": 10.0,
+     "y": 75.7,
+     "elevation_ft": 4505,
+     "peak_label": ""
+    },
+    {
+     "id": "carson_city",
+     "name": "Carson City",
+     "x": 81.7,
+     "y": 73.4,
+     "elevation_ft": 4688,
+     "peak_label": ""
+    },
+    {
+     "id": "spooner",
+     "name": "Spooner Summit",
+     "x": 112.4,
+     "y": 42.6,
+     "elevation_ft": 7155,
+     "peak_label": "Spooner 7,146′"
+    },
+    {
+     "id": "south_lake_tahoe",
+     "name": "South Lake Tahoe",
+     "x": 149.3,
+     "y": 53.6,
+     "elevation_ft": 6270,
+     "peak_label": ""
+    },
+    {
+     "id": "meyers",
+     "name": "Meyers",
+     "x": 169.8,
+     "y": 52.7,
+     "elevation_ft": 6341,
+     "peak_label": ""
+    },
+    {
+     "id": "echo",
+     "name": "Echo Summit",
+     "x": 184.1,
+     "y": 39.5,
+     "elevation_ft": 7401,
+     "peak_label": "Echo Summit 7,382′"
+    },
+    {
+     "id": "twin_bridges",
+     "name": "Twin Bridges",
+     "x": 198.5,
+     "y": 55.0,
+     "elevation_ft": 6158,
+     "peak_label": ""
+    },
+    {
+     "id": "kyburz",
+     "name": "Kyburz",
+     "x": 225.1,
+     "y": 81.1,
+     "elevation_ft": 4075,
+     "peak_label": ""
+    },
+    {
+     "id": "placerville",
+     "name": "Placerville",
+     "x": 276.3,
+     "y": 108.7,
+     "elevation_ft": 1863,
+     "peak_label": ""
+    },
+    {
+     "id": "sacramento",
+     "name": "Sacramento",
+     "x": 348.0,
+     "y": 131.6,
+     "elevation_ft": 30,
+     "peak_label": ""
+    }
+   ],
+   "towns": [
+    "Reno",
+    "Tahoe",
+    "Placerville",
+    "Sacramento"
+   ]
+  },
+  "sr88": {
+   "name": "SR-88",
+   "summit": "Carson Pass",
+   "stops": [
+    {
+     "id": "reno",
+     "name": "Reno",
+     "x": 10.0,
+     "y": 75.7,
+     "elevation_ft": 4505,
+     "peak_label": ""
+    },
+    {
+     "id": "minden",
+     "name": "Minden",
+     "x": 96.7,
+     "y": 72.9,
+     "elevation_ft": 4727,
+     "peak_label": ""
+    },
+    {
+     "id": "woodfords",
+     "name": "Woodfords",
+     "x": 131.3,
+     "y": 62.8,
+     "elevation_ft": 5535,
+     "peak_label": ""
+    },
+    {
+     "id": "carson_pass",
+     "name": "Carson Pass",
+     "x": 174.7,
+     "y": 24.8,
+     "elevation_ft": 8574,
+     "peak_label": "Carson Pass 8,574′"
+    },
+    {
+     "id": "kirkwood",
+     "name": "Kirkwood",
+     "x": 186.8,
+     "y": 35.5,
+     "elevation_ft": 7723,
+     "peak_label": ""
+    },
+    {
+     "id": "carson_spur",
+     "name": "Carson Spur",
+     "x": 193.7,
+     "y": 32.3,
+     "elevation_ft": 7972,
+     "peak_label": ""
+    },
+    {
+     "id": "jackson",
+     "name": "Jackson",
+     "x": 270.0,
+     "y": 116.7,
+     "elevation_ft": 1223,
+     "peak_label": ""
+    },
+    {
+     "id": "sacramento",
+     "name": "Sacramento",
+     "x": 348.0,
+     "y": 131.6,
+     "elevation_ft": 30,
+     "peak_label": ""
+    }
+   ],
+   "towns": [
+    "Reno",
+    "Minden",
+    "Jackson",
+    "Sacramento"
+   ]
+  }
+ },
+ "hours": [
+  {
+   "depart": "2026-11-15T07:00:00-08:00",
+   "label": "Now",
+   "best": {
+    "route": "us50",
+    "verdict": "GO"
+   },
+   "hero": {
+    "title": "Take US-50",
+    "sub": "GO for departures until 10 AM",
+    "body": "Clear the whole way."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "CAUTION",
+     "caption": "Black ice risk at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-15T07:50:00-08:00",
+     "segments": [
+      "CAUTION",
+      "CAUTION",
+      "CAUTION",
+      "CAUTION",
+      "CAUTION",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "GO",
+     "caption": "Clear the whole way.",
+     "summit_eta": "2026-11-15T08:25:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 0.7 in/hr at Carson Pass, Kirkwood, Carson Spur. Chains required (R-2) near Carson Spur.",
+     "summit_eta": "2026-11-15T08:35:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T08:00:00-08:00",
+   "label": "8 AM",
+   "best": {
+    "route": "us50",
+    "verdict": "GO"
+   },
+   "hero": {
+    "title": "Take US-50",
+    "sub": "GO for departures until 10 AM",
+    "body": "Clear the whole way."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "CAUTION",
+     "caption": "Black ice risk at Truckee, Donner Summit, Kingvale.",
+     "summit_eta": "2026-11-15T08:50:00-08:00",
+     "segments": [
+      "CAUTION",
+      "CAUTION",
+      "CAUTION",
+      "CAUTION",
+      "GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "GO",
+     "caption": "Clear the whole way.",
+     "summit_eta": "2026-11-15T09:25:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 0.7 in/hr at Carson Pass, Kirkwood, Carson Spur. Chains required (R-2) near Carson Spur.",
+     "summit_eta": "2026-11-15T09:35:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T09:00:00-08:00",
+   "label": "9 AM",
+   "best": {
+    "route": "i80",
+    "verdict": "GO"
+   },
+   "hero": {
+    "title": "Take I-80",
+    "sub": "GO for departures until 11 AM",
+    "body": "Clear the whole way."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "GO",
+     "caption": "Clear the whole way.",
+     "summit_eta": "2026-11-15T09:50:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "GO",
+     "caption": "Clear the whole way.",
+     "summit_eta": "2026-11-15T10:25:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 0.7 in/hr at Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-15T10:35:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T10:00:00-08:00",
+   "label": "10 AM",
+   "best": {
+    "route": "i80",
+    "verdict": "GO"
+   },
+   "hero": {
+    "title": "Take I-80",
+    "sub": "GO for departures until 11 AM",
+    "body": "Clear the whole way."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "GO",
+     "caption": "Clear the whole way.",
+     "summit_eta": "2026-11-15T10:50:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "GO",
+     "caption": "Clear the whole way.",
+     "summit_eta": "2026-11-15T11:25:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 0.7 in/hr at Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-15T11:35:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T11:00:00-08:00",
+   "label": "11 AM",
+   "best": {
+    "route": "sr88",
+    "verdict": "GO"
+   },
+   "hero": {
+    "title": "Take SR-88",
+    "sub": "GO for departures until 1 PM",
+    "body": "Clear the whole way."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "GO",
+     "caption": "Clear the whole way.",
+     "summit_eta": "2026-11-15T11:50:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "CAUTION",
+     "caption": "30% chance of snow at Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T12:25:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "CAUTION",
+      "CAUTION",
+      "CAUTION",
+      "CAUTION",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "GO",
+     "caption": "Clear the whole way.",
+     "summit_eta": "2026-11-15T12:35:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T12:00:00-08:00",
+   "label": "12 PM",
+   "best": {
+    "route": "sr88",
+    "verdict": "GO"
+   },
+   "hero": {
+    "title": "Take SR-88",
+    "sub": "GO for departures until 1 PM",
+    "body": "Clear the whole way."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "CAUTION",
+     "caption": "30% chance of snow at Donner Summit.",
+     "summit_eta": "2026-11-15T12:50:00-08:00",
+     "segments": [
+      "GO",
+      "CAUTION",
+      "CAUTION",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "CAUTION",
+     "caption": "30% chance of snow at Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T13:25:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "CAUTION",
+      "CAUTION",
+      "CAUTION",
+      "CAUTION",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "GO",
+     "caption": "Clear the whole way.",
+     "summit_eta": "2026-11-15T13:35:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T13:00:00-08:00",
+   "label": "1 PM",
+   "best": {
+    "route": "sr88",
+    "verdict": "GO"
+   },
+   "hero": {
+    "title": "Take SR-88",
+    "sub": "GO for departures until 1 PM",
+    "body": "Clear the whole way."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "CAUTION",
+     "caption": "30% chance of snow at Donner Summit.",
+     "summit_eta": "2026-11-15T13:50:00-08:00",
+     "segments": [
+      "GO",
+      "CAUTION",
+      "CAUTION",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "CAUTION",
+     "caption": "30% chance of snow at Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T14:25:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "CAUTION",
+      "CAUTION",
+      "CAUTION",
+      "CAUTION",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "GO",
+     "caption": "Clear the whole way.",
+     "summit_eta": "2026-11-15T14:35:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T14:00:00-08:00",
+   "label": "2 PM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Yuba Gap.",
+     "summit_eta": "2026-11-15T14:50:00-08:00",
+     "segments": [
+      "GO",
+      "CAUTION",
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T15:25:00-08:00",
+     "segments": [
+      "GO",
+      "GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-15T15:35:00-08:00",
+     "segments": [
+      "GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T15:00:00-08:00",
+   "label": "3 PM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-15T15:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T16:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-15T16:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T16:00:00-08:00",
+   "label": "4 PM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-15T16:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T17:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-15T17:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T17:00:00-08:00",
+   "label": "5 PM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-15T17:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T18:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-15T18:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T18:00:00-08:00",
+   "label": "6 PM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-15T18:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T19:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-15T19:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T19:00:00-08:00",
+   "label": "7 PM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-15T19:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T20:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-15T20:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T20:00:00-08:00",
+   "label": "8 PM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-15T20:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T21:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-15T21:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T21:00:00-08:00",
+   "label": "9 PM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-15T21:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T22:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-15T22:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T22:00:00-08:00",
+   "label": "10 PM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-15T22:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-15T23:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-15T23:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-15T23:00:00-08:00",
+   "label": "11 PM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-15T23:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-16T00:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-16T00:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-16T00:00:00-08:00",
+   "label": "12 AM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-16T00:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-16T01:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-16T01:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-16T01:00:00-08:00",
+   "label": "1 AM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-16T01:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-16T02:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-16T02:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-16T02:00:00-08:00",
+   "label": "2 AM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-16T02:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-16T03:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-16T03:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-16T03:00:00-08:00",
+   "label": "3 AM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-16T03:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-16T04:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-16T04:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-16T04:00:00-08:00",
+   "label": "4 AM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-16T04:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-16T05:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-16T05:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-16T05:00:00-08:00",
+   "label": "5 AM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-16T05:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-16T06:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-16T06:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  },
+  {
+   "depart": "2026-11-16T06:00:00-08:00",
+   "label": "6 AM",
+   "best": {
+    "route": "i80",
+    "verdict": "NO GO"
+   },
+   "hero": {
+    "title": "Don’t cross",
+    "sub": "NO GO on all three routes",
+    "body": "Next GO: Wed 9 AM on SR-88."
+   },
+   "routes": {
+    "i80": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Truckee, Donner Summit, Kingvale, Yuba Gap.",
+     "summit_eta": "2026-11-16T06:50:00-08:00",
+     "segments": [
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    },
+    "us50": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Spooner Summit, South Lake Tahoe, Meyers, Echo Summit, Twin Bridges.",
+     "summit_eta": "2026-11-16T07:25:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO",
+      "GO"
+     ]
+    },
+    "sr88": {
+     "verdict": "NO GO",
+     "caption": "Snow 1.5 in/hr at Woodfords, Carson Pass, Kirkwood, Carson Spur.",
+     "summit_eta": "2026-11-16T07:35:00-08:00",
+     "segments": [
+      "CAUTION",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "NO GO",
+      "GO"
+     ]
+    }
+   }
+  }
+ ],
+ "days": [
+  {
+   "date": "2026-11-15",
+   "dow": "Sun",
+   "day": 15,
+   "verdict": "GO",
+   "best_route": "us50",
+   "reasons": [],
+   "low_confidence": false
+  },
+  {
+   "date": "2026-11-16",
+   "dow": "Mon",
+   "day": 16,
+   "verdict": "NO GO",
+   "best_route": "i80",
+   "reasons": [],
+   "low_confidence": false
+  },
+  {
+   "date": "2026-11-17",
+   "dow": "Tue",
+   "day": 17,
+   "verdict": "NO GO",
+   "best_route": "i80",
+   "reasons": [],
+   "low_confidence": false
+  },
+  {
+   "date": "2026-11-18",
+   "dow": "Wed",
+   "day": 18,
+   "verdict": "GO",
+   "best_route": "sr88",
+   "reasons": [],
+   "low_confidence": false
+  },
+  {
+   "date": "2026-11-19",
+   "dow": "Thu",
+   "day": 19,
+   "verdict": "GO",
+   "best_route": "sr88",
+   "reasons": [],
+   "low_confidence": false
+  },
+  {
+   "date": "2026-11-20",
+   "dow": "Fri",
+   "day": 20,
+   "verdict": "GO",
+   "best_route": "us50",
+   "reasons": [],
+   "low_confidence": false
+  },
+  {
+   "date": "2026-11-21",
+   "dow": "Sat",
+   "day": 21,
+   "verdict": "GO",
+   "best_route": "us50",
+   "reasons": [],
+   "low_confidence": false
+  },
+  {
+   "date": "2026-11-22",
+   "dow": "Sun",
+   "day": 22,
+   "verdict": "CAUTION",
+   "best_route": "i80",
+   "reasons": [],
+   "low_confidence": true
+  },
+  {
+   "date": "2026-11-23",
+   "dow": "Mon",
+   "day": 23,
+   "verdict": "NO GO",
+   "best_route": "i80",
+   "reasons": [],
+   "low_confidence": true
+  },
+  {
+   "date": "2026-11-24",
+   "dow": "Tue",
+   "day": 24,
+   "verdict": "NO GO",
+   "best_route": "i80",
+   "reasons": [],
+   "low_confidence": true
+  },
+  {
+   "date": "2026-11-25",
+   "dow": "Wed",
+   "day": 25,
+   "verdict": "GO",
+   "best_route": "i80",
+   "reasons": [],
+   "low_confidence": true
+  }
+ ],
+ "sources": {
+  "openmeteo": {
+   "configured": true,
+   "ok": true,
+   "last_success": "2026-11-15T07:00:00-08:00",
+   "consecutive_failures": 0,
+   "last_error": null
+  },
+  "caltrans": {
+   "configured": true,
+   "ok": true,
+   "last_success": "2026-11-15T07:00:00-08:00",
+   "consecutive_failures": 0,
+   "last_error": null
+  }
+ },
+ "stale": false,
+ "notes": [
+  "Nevada stretches are forecast-only (no live NDOT data)."
+ ]
+}
