@@ -3,8 +3,9 @@ and an LRU of serialized plan responses.
 
 Single process, single worker, and every access happens on the event-loop thread (the API
 handlers are ``async def``). ``Conditions`` is rebuilt and swapped atomically after every
-successful source update; nothing is mutated in place and nothing touches disk. The
-forecast-derived matrix is reused when only live or hint sources changed.
+successful source update; nothing is mutated in place. (Raw responses are snapshotted to
+disk by the scheduler, see ``snapshot.py``.) The forecast-derived matrix is reused when only
+live or hint sources changed.
 """
 
 from __future__ import annotations
@@ -89,6 +90,13 @@ class Store:
         st = self.states[name]
         st.result, st.last_success = result, now
         st.consecutive_failures, st.last_error = 0, None
+        self._rebuild(now)
+
+    def restore(self, name: str, result: SourceResult, fetched_at: datetime, now: datetime) -> None:
+        """Load a snapshot result *as of when it was fetched*: staleness is measured from
+        ``fetched_at``, so restored data is treated exactly like data we fetched back then."""
+        st = self.states[name]
+        st.result, st.last_success = result, fetched_at
         self._rebuild(now)
 
     def record_failure(self, name: str, exc: BaseException) -> None:

@@ -17,3 +17,6 @@ class Settings(BaseSettings):
     passcheck_sources: Literal["live", "fixtures"] = "live"
     log_level: str = "INFO"
     static_dir: Path = Path("/app/static")
+    # Where last-good upstream responses are kept so restarts serve data immediately.
+    # None (the default outside the container) disables snapshots.
+    data_dir: Path | None = None

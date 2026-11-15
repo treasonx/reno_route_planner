@@ -28,15 +28,19 @@ FROM python:3.15-slim@sha256:65a65fc7b30b06cb6df4930fd4650697cb23f4c2698ab81fc87
 LABEL org.opencontainers.image.title="Pass Check" \
       org.opencontainers.image.description="GO / CAUTION / NO GO for crossing the Sierra between Reno and Sacramento" \
       org.opencontainers.image.source="https://github.com/treasonx/reno_route_planner"
-RUN groupadd --system --gid 10001 app && useradd --system --uid 10001 --gid 10001 --no-create-home app
+RUN groupadd --system --gid 10001 app && useradd --system --uid 10001 --gid 10001 --no-create-home app \
+    && mkdir /data && chown 10001:10001 /data
 WORKDIR /app
 COPY --from=builder --chown=10001:10001 /app/.venv /app/.venv
 COPY --from=web --chown=10001:10001 /web/dist /app/static
 ENV PATH="/app/.venv/bin:$PATH" \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    STATIC_DIR=/app/static
+    STATIC_DIR=/app/static \
+    DATA_DIR=/data
 USER 10001:10001
+# Last-good upstream responses for fast, safe restarts (mount a volume here to keep them).
+VOLUME ["/data"]
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
   CMD ["python", "-c", "import sys, urllib.request; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=4).status == 200 else 1)"]

@@ -20,6 +20,7 @@ from passcheck import scheduler
 from passcheck.api import router
 from passcheck.config import Settings
 from passcheck.security import SecurityHeadersMiddleware, configure_logging
+from passcheck.snapshot import SnapshotDir
 from passcheck.sources.base import Source
 from passcheck.store import Store
 
@@ -94,12 +95,16 @@ def create_app(
     configure_logging(settings.log_level)
     srcs = list(sources) if sources is not None else default_sources(settings)
     store = Store(srcs)
+    snapshots = SnapshotDir(settings.data_dir)
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
         enabled = [s.name for s in srcs if s.configured]
         disabled = [s.name for s in srcs if not s.configured]
         log.info("sources enabled=%s disabled=%s", enabled, disabled)
+        if snapshots.enabled:
+            restored = scheduler.restore_snapshots(srcs, store, snapshots, clock)
+            log.info("snapshots dir=%s restored=%s", snapshots.root, restored)
         if not start_scheduler:
             yield
             return
@@ -108,7 +113,7 @@ def create_app(
             follow_redirects=False,
             headers={"User-Agent": USER_AGENT},
         ) as client:
-            tasks = scheduler.start(srcs, store, client, clock)
+            tasks = scheduler.start(srcs, store, client, clock, snapshots)
             try:
                 yield
             finally:

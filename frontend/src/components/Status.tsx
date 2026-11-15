@@ -33,6 +33,15 @@ export function DataUnavailable({ message, onRetry }: { message: string; onRetry
   );
 }
 
+export function StartingUp() {
+  return (
+    <section class="card starting" role="status" aria-live="polite">
+      <h2>Starting up</h2>
+      <p class="muted">Fetching the latest forecast and road conditions. This usually takes a few seconds.</p>
+    </section>
+  );
+}
+
 export function Skeleton() {
   return (
     <div class="skeleton" aria-busy="true" aria-label="Loading">
