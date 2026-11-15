@@ -1,0 +1,1364 @@
+{
+ "data": [
+  {
+   "cc": {
+    "index": "3-ALP-89-23.6-N-237",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Luther Pass",
+     "nearbyPlace": "Markleeville",
+     "longitude": "-119.939680",
+     "latitude": "38.787944",
+     "elevation": "7732",
+     "direction": "North",
+     "county": "Alpine",
+     "route": "SR-89",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "23.60",
+     "alignment": "",
+     "milepost": "31.03"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "11:55:00"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-20.18-E-159",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Placerville East City Limits(Pointview)",
+     "nearbyPlace": "Placerville",
+     "longitude": "-120.761780",
+     "latitude": "38.730630",
+     "elevation": "2240",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "20.18",
+     "alignment": "",
+     "milepost": "48.72"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-27",
+      "statusTime": "10:05:08"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-20.18-E-159a",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Placerville East City Limits(Pointview)",
+     "nearbyPlace": "Placerville",
+     "longitude": "-120.761780",
+     "latitude": "38.730630",
+     "elevation": "2240",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "20.18",
+     "alignment": "",
+     "milepost": "48.72"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-27",
+      "statusTime": "10:05:08"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-23.16-W-160",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Camino Heights",
+     "nearbyPlace": "Placerville",
+     "longitude": "-120.712250",
+     "latitude": "38.736940",
+     "elevation": "2926",
+     "direction": "West",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "23.16",
+     "alignment": "",
+     "milepost": "51.70"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-27",
+      "statusTime": "10:05:08"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-23.161-E-161",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Camino Heights",
+     "nearbyPlace": "Placerville",
+     "longitude": "-120.712230",
+     "latitude": "38.736940",
+     "elevation": "2926",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "23.16",
+     "alignment": "",
+     "milepost": "51.70"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-27",
+      "statusTime": "10:05:08"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-34.3-W-166",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Fresh Pond",
+     "nearbyPlace": "Pollock Pines",
+     "longitude": "-120.530620",
+     "latitude": "38.760650",
+     "elevation": "3641",
+     "direction": "West",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "34.30",
+     "alignment": "",
+     "milepost": "62.68"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-27",
+      "statusTime": "10:05:08"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-38.2-W-167",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Riverton",
+     "nearbyPlace": "Pollock Pines",
+     "longitude": "-120.470669",
+     "latitude": "38.774110",
+     "elevation": "3231",
+     "direction": "West",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "38.20",
+     "alignment": "",
+     "milepost": "66.58"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-27",
+      "statusTime": "10:05:08"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-38.21-E-168",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Riverton (unselect for split control)",
+     "nearbyPlace": "Pollock Pines",
+     "longitude": "-120.470669",
+     "latitude": "38.774111",
+     "elevation": "3231",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "38.21",
+     "alignment": "",
+     "milepost": "66.59"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-27",
+      "statusTime": "10:05:08"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-47.4-E-169",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Sand Flat",
+     "nearbyPlace": "Kyburz",
+     "longitude": "-120.320900",
+     "latitude": "38.765400",
+     "elevation": "3953",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "47.40",
+     "alignment": "",
+     "milepost": "75.72"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-04-22",
+      "statusTime": "03:51:18"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-47.4-E-169a",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Sand Flat",
+     "nearbyPlace": "Kyburz",
+     "longitude": "-120.320900",
+     "latitude": "38.765400",
+     "elevation": "3953",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "47.40",
+     "alignment": "",
+     "milepost": "75.72"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-04-22",
+      "statusTime": "00:38:58"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-52-E-170",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Fred's Place",
+     "nearbyPlace": "Kyburz",
+     "longitude": "-120.243780",
+     "latitude": "38.780580",
+     "elevation": "4957",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "52.00",
+     "alignment": "",
+     "milepost": "80.30"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-13",
+      "statusTime": "22:42:45"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-52-E-170a",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Fred's Place",
+     "nearbyPlace": "Kyburz",
+     "longitude": "-120.243780",
+     "latitude": "38.780580",
+     "elevation": "4957",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "52.00",
+     "alignment": "",
+     "milepost": "80.30"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-13",
+      "statusTime": "22:42:45"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-54.6-E-171",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Wright's Lake",
+     "nearbyPlace": "Kyburz",
+     "longitude": "-120.196190",
+     "latitude": "38.790060",
+     "elevation": "5515",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "54.60",
+     "alignment": "",
+     "milepost": "82.86"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-13",
+      "statusTime": "22:42:45"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-54.6-E-171a",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Wright's Lake",
+     "nearbyPlace": "Kyburz",
+     "longitude": "-120.196190",
+     "latitude": "38.790060",
+     "elevation": "5515",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "54.60",
+     "alignment": "",
+     "milepost": "82.86"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-13",
+      "statusTime": "22:43:07"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-57.8-E-172",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Strawberry",
+     "nearbyPlace": "Twin Bridges",
+     "longitude": "-120.148410",
+     "latitude": "38.795140",
+     "elevation": "5728",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "57.80",
+     "alignment": "",
+     "milepost": "86.06"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-13",
+      "statusTime": "22:42:45"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-57.8-E-172a",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Strawberry",
+     "nearbyPlace": "Twin Bridges",
+     "longitude": "-120.148410",
+     "latitude": "38.795140",
+     "elevation": "5728",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "57.80",
+     "alignment": "",
+     "milepost": "86.06"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-13",
+      "statusTime": "22:42:45"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-59.7-W-173",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Twin Bridges",
+     "nearbyPlace": "Twin Bridges",
+     "longitude": "-120.122810",
+     "latitude": "38.811350",
+     "elevation": "6158",
+     "direction": "West",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "59.70",
+     "alignment": "",
+     "milepost": "87.97"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-13",
+      "statusTime": "22:42:45"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-59.7-W-173a",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Twin Bridges",
+     "nearbyPlace": "Twin Bridges",
+     "longitude": "-120.122810",
+     "latitude": "38.811350",
+     "elevation": "6158",
+     "direction": "West",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "59.70",
+     "alignment": "",
+     "milepost": "87.97"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-13",
+      "statusTime": "22:42:45"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-59.71-E-174",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Twin Bridges",
+     "nearbyPlace": "Twin Bridges",
+     "longitude": "-120.122630",
+     "latitude": "38.811370",
+     "elevation": "6158",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "59.71",
+     "alignment": "",
+     "milepost": "87.97"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "08:18:00"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-59.71-E-174a",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Twin Bridges",
+     "nearbyPlace": "Twin Bridges",
+     "longitude": "-120.122630",
+     "latitude": "38.811370",
+     "elevation": "6158",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "59.71",
+     "alignment": "",
+     "milepost": "87.97"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "08:18:00"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-66.82-E-252",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Echo Summit (Holding only)",
+     "nearbyPlace": "South Lake Tahoe",
+     "longitude": "-120.029660",
+     "latitude": "38.813110",
+     "elevation": "7401",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "66.82",
+     "alignment": "",
+     "milepost": "94.98"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-10-31",
+      "statusTime": "23:17:40"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-70.02-W-253",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Chiapa (Holding only)",
+     "nearbyPlace": "South Lake Tahoe",
+     "longitude": "-120.030816",
+     "latitude": "38.845155",
+     "elevation": "6453",
+     "direction": "West",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "70.02",
+     "alignment": "",
+     "milepost": "98.16"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-27",
+      "statusTime": "10:05:08"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-70.42-W-175",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Meyers",
+     "nearbyPlace": "South Lake Tahoe",
+     "longitude": "-120.025480",
+     "latitude": "38.849540",
+     "elevation": "6341",
+     "direction": "West",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "70.42",
+     "alignment": "",
+     "milepost": "98.58"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "08:18:00"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-70.42-W-175a",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Meyers",
+     "nearbyPlace": "South Lake Tahoe",
+     "longitude": "-120.025480",
+     "latitude": "38.849540",
+     "elevation": "6341",
+     "direction": "West",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "70.42",
+     "alignment": "",
+     "milepost": "98.58"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "08:18:00"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-R028.8-W-163",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Saw Mill Under Crossing",
+     "nearbyPlace": "Camino",
+     "longitude": "-120.618120",
+     "latitude": "38.748380",
+     "elevation": "3641",
+     "direction": "West",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "R",
+     "postmile": "28.80",
+     "alignment": "",
+     "milepost": "57.34"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-27",
+      "statusTime": "10:05:08"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-R028.81-E-164",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Saw Mill Under Crossing",
+     "nearbyPlace": "Camino",
+     "longitude": "-120.617940",
+     "latitude": "38.748400",
+     "elevation": "3641",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "R",
+     "postmile": "28.81",
+     "alignment": "",
+     "milepost": "57.34"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-27",
+      "statusTime": "10:05:08"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-50-R031.3-E-165",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Pollock Pines (Sly Park)",
+     "nearbyPlace": "Pollock Pines",
+     "longitude": "-120.575740",
+     "latitude": "38.761350",
+     "elevation": "3982",
+     "direction": "East",
+     "county": "El Dorado",
+     "route": "US-50",
+     "routeSuffix": "",
+     "postmilePrefix": "R",
+     "postmile": "31.30",
+     "alignment": "",
+     "milepost": "59.84"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-27",
+      "statusTime": "10:05:08"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-89-5.8-S-236",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Christmas Valley",
+     "nearbyPlace": "South Lake Tahoe",
+     "longitude": "-120.014996",
+     "latitude": "38.812668",
+     "elevation": "6505",
+     "direction": "South",
+     "county": "El Dorado",
+     "route": "SR-89",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "5.80",
+     "alignment": "",
+     "milepost": "37.21"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "11:55:00"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-89-13-N-235",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Ebrights",
+     "nearbyPlace": "South Lake Tahoe",
+     "longitude": "-120.072143",
+     "latitude": "38.933845",
+     "elevation": "6289",
+     "direction": "North",
+     "county": "El Dorado",
+     "route": "SR-89",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "13.00",
+     "alignment": "",
+     "milepost": "44.40"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "08:45:00"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-89-15.3-N-234",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Emerald Bay",
+     "nearbyPlace": "South Lake Tahoe",
+     "longitude": "-120.085238",
+     "latitude": "38.951367",
+     "elevation": "6624",
+     "direction": "North",
+     "county": "El Dorado",
+     "route": "SR-89",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "15.30",
+     "alignment": "",
+     "milepost": "46.70"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "08:45:00"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-89-19.3-N-232",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Bliss State Park",
+     "nearbyPlace": "Tahoma",
+     "longitude": "-120.100198",
+     "latitude": "38.975408",
+     "elevation": "6840",
+     "direction": "North",
+     "county": "El Dorado",
+     "route": "SR-89",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "19.30",
+     "alignment": "",
+     "milepost": "50.70"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "11:09:57"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-89-19.3-S-233",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Bliss State Park",
+     "nearbyPlace": "Tahoma",
+     "longitude": "-120.100198",
+     "latitude": "38.975408",
+     "elevation": "6840",
+     "direction": "South",
+     "county": "El Dorado",
+     "route": "SR-89",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "19.30",
+     "alignment": "",
+     "milepost": "50.70"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "08:45:00"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-89-21-S-231",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Harper's Grade",
+     "nearbyPlace": "Tahoma",
+     "longitude": "-120.109160",
+     "latitude": "38.995810",
+     "elevation": "6292",
+     "direction": "South",
+     "county": "El Dorado",
+     "route": "SR-89",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "21.00",
+     "alignment": "",
+     "milepost": "52.40"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "11:09:57"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-ED-89-27.05-S-230",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Tahoma ( Co line / Sugar Pine )",
+     "nearbyPlace": "Tahoma",
+     "longitude": "-120.123930",
+     "latitude": "39.063550",
+     "elevation": "6332",
+     "direction": "South",
+     "county": "El Dorado",
+     "route": "SR-89",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "27.05",
+     "alignment": "",
+     "milepost": "58.45"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "11:09:57"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-NEV-80-13.5-E-192",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Truckee",
+     "nearbyPlace": "Truckee",
+     "longitude": "-120.220450",
+     "latitude": "39.323710",
+     "elevation": "5905",
+     "direction": "East",
+     "county": "Nevada",
+     "route": "I-80",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "13.50",
+     "alignment": "",
+     "milepost": "184.06"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "09:22:52"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-NEV-80-13.5-E-192a",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Truckee",
+     "nearbyPlace": "Truckee",
+     "longitude": "-120.220450",
+     "latitude": "39.323710",
+     "elevation": "5905",
+     "direction": "East",
+     "county": "Nevada",
+     "route": "I-80",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "13.50",
+     "alignment": "",
+     "milepost": "184.06"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "09:22:52"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-NEV-80-13.5-W-200",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Truckee",
+     "nearbyPlace": "Truckee",
+     "longitude": "-120.220450",
+     "latitude": "39.323710",
+     "elevation": "5905",
+     "direction": "West",
+     "county": "Nevada",
+     "route": "I-80",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "13.50",
+     "alignment": "",
+     "milepost": "184.06"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "09:08:07"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-NEV-80-13.5-W-200a",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Truckee",
+     "nearbyPlace": "Truckee",
+     "longitude": "-120.220450",
+     "latitude": "39.323710",
+     "elevation": "5905",
+     "direction": "West",
+     "county": "Nevada",
+     "route": "I-80",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "13.50",
+     "alignment": "",
+     "milepost": "184.06"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "09:08:07"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-NEV-80-18.6-W-199",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Overland Trail - OTL Truck Screens",
+     "nearbyPlace": "Truckee",
+     "longitude": "-120.141280",
+     "latitude": "39.358500",
+     "elevation": "5820",
+     "direction": "West",
+     "county": "Nevada",
+     "route": "I-80",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "18.60",
+     "alignment": "",
+     "milepost": "189.16"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "02:23:51"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "3-NEV-80-18.6-W-199a",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "3",
+     "locationName": "Overland Trail - OTL Truck Screens",
+     "nearbyPlace": "Truckee",
+     "longitude": "-120.141280",
+     "latitude": "39.358500",
+     "elevation": "5820",
+     "direction": "West",
+     "county": "Nevada",
+     "route": "I-80",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "18.60",
+     "alignment": "",
+     "milepost": "189.16"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "02:23:51"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  }
+ ]
+}

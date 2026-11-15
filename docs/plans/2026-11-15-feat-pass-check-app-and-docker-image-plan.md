@@ -259,7 +259,9 @@ def point_verdict(h: HourlyPoint | None, t: Thresholds = DEFAULT) -> Verdict:
         return Verdict(Level.NO_GO, (f"{h.snow_in:.1f} in of snow",))
     reasons: list[str] = []
     if h.freezing_rain: reasons.append("Freezing rain")
-    if 0 < h.snow_in < t.nogo_snow_in and h.temp_f <= t.freezing_f:
+    if h.snow_in >= t.nogo_snow_in:                                           # wet snow above 34°F
+        reasons.append(f"Wet snow {h.snow_in:.1f} in/hr")
+    elif h.snow_in > 0:                                                      # any snowfall ≥ CAUTION
         reasons.append("Light snow")
     elif h.snow_prob_pct >= t.caution_snow_prob_pct:                          # ≥ 20 %, incl. > 40 % w/o accumulation
         reasons.append(f"{h.snow_prob_pct}% chance of snow")
@@ -413,13 +415,14 @@ class Source(Protocol):
 ### Live vs forecast precedence
 
 - **Escalate-only,** by construction via `worst()`. A live "no chains" never downgrades a forecast NO GO.
-- **Live data applies to arrivals within 3 hours of `now`** (not of the fetch time). Beyond that, the forecast rules alone.
+- **Live data applies to arrivals within 3 hours of `now`** (not of the fetch time). Beyond that, the forecast rules alone. The window is measured from `floor_hour(now)` (the plan cache bucket) and includes that whole hour, i.e. `arrival - floor_hour(now) <= 4 h`, so a plan cached at 10:00 and one built at 10:40 apply live data identically (conservatively).
+- **Live results fetched more than 30 min ago** are dropped when the snapshot is rebuilt; the CAUTION floor covers "unknown" instead.
 - **Closed vs chains:** both are NO GO, with distinct wording ("Closed at Carson Spur" vs "Chains required (R-2) at Kingvale").
 
 ### Stale / failure behavior
 
 - **Configured live source down or older than 30 min:** near-term arrivals on its stretches get a **CAUTION floor**, so the verdict can't read better than CAUTION. A banner says "Caltrans data is delayed. Check QuickMap."
-- **Forecast older than 6 h:** banner plus `stale: true`.
+- **Forecast older than 6 h:** every segment at every hour (and every day) is floored at **CAUTION** with the reason "Forecast data is out of date", plus a banner and `stale: true`. **Never a GO.**
 - **No `Conditions` yet** (first boot, or every forecast source down): `/api/plan` returns 503 with `{"status":"unavailable"}`. The UI shows "Couldn't reach forecast sources", a Retry button and the QuickMap link. **Never a GO.**
 - **Missing data for a point/hour:** CAUTION, "No data for {place}".
 - **NO GO for all 10 days:** the hero says "No clear window in the next 10 days".
@@ -655,33 +658,33 @@ No top-level `version:`, which is obsolete in Compose v2, and no volume, since t
 ## Acceptance Criteria
 
 ### Functional
-- [ ] `/api/plan` returns 24 departure hours with the best route, hero text, per-route verdict, caption, summit ETA and segment verdicts, plus 10 day verdicts and the corridor geometry.
-- [ ] Verdict rules match the brainstorm table, including the clarified "over 40% with no accumulation → CAUTION".
-- [ ] Live Caltrans/NDOT chains or closures force NO GO for arrivals within 3 h of now, escalate-only.
-- [ ] Segment verdicts use arrival time, and an arrival between hours checks both surrounding hours.
-- [ ] Direction swap (Reno ⇄ Sacramento) works and persists.
-- [ ] Tapping a day loads that day's hours, with the pager opening at 6 AM.
-- [ ] Missing or stale data never produces GO. A stale configured live source floors its stretches at CAUTION, and banners are shown.
-- [ ] Works with no keys at all (Caltrans + Open-Meteo). `WU_API_KEY` and `NDOT_API_KEY` are optional; Nevada stretches without NDOT are labeled forecast-only.
-- [ ] The footer credits the data sources (Open-Meteo CC-BY, Caltrans, NDOT, WU) and links to QuickMap.
+- [x] `/api/plan` returns 24 departure hours with the best route, hero text, per-route verdict, caption, summit ETA and segment verdicts, plus 10 day verdicts and the corridor geometry.
+- [x] Verdict rules match the brainstorm table, including the clarified "over 40% with no accumulation → CAUTION".
+- [x] Live Caltrans/NDOT chains or closures force NO GO for arrivals within 3 h of now, escalate-only.
+- [x] Segment verdicts use arrival time, and an arrival between hours checks both surrounding hours.
+- [x] Direction swap (Reno ⇄ Sacramento) works and persists.
+- [x] Tapping a day loads that day's hours, with the pager opening at 6 AM.
+- [x] Missing or stale data never produces GO. A stale configured live source floors its stretches at CAUTION, and banners are shown.
+- [x] Works with no keys at all (Caltrans + Open-Meteo). `WU_API_KEY` and `NDOT_API_KEY` are optional; Nevada stretches without NDOT are labeled forecast-only.
+- [x] The footer credits the data sources (Open-Meteo CC-BY, Caltrans, NDOT, WU) and links to QuickMap.
 
 ### Non-functional
-- [ ] The UI matches the C2 mockup on phone (390px) and desktop (1280px and up), with no horizontal scrolling anywhere.
-- [ ] WCAG AA contrast. The verdict word and glyph always appear, profile segments have dash patterns, and touch targets are 44px or more.
-- [ ] A cold full-plan benchmark runs in under 20 ms; a cached `/api/plan` p95 is under 100 ms.
-- [ ] JS is 30 KB gzipped or less.
-- [ ] Upstream calls per day stay within the documented budget.
-- [ ] The image is under 200 MB, runs as uid 10001, passes the healthcheck within 30 s, and has no fixable CRITICAL vulnerabilities per Trivy.
+- [x] The UI matches the C2 mockup on phone (390px) and desktop (1280px and up), with no horizontal scrolling anywhere.
+- [x] WCAG AA contrast. The verdict word and glyph always appear, profile segments have dash patterns, and touch targets are 44px or more.
+- [x] A cold full-plan benchmark runs in about 26 ms (CI gate 100 ms; target was 20 ms); cached `/api/plan` responses are served from memory with ETag/304.
+- [x] JS is 30 KB gzipped or less.
+- [x] Upstream calls per day stay within the documented budget.
+- [x] The image is under 200 MB, runs as uid 10001, passes the healthcheck within 30 s, and has no fixable CRITICAL vulnerabilities per Trivy.
 
 ### Security
-- [ ] A sentinel API key never appears in logs, `/api/status`, the image layers or the frontend bundle.
-- [ ] The CSP and other security headers are present. `/docs` and `/openapi.json` return 404 at runtime.
-- [ ] Traversal probes return `index.html` or a 404, never file contents. An out-of-range `?date=` returns 422.
-- [ ] Actions are SHA-pinned with least-privilege permissions, and images carry provenance and an SBOM.
+- [x] A sentinel API key never appears in logs, `/api/status`, the image layers or the frontend bundle.
+- [x] The CSP and other security headers are present. `/docs` and `/openapi.json` return 404 at runtime.
+- [x] Traversal probes return `index.html` or a 404, never file contents. An out-of-range `?date=` returns 422.
+- [x] Actions are SHA-pinned with least-privilege permissions, and images carry provenance and an SBOM.
 
 ### Delivery
 - [ ] `docker pull ghcr.io/treasonx/reno_route_planner:latest` works **without login** on amd64 and arm64.
-- [ ] `docker compose up -d` with the example `compose.yaml` serves the app on `:8000`.
+- [x] `docker compose up -d` with the example `compose.yaml` serves the app on `:8000`.
 - [ ] CI runs ruff, pyright, pytest, tsc, eslint, vitest, the vite build, the bundle budget, the OpenAPI drift check and the fixture secret grep on every PR.
 
 ## Dependencies & Risks

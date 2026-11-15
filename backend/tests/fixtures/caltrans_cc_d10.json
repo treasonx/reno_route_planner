@@ -1,0 +1,1024 @@
+{
+ "data": [
+  {
+   "cc": {
+    "index": "10-ALP-4-0.65-W-14W",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "BEAR VALLEY",
+     "nearbyPlace": "Arnold",
+     "longitude": "-120.044800",
+     "latitude": "38.460500",
+     "elevation": "7116",
+     "direction": "West",
+     "county": "Alpine",
+     "route": "SR-4",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "0.65",
+     "alignment": "",
+     "milepost": "157.37"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "11:28:00"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-4-0.775-E-15E",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "BEAR VALLEY",
+     "nearbyPlace": "Arnold",
+     "longitude": "-120.042830",
+     "latitude": "38.460950",
+     "elevation": "7109",
+     "direction": "East",
+     "county": "Alpine",
+     "route": "SR-4",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "0.78",
+     "alignment": "",
+     "milepost": "157.50"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "11:28:00"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-4-2.77-W-15W",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "MOUNT REBA ROAD",
+     "nearbyPlace": "Arnold",
+     "longitude": "-120.021520",
+     "latitude": "38.481600",
+     "elevation": "7500",
+     "direction": "West",
+     "county": "Alpine",
+     "route": "SR-4",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "2.77",
+     "alignment": "",
+     "milepost": "159.49"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "11:28:01"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-4-3.2-E-1",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "MOUNT REBA ROAD - EBBETTS PASS",
+     "nearbyPlace": "Arnold",
+     "longitude": "-120.014960",
+     "latitude": "38.480420",
+     "elevation": "7591",
+     "direction": "East",
+     "county": "Alpine",
+     "route": "SR-4",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "3.20",
+     "alignment": "",
+     "milepost": "159.92"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-04-14",
+      "statusTime": "12:44:11"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-4-4.5-E-2",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "EAST END OF LAKE ALPINE - EBBETTS PASS",
+     "nearbyPlace": "Arnold",
+     "longitude": "-119.994210",
+     "latitude": "38.481350",
+     "elevation": "7378",
+     "direction": "East",
+     "county": "Alpine",
+     "route": "SR-4",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "4.50",
+     "alignment": "",
+     "milepost": "161.22"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-12",
+      "statusTime": "12:08:26"
+     },
+     "status": "ROAD CLOSED",
+     "statusDescription": "Closed to traffic."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-4-24.4-W-3",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "RAYMOND MEADOWS - EBBETTS PASS",
+     "nearbyPlace": "Silver Mountain (historical)",
+     "longitude": "-119.785310",
+     "latitude": "38.589470",
+     "elevation": "6794",
+     "direction": "West",
+     "county": "Alpine",
+     "route": "SR-4",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "24.40",
+     "alignment": "",
+     "milepost": "181.12"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-12",
+      "statusTime": "12:08:26"
+     },
+     "status": "ROAD CLOSED",
+     "statusDescription": "Closed to traffic."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-4-29.2-W-4",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "WOLF CREEK - EBBETTS PASS",
+     "nearbyPlace": "Markleeville",
+     "longitude": "-119.723560",
+     "latitude": "38.630190",
+     "elevation": "5958",
+     "direction": "West",
+     "county": "Alpine",
+     "route": "SR-4",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "29.20",
+     "alignment": "",
+     "milepost": "185.92"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-09-23",
+      "statusTime": "14:07:06"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-4-31.6-W-5",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "JCT HWY 89 - EBBETTS PASS",
+     "nearbyPlace": "Markleeville",
+     "longitude": "-119.726060",
+     "latitude": "38.659430",
+     "elevation": "5744",
+     "direction": "West",
+     "county": "Alpine",
+     "route": "SR-4",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "31.60",
+     "alignment": "",
+     "milepost": "188.32"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-05-29",
+      "statusTime": "14:33:52"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-88-0.1-E-14E",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "KIRKWOOD (ALP)",
+     "nearbyPlace": "Kirkwood",
+     "longitude": "-120.071500",
+     "latitude": "38.702700",
+     "elevation": "7723",
+     "direction": "East",
+     "county": "Alpine",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "0.10",
+     "alignment": "",
+     "milepost": "96.19"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "13:16:51"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-88-1.9-E-1",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "EAST OF CAPLES LAKE - CARSON PASS",
+     "nearbyPlace": "Markleeville",
+     "longitude": "-120.043000",
+     "latitude": "38.706480",
+     "elevation": "7880",
+     "direction": "East",
+     "county": "Alpine",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "1.90",
+     "alignment": "",
+     "milepost": "97.99"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-04-10",
+      "statusTime": "18:24:11"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-88-8.1-W-15W",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "RED LAKE CREEK",
+     "nearbyPlace": "Markleeville",
+     "longitude": "-119.955230",
+     "latitude": "38.713620",
+     "elevation": "7457",
+     "direction": "West",
+     "county": "Alpine",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "8.10",
+     "alignment": "",
+     "milepost": "104.77"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "13:16:51"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-88-8.11-W-2",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "RED LAKE CREEK - CARSON PASS",
+     "nearbyPlace": "Markleeville",
+     "longitude": "-119.955220",
+     "latitude": "38.713630",
+     "elevation": "7457",
+     "direction": "West",
+     "county": "Alpine",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "8.11",
+     "alignment": "",
+     "milepost": "104.78"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-16",
+      "statusTime": "23:51:28"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-88-12.9-W-16W",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "PICKETT'S JUNCTION",
+     "nearbyPlace": "Markleeville",
+     "longitude": "-119.927800",
+     "latitude": "38.775100",
+     "elevation": "7096",
+     "direction": "West",
+     "county": "Alpine",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "12.90",
+     "alignment": "",
+     "milepost": "109.57"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "10:53:44"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-88-13.4-E-16E",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "PICKETT'S JUNCTION",
+     "nearbyPlace": "Markleeville",
+     "longitude": "-119.922700",
+     "latitude": "38.776700",
+     "elevation": "7112",
+     "direction": "East",
+     "county": "Alpine",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "13.40",
+     "alignment": "",
+     "milepost": "110.07"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "08:39:53"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-88-17.9-W-17W",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "CRYSTAL SPRINGS",
+     "nearbyPlace": "Markleeville",
+     "longitude": "-119.845150",
+     "latitude": "38.767240",
+     "elevation": "5951",
+     "direction": "West",
+     "county": "Alpine",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "17.90",
+     "alignment": "",
+     "milepost": "114.57"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-11-14",
+      "statusTime": "08:39:53"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-ALP-88-22.9-W-18W",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "PAYNESVILLE",
+     "nearbyPlace": "Markleeville",
+     "longitude": "-119.779130",
+     "latitude": "38.812600",
+     "elevation": "5095",
+     "direction": "West",
+     "county": "Alpine",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "22.90",
+     "alignment": "",
+     "milepost": "119.57"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-20",
+      "statusTime": "10:41:32"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-20-E-01E",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "6 MILES EO JACKSON",
+     "nearbyPlace": "Jackson",
+     "longitude": "-120.687600",
+     "latitude": "38.385300",
+     "elevation": "1784",
+     "direction": "East",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "20.00",
+     "alignment": "",
+     "milepost": "45.37"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-19",
+      "statusTime": "15:08:52"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-23.85-E-02E",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "PINE GROVE",
+     "nearbyPlace": "Pine Grove",
+     "longitude": "-120.650300",
+     "latitude": "38.407900",
+     "elevation": "2575",
+     "direction": "East",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "23.85",
+     "alignment": "",
+     "milepost": "49.22"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-19",
+      "statusTime": "15:08:52"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-26.8-W-02W",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "RED CORRAL",
+     "nearbyPlace": "Pine Grove",
+     "longitude": "-120.611200",
+     "latitude": "38.415100",
+     "elevation": "2664",
+     "direction": "West",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "26.80",
+     "alignment": "",
+     "milepost": "52.17"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-19",
+      "statusTime": "15:08:52"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-27-E-03E",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "RED CORRAL",
+     "nearbyPlace": "Pioneer",
+     "longitude": "-120.609100",
+     "latitude": "38.418080",
+     "elevation": "2687",
+     "direction": "East",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "27.00",
+     "alignment": "",
+     "milepost": "52.37"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-19",
+      "statusTime": "15:08:52"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-30.1-E-03EA",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "CEDAR MILL",
+     "nearbyPlace": "Pioneer",
+     "longitude": "-120.561130",
+     "latitude": "38.434140",
+     "elevation": "3064",
+     "direction": "East",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "30.10",
+     "alignment": "",
+     "milepost": "55.36"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-19",
+      "statusTime": "15:20:17"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-31.8-W-03W",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "BUCKHORN",
+     "nearbyPlace": "Pioneer",
+     "longitude": "-120.536600",
+     "latitude": "38.443300",
+     "elevation": "3405",
+     "direction": "West",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "31.80",
+     "alignment": "",
+     "milepost": "57.04"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-20",
+      "statusTime": "18:00:10"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-32.1-E-04E",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "BUCKHORN",
+     "nearbyPlace": "Pioneer",
+     "longitude": "-120.531600",
+     "latitude": "38.445100",
+     "elevation": "3438",
+     "direction": "East",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "32.10",
+     "alignment": "",
+     "milepost": "57.34"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-02-20",
+      "statusTime": "18:00:10"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-34.7-E-05E",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "OK CORRAL",
+     "nearbyPlace": "Pioneer",
+     "longitude": "-120.524300",
+     "latitude": "38.477000",
+     "elevation": "3818",
+     "direction": "East",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "34.70",
+     "alignment": "",
+     "milepost": "59.93"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-04-22",
+      "statusTime": "00:05:24"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-38.3-E-06E",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "DEW DROP",
+     "nearbyPlace": "Pioneer",
+     "longitude": "-120.482500",
+     "latitude": "38.514300",
+     "elevation": "4242",
+     "direction": "East",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "38.30",
+     "alignment": "",
+     "milepost": "63.53"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-04-21",
+      "statusTime": "23:41:50"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-41.8-W-06W",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "COOK'S STATION",
+     "nearbyPlace": "Somerset",
+     "longitude": "-120.432400",
+     "latitude": "38.527200",
+     "elevation": "5029",
+     "direction": "West",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "41.80",
+     "alignment": "",
+     "milepost": "66.95"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-04-21",
+      "statusTime": "23:41:50"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-42.2-E-07E",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "COOK'S STATION",
+     "nearbyPlace": "Pioneer",
+     "longitude": "-120.426900",
+     "latitude": "38.528800",
+     "elevation": "5026",
+     "direction": "East",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "42.20",
+     "alignment": "",
+     "milepost": "67.35"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-04-22",
+      "statusTime": "00:40:57"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-45.4-W-07W",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "HAM'S STATION",
+     "nearbyPlace": "Pioneer",
+     "longitude": "-120.377260",
+     "latitude": "38.544630",
+     "elevation": "5462",
+     "direction": "West",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "45.40",
+     "alignment": "",
+     "milepost": "70.39"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-04-22",
+      "statusTime": "00:40:57"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-45.75-E-08E",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "HAM'S STATION",
+     "nearbyPlace": "Pioneer",
+     "longitude": "-120.371030",
+     "latitude": "38.544620",
+     "elevation": "5413",
+     "direction": "East",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "45.75",
+     "alignment": "",
+     "milepost": "70.73"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-04-26",
+      "statusTime": "19:02:30"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  },
+  {
+   "cc": {
+    "index": "10-AMA-88-49.7-W-08W",
+    "recordTimestamp": {
+     "recordDate": "2026-11-15",
+     "recordTime": "04:31:03"
+    },
+    "location": {
+     "district": "10",
+     "locationName": "LUMBER YARD",
+     "nearbyPlace": "Meiss",
+     "longitude": "-120.306540",
+     "latitude": "38.547960",
+     "elevation": "6512",
+     "direction": "West",
+     "county": "Amador",
+     "route": "SR-88",
+     "routeSuffix": "",
+     "postmilePrefix": "",
+     "postmile": "49.70",
+     "alignment": "",
+     "milepost": "74.69"
+    },
+    "inService": "true",
+    "statusData": {
+     "statusTimestamp": {
+      "statusDate": "2026-04-26",
+      "statusTime": "19:02:30"
+     },
+     "status": "R-0",
+     "statusDescription": "No chain controls are in effect at this time."
+    }
+   }
+  }
+ ]
+}
