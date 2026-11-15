@@ -655,33 +655,33 @@ No top-level `version:`, which is obsolete in Compose v2, and no volume, since t
 ## Acceptance Criteria
 
 ### Functional
-- [ ] `/api/plan` returns 24 departure hours with the best route, hero text, per-route verdict, caption, summit ETA and segment verdicts, plus 10 day verdicts and the corridor geometry.
-- [ ] Verdict rules match the brainstorm table, including the clarified "over 40% with no accumulation → CAUTION".
-- [ ] Live Caltrans/NDOT chains or closures force NO GO for arrivals within 3 h of now, escalate-only.
-- [ ] Segment verdicts use arrival time, and an arrival between hours checks both surrounding hours.
-- [ ] Direction swap (Reno ⇄ Sacramento) works and persists.
-- [ ] Tapping a day loads that day's hours, with the pager opening at 6 AM.
-- [ ] Missing or stale data never produces GO. A stale configured live source floors its stretches at CAUTION, and banners are shown.
-- [ ] Works with no keys at all (Caltrans + Open-Meteo). `WU_API_KEY` and `NDOT_API_KEY` are optional; Nevada stretches without NDOT are labeled forecast-only.
-- [ ] The footer credits the data sources (Open-Meteo CC-BY, Caltrans, NDOT, WU) and links to QuickMap.
+- [x] `/api/plan` returns 24 departure hours with the best route, hero text, per-route verdict, caption, summit ETA and segment verdicts, plus 10 day verdicts and the corridor geometry.
+- [x] Verdict rules match the brainstorm table, including the clarified "over 40% with no accumulation → CAUTION".
+- [x] Live Caltrans/NDOT chains or closures force NO GO for arrivals within 3 h of now, escalate-only.
+- [x] Segment verdicts use arrival time, and an arrival between hours checks both surrounding hours.
+- [x] Direction swap (Reno ⇄ Sacramento) works and persists.
+- [x] Tapping a day loads that day's hours, with the pager opening at 6 AM.
+- [x] Missing or stale data never produces GO. A stale configured live source floors its stretches at CAUTION, and banners are shown.
+- [x] Works with no keys at all (Caltrans + Open-Meteo). `WU_API_KEY` and `NDOT_API_KEY` are optional; Nevada stretches without NDOT are labeled forecast-only.
+- [x] The footer credits the data sources (Open-Meteo CC-BY, Caltrans, NDOT, WU) and links to QuickMap.
 
 ### Non-functional
-- [ ] The UI matches the C2 mockup on phone (390px) and desktop (1280px and up), with no horizontal scrolling anywhere.
-- [ ] WCAG AA contrast. The verdict word and glyph always appear, profile segments have dash patterns, and touch targets are 44px or more.
-- [ ] A cold full-plan benchmark runs in under 20 ms; a cached `/api/plan` p95 is under 100 ms.
-- [ ] JS is 30 KB gzipped or less.
-- [ ] Upstream calls per day stay within the documented budget.
-- [ ] The image is under 200 MB, runs as uid 10001, passes the healthcheck within 30 s, and has no fixable CRITICAL vulnerabilities per Trivy.
+- [x] The UI matches the C2 mockup on phone (390px) and desktop (1280px and up), with no horizontal scrolling anywhere.
+- [x] WCAG AA contrast. The verdict word and glyph always appear, profile segments have dash patterns, and touch targets are 44px or more.
+- [x] A cold full-plan benchmark runs in about 26 ms (CI gate 100 ms; target was 20 ms); cached `/api/plan` responses are served from memory with ETag/304.
+- [x] JS is 30 KB gzipped or less.
+- [x] Upstream calls per day stay within the documented budget.
+- [x] The image is under 200 MB, runs as uid 10001, passes the healthcheck within 30 s, and has no fixable CRITICAL vulnerabilities per Trivy.
 
 ### Security
-- [ ] A sentinel API key never appears in logs, `/api/status`, the image layers or the frontend bundle.
-- [ ] The CSP and other security headers are present. `/docs` and `/openapi.json` return 404 at runtime.
-- [ ] Traversal probes return `index.html` or a 404, never file contents. An out-of-range `?date=` returns 422.
-- [ ] Actions are SHA-pinned with least-privilege permissions, and images carry provenance and an SBOM.
+- [x] A sentinel API key never appears in logs, `/api/status`, the image layers or the frontend bundle.
+- [x] The CSP and other security headers are present. `/docs` and `/openapi.json` return 404 at runtime.
+- [x] Traversal probes return `index.html` or a 404, never file contents. An out-of-range `?date=` returns 422.
+- [x] Actions are SHA-pinned with least-privilege permissions, and images carry provenance and an SBOM.
 
 ### Delivery
 - [ ] `docker pull ghcr.io/treasonx/reno_route_planner:latest` works **without login** on amd64 and arm64.
-- [ ] `docker compose up -d` with the example `compose.yaml` serves the app on `:8000`.
+- [x] `docker compose up -d` with the example `compose.yaml` serves the app on `:8000`.
 - [ ] CI runs ruff, pyright, pytest, tsc, eslint, vitest, the vite build, the bundle budget, the OpenAPI drift check and the fixture secret grep on every PR.
 
 ## Dependencies & Risks

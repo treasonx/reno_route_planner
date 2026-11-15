@@ -1,0 +1,16 @@
+.git
+.github
+.claude
+docs
+**/.venv
+**/node_modules
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+**/.hypothesis
+frontend/dist
+frontend/openapi.json
+backend/tests
+**/.env*
+!.env.example
+*.pem

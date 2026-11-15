@@ -1,0 +1,20 @@
+# Example: run Pass Check from the public image.
+#   cp .env.example .env   # optional: add WU_API_KEY / NDOT_API_KEY
+#   docker compose up -d
+#   open http://localhost:8000
+services:
+  pass-check:
+    image: ghcr.io/treasonx/reno_route_planner:latest
+    container_name: pass-check
+    ports:
+      - "8000:8000"            # use "127.0.0.1:8000:8000" when a reverse proxy sits in front
+    env_file:
+      - path: .env             # optional API keys (see .env.example)
+        required: false        # runs on Caltrans + Open-Meteo with no keys at all
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
