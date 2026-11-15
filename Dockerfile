@@ -11,7 +11,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # --- 2. Python dependencies into a venv with uv
-FROM python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90 AS builder
+FROM python:3.15-slim@sha256:65a65fc7b30b06cb6df4930fd4650697cb23f4c2698ab81fc87e4b031bc36928 AS builder
 COPY --from=ghcr.io/astral-sh/uv:0.13.8@sha256:5cc1805e2426484abca4ad46ea783bab281fdb225fd82d8ce6d66a81254bac85 /uv /uvx /bin/
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy UV_NO_DEV=1 UV_PYTHON_DOWNLOADS=0
 WORKDIR /app
@@ -24,7 +24,7 @@ COPY backend/src ./src
 RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-editable
 
 # --- 3. Runtime: same base + /app path as the builder so the venv works as-is
-FROM python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90
+FROM python:3.15-slim@sha256:65a65fc7b30b06cb6df4930fd4650697cb23f4c2698ab81fc87e4b031bc36928
 LABEL org.opencontainers.image.title="Pass Check" \
       org.opencontainers.image.description="GO / CAUTION / NO GO for crossing the Sierra between Reno and Sacramento" \
       org.opencontainers.image.source="https://github.com/treasonx/reno_route_planner"
