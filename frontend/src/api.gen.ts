@@ -94,8 +94,11 @@ export interface components {
         };
         /** DayOut */
         DayOut: {
-            /** Best Route */
-            best_route: ("i80" | "us50" | "sr88") | null;
+            /**
+             * Best Route
+             * @enum {string}
+             */
+            best_route: "i80" | "us50" | "sr88";
             /**
              * Date
              * Format: date

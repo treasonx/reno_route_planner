@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p3
 issue_id: "014"
 tags: [code-review, correctness]
@@ -24,7 +24,7 @@ dependencies: []
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 2 implemented: `_num(row, key, default)` in openmeteo.py returns the default only when the value is absent/null (`is None`), so 0 is preserved for freezing level, precipitation, probability, weather code and snow depth.
 
 ## Technical Details
 
@@ -32,12 +32,16 @@ _(Filled during triage.)_
 
 ## Acceptance Criteria
 
-- [ ] 0 values preserved; test covers it.
+- [x] 0 values preserved; test covers it.
 
 ## Work Log
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Resolved (backend sources/corridors/security)
+- Added _num helper; tests test_openmeteo_keeps_zero_values (freezing level 0 stays 0) and test_openmeteo_missing_optional_uses_default.
+- `uv run pytest tests/test_merge_and_sources.py tests/test_scheduler.py` passes; ruff + pyright strict clean on touched files.
 
 ## Resources
 

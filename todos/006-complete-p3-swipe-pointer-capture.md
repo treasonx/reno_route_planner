@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p3
 issue_id: "006"
 tags: [code-review, frontend, ux]
@@ -24,7 +24,7 @@ dependencies: []
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1: `setPointerCapture` on pointerdown (best-effort, try/catch); ignore new pointers while one is active; pointerup/pointercancel only act on the tracked pointer id. Returned handler names unchanged so RoutesCard's spread still works.
 
 ## Technical Details
 
@@ -32,13 +32,18 @@ _(Filled during triage.)_
 
 ## Acceptance Criteria
 
-- [ ] Swipes that end outside the card still switch routes.
-- [ ] A second finger doesn't cancel the first.
+- [x] Swipes that end outside the card still switch routes.
+- [x] A second finger doesn't cancel the first.
 
 ## Work Log
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Frontend resolution (complete)
+- Updated `frontend/src/hooks/useSwipe.ts`.
+- Added `hooks/useSwipe.test.tsx` (capture, second-finger ignored, pointercancel).
+- Verified: `npx tsc --noEmit && npx eslint . && npx vitest run` all pass (24 tests).
 
 ## Resources
 

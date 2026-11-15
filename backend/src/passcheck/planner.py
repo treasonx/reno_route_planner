@@ -16,8 +16,10 @@ from passcheck.domain import (
     Direction,
     Level,
     LiveSourceName,
+    Reason,
     RouteId,
     Verdict,
+    floor_hour,
     to_pacific,
     worst,
 )
@@ -25,7 +27,7 @@ from passcheck.merge import Conditions
 from passcheck.verdict import point_verdict, segment_verdict
 
 HOUR = timedelta(hours=1)
-DAYS_AHEAD = 10
+DAYS_AHEAD = 10  # the single definition of the day horizon (the API validates against it)
 DAY_WINDOW = (6, 20)  # departures from 6 AM through 8 PM count toward a day's verdict
 LOW_CONFIDENCE_FROM_DAY = 7
 
@@ -61,7 +63,7 @@ class DayPlan:
     day: date
     dow: str
     level: Level
-    best_route: RouteId | None
+    best_route: RouteId
     reasons: tuple[str, ...]
     low_confidence: bool
 
@@ -79,11 +81,8 @@ class PlanContext:
     now: datetime
     # A live source is "floored" when it is configured but stale/down.
     live_floor: Mapping[LiveSourceName, bool]
-
-
-def floor_hour(t: datetime) -> datetime:
-    t = t.astimezone(UTC)
-    return t.replace(minute=0, second=0, microsecond=0)
+    # Every forecast source is older than FORECAST_STALE_HOURS: nothing may read GO.
+    forecast_stale: bool = False
 
 
 def hour_label(t: datetime) -> str:
@@ -105,21 +104,19 @@ def local_midnight(d: date) -> datetime:
 
 
 def _place(v: Verdict, name: str) -> Verdict:
-    return Verdict(v.level, tuple(f"{r} at {name}" for r in v.reasons))
+    return Verdict(v.level, tuple(r if r.place else Reason(r.text, name) for r in v.reasons))
 
 
 def caption_for(v: Verdict) -> str:
-    """Group "X at A", "X at B" into "X at A, B"."""
+    """Group (X, A), (X, B) into "X at A, B" using the structured place, never the text."""
     if not v.reasons:
         return "Clear the whole way."
     groups: dict[str, list[str]] = {}
     for r in v.reasons:
-        head, sep, place = r.rpartition(" at ")
-        key, where = (head, place) if sep else (r, "")
-        groups.setdefault(key, [])
-        if where and where not in groups[key]:
-            groups[key].append(where)
-    parts = [f"{k} at {', '.join(w)}" if w else k for k, w in groups.items()]
+        places = groups.setdefault(r.text, [])
+        if r.place and r.place not in places:
+            places.append(r.place)
+    parts = [f"{t} at {', '.join(ps)}" if ps else t for t, ps in groups.items()]
     return ". ".join(parts) + "."
 
 
@@ -172,6 +169,7 @@ class Planner:
                     self._floored(a) or self._floored(b),
                     ta,
                     self.ctx.now,
+                    forecast_stale=self.ctx.forecast_stale,
                 )
             )
         overall = worst(segs)
@@ -297,7 +295,16 @@ class Planner:
         return out
 
 
-def build_plan(ctx: PlanContext, direction: Direction, day: date | None) -> Plan:
+def build_plan(
+    ctx: PlanContext,
+    direction: Direction,
+    day: date | None,
+    days: tuple[DayPlan, ...] | None = None,
+) -> Plan:
+    """Build the plan; ``days`` may be passed in when already computed for the same
+    (conditions, direction, current hour, floors) since it does not depend on ``day``."""
     planner = Planner(ctx, direction)
     hours = tuple(planner.hour_plan(t, first_is_now=day is None) for t in planner.departures(day))
-    return Plan(direction=direction, hours=hours, days=tuple(planner.day_plans()))
+    if days is None:
+        days = tuple(planner.day_plans())
+    return Plan(direction=direction, hours=hours, days=days)

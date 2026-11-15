@@ -14,6 +14,7 @@ from passcheck.domain import (
     LiveObservation,
     LiveSourceName,
     RawHour,
+    Reason,
     RouteId,
     Verdict,
 )
@@ -53,9 +54,10 @@ def ctx(
     floor: dict[LiveSourceName, bool] | None = None,
     hints: list[DayHint] | None = None,
     start: datetime | None = None,
+    forecast_stale: bool = False,
 ) -> PlanContext:
     cond = merge(1, now, series(weather, start or now - timedelta(days=1)), live or [], hints or [])
-    return PlanContext(cond, now, floor or NO_FLOOR)
+    return PlanContext(cond, now, floor or NO_FLOOR, forecast_stale)
 
 
 def test_all_clear_prefers_shortest_ties_by_route_order() -> None:
@@ -119,8 +121,10 @@ def test_live_chains_escalate_and_caption_names_place() -> None:
     ev = planner.route_eval(RouteId.SR88, NOW)
     assert ev.verdict.level is Level.NO_GO
     assert "Chains required (R-2) near Carson Spur" in ev.caption
-    # Beyond the 3 h window (Spur reached ~1h46 after departure) the forecast rules alone.
-    assert planner.level(RouteId.SR88, NOW + timedelta(hours=2)) is Level.GO
+    # The live window runs 3 h past the end of the current hour (Spur reached ~1h46 after
+    # departure): a 9 AM departure is inside it, 10 AM is beyond, so the forecast rules alone.
+    assert planner.level(RouteId.SR88, NOW + timedelta(hours=2)) is Level.NO_GO
+    assert planner.level(RouteId.SR88, NOW + timedelta(hours=3)) is Level.GO
 
 
 def test_nevada_floor_only_when_ndot_configured_and_stale() -> None:
@@ -242,9 +246,78 @@ def test_low_confidence_from_day_seven() -> None:
 def test_caption_groups_places() -> None:
     v = Verdict(
         Level.CAUTION,
-        ("Black ice risk at Truckee", "Black ice risk at Kingvale", "Light snow at Kingvale"),
+        (
+            Reason("Black ice risk", "Truckee"),
+            Reason("Black ice risk", "Kingvale"),
+            Reason("Light snow", "Kingvale"),
+        ),
     )
     assert caption_for(v) == "Black ice risk at Truckee, Kingvale. Light snow at Kingvale."
+
+
+def test_caption_never_splits_free_text() -> None:
+    # Todo 015: live descriptions are upstream free text and may contain " at ".
+    v = Verdict(
+        Level.CAUTION,
+        (
+            Reason("No chain controls are in effect at this time near Kingvale"),
+            Reason("Expect delays at the summit near Echo Summit"),
+            Reason("Black ice risk", "Truckee"),
+        ),
+    )
+    assert caption_for(v) == (
+        "No chain controls are in effect at this time near Kingvale. "
+        "Expect delays at the summit near Echo Summit. "
+        "Black ice risk at Truckee."
+    )
+
+
+def _chains_at_spur(now: datetime) -> list[LiveObservation]:
+    spur = P["carson_spur"]
+    return [
+        LiveObservation(
+            LiveSourceName.CALTRANS,
+            RouteId.SR88,
+            spur.lat,
+            spur.lon,
+            ChainLevel.R2,
+            False,
+            False,
+            "Chains",
+            "Carson Spur",
+            now,
+        )
+    ]
+
+
+def test_stale_forecast_never_produces_go() -> None:
+    # Todo 001: with every forecast source older than 6 h, nothing is GO, at any hour or day.
+    plan = build_plan(ctx(forecast_stale=True), Direction.RENO_SAC, None)
+    for h in plan.hours:
+        assert h.best_level is not Level.GO
+        for ev in h.routes.values():
+            assert ev.verdict.level is not Level.GO
+            assert Level.GO not in ev.segments
+            assert "Forecast data is out of date" in ev.caption
+    assert all(d.level is not Level.GO for d in plan.days)
+    assert plan.hours[0].hero.title == "Careful on I-80"
+    dated = build_plan(ctx(forecast_stale=True), Direction.RENO_SAC, date(2026, 11, 20))
+    assert all(h.best_level is not Level.GO for h in dated.hours)
+
+
+def test_live_window_uses_cache_hour_basis() -> None:
+    # Todo 011: plans are cached per floor_hour(now). Built at NOW and NOW+40min with the same
+    # live R-2 they must be identical, so a cached plan never misses a live chain control.
+    start = NOW - timedelta(days=1)
+    later = NOW + timedelta(minutes=40)
+    a = build_plan(ctx(live=_chains_at_spur(NOW), start=start), Direction.RENO_SAC, None)
+    b = build_plan(ctx(live=_chains_at_spur(NOW), now=later, start=start), Direction.RENO_SAC, None)
+    assert a == b
+    # The whole current hour is covered: a 9 AM departure reaches the Spur ~3h46 after NOW,
+    # inside the window for both builds. With the old exact-``now`` rule the 7:00 build
+    # ignored it, and that cached GO was still served at 7:40 when the arrival was < 3 h away.
+    nogo = [h.depart for h in a.hours if h.routes[RouteId.SR88].verdict.level is Level.NO_GO]
+    assert NOW + timedelta(hours=2) in nogo
 
 
 def test_hour_label() -> None:

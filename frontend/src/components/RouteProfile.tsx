@@ -11,13 +11,19 @@ export function RouteProfile({ corridor, route }: { corridor: CorridorOut; route
   const area =
     stops.map((s) => `${s.x},${s.y}`).join(" ") + (first && last ? ` ${last.x},${BASE_Y} ${first.x},${BASE_Y}` : "");
   const peaks = stops.filter((s) => s.peak_label);
+  const flagged = stops.slice(1).flatMap((b, i) => {
+    const a = stops[i];
+    const lvl = route.segments[i];
+    return a && lvl && lvl !== "GO" ? [`${a.name} → ${b.name}: ${lvl}`] : [];
+  });
+  const stretches = flagged.length ? `${flagged.join("; ")}.` : "All stretches GO.";
 
   return (
     <figure class="profile">
       <svg
         viewBox="0 0 358 150"
         role="img"
-        aria-label={`${corridor.name} elevation profile: ${route.verdict}. ${route.caption}`}
+        aria-label={`${corridor.name} elevation profile: ${route.verdict}. ${stretches} ${route.caption}`}
       >
         <polygon points={area} class="profile-ground" />
         <line x1="10" y1={BASE_Y} x2="348" y2={BASE_Y} class="profile-base" />

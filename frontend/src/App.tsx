@@ -7,15 +7,19 @@ import { RoutesCard } from "./components/RoutesCard";
 import { DataUnavailable, Footer, Skeleton, StaleBanner } from "./components/Status";
 import { TenDay } from "./components/TenDay";
 import { useMediaQuery } from "./hooks/useMediaQuery";
-import { isStale, usePlan } from "./hooks/usePlan";
+import { usePlan } from "./hooks/usePlan";
 import { loadDirection, saveDirection } from "./lib/storage";
 import type { Direction, PlanResponse, RouteKey } from "./types";
 
 const DESKTOP = "(min-width: 900px)";
 
+/**
+ * The user's pick, tied to the (direction, date) it was made in. The departure is stored by
+ * timestamp, not index, so an hourly refresh that shifts ``hours`` keeps the same departure.
+ */
 interface Selection {
-  key: string;
-  hour: number;
+  ctx: string;
+  depart: string | null;
   tab: RouteKey | null;
 }
 
@@ -29,23 +33,22 @@ export const initialHourIndex = (plan: PlanResponse, date: string | null): numbe
 export function App() {
   const [direction, setDirection] = useState<Direction>(loadDirection);
   const [date, setDate] = useState<string | null>(null);
-  const [selection, setSelection] = useState<Selection>({ key: "", hour: 0, tab: null });
+  const [selection, setSelection] = useState<Selection>({ ctx: "", depart: null, tab: null });
   const desktop = useMediaQuery(DESKTOP);
   const { state, reload } = usePlan(direction, date);
 
   const plan = state.status === "ready" ? state.plan : state.status === "error" ? state.lastPlan : undefined;
-  const planKey = plan ? `${plan.direction}|${plan.hours[0]?.depart ?? ""}` : "";
+  const ctx = `${direction}|${date ?? ""}`;
 
-  // Selection is keyed to the loaded window: a new day / direction opens at the right hour
-  // and follows the recommendation, while a 5-minute refresh of the same window keeps it.
-  // (Derived during render, not in an effect, so it can never race a user's click.)
-  const current: Selection =
-    selection.key === planKey
-      ? selection
-      : { key: planKey, hour: plan ? initialHourIndex(plan, date) : 0, tab: null };
-  const hourIndex = current.hour;
-  const routeTab = current.tab;
-  const setRouteTab = (tab: RouteKey) => setSelection({ ...current, tab });
+  // Derived during render (not in an effect) so it can never race a user's click:
+  // - same (direction, date) and the picked departure is still in the plan -> keep it and its tab;
+  // - otherwise (new day / direction, or the departure rolled off) -> default hour, tab follows
+  //   the recommendation.
+  const kept = plan && selection.ctx === ctx && selection.depart !== null
+    ? plan.hours.findIndex((h) => h.depart === selection.depart)
+    : -1;
+  const hourIndex = kept >= 0 ? kept : plan ? initialHourIndex(plan, date) : 0;
+  const routeTab = kept >= 0 ? selection.tab : null;
 
   const swap = () => {
     const next: Direction = direction === "reno-sac" ? "sac-reno" : "reno-sac";
@@ -54,7 +57,7 @@ export function App() {
   };
 
   // Tabs follow the recommendation for the newly selected hour.
-  const selectHour = (i: number) => setSelection({ key: planKey, hour: i, tab: null });
+  const selectHour = (i: number) => setSelection({ ctx, depart: plan?.hours[i]?.depart ?? null, tab: null });
 
   if (!plan) {
     return (
@@ -66,16 +69,20 @@ export function App() {
     );
   }
 
-  const hour = plan.hours[Math.min(hourIndex, plan.hours.length - 1)];
+  const hour = plan.hours[hourIndex];
+  // The API schema doesn't guarantee a non-empty window, so keep a safe fallback (never a verdict).
   if (!hour) {
     return (
       <main class="app">
         <Header direction={direction} onSwap={swap} />
         <DataUnavailable message="No departures in this window" onRetry={() => void reload()} />
+        <Footer notes={plan.notes} />
       </main>
     );
   }
-  const stale = isStale(plan) || state.status === "error";
+  const setRouteTab = (tab: RouteKey) => setSelection({ ctx, depart: hour.depart, tab });
+  // One definition of stale: the server's flag, plus "our last refresh failed".
+  const stale = plan.stale || state.status === "error";
   const selectedRoute = routeTab ?? hour.best.route;
 
   return (

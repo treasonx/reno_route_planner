@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p1
 issue_id: "009"
 tags: [code-review, safety, correctness]
@@ -25,7 +25,7 @@ dependencies: []
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1 implemented. `ndot.classify` normalises whitespace, strips negation phrases first ("no chain(s)/restrictions/closures/delays", "chain controls [have been] lifted/removed/cancelled/not in effect/not required", "reopen(ed|s|ing)", "previously closed", bare "lifted"/"not in effect"), then matches hazards on `\b` word boundaries in order closed > R-code (R1-R3) > chains required (R2) > chains/traction/snow tires (R1) > holding/snow/ice/icy/slick/slush (CAUTION). Remaining text is clear only if a negation matched or it contains dry/clear/normal/open/good; empty text is clear; anything else is CAUTION, matching Caltrans.
 
 ## Technical Details
 
@@ -33,14 +33,18 @@ _(Filled during triage.)_
 
 ## Acceptance Criteria
 
-- [ ] Negated/lifted/reopened strings classify as clear.
-- [ ] Word boundaries (device ≠ ice).
-- [ ] Unknown text → CAUTION; tests cover all of these.
+- [x] Negated/lifted/reopened strings classify as clear.
+- [x] Word boundaries (device ≠ ice).
+- [x] Unknown text → CAUTION; tests cover all of these.
 
 ## Work Log
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Resolved (backend sources/corridors/security)
+- Rewrote classify in backend/src/passcheck/sources/ndot.py; expanded test_ndot_classify to 27 cases (positives, negations, all-clear, device≠ice, negation-plus-hazard, unknown→CAUTION).
+- `uv run pytest tests/test_merge_and_sources.py tests/test_scheduler.py` passes; ruff + pyright strict clean on touched files.
 
 ## Resources
 

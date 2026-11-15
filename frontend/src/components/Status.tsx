@@ -1,12 +1,14 @@
 import { formatTime } from "../lib/verdict";
 import type { PlanResponse } from "../types";
 
+const QUICKMAP_URL = "https://quickmap.dot.ca.gov";
+
 export function StaleBanner({ plan, error }: { plan: PlanResponse; error: string | null }) {
   return (
     <div class="banner" role="status">
       <strong>As of {formatTime(plan.generated_at)} PT.</strong>{" "}
       {error ? "Can't refresh right now." : "Some data is delayed."} Check{" "}
-      <a href="https://quickmap.dot.ca.gov" rel="noopener noreferrer" target="_blank">
+      <a href={QUICKMAP_URL} rel="noopener noreferrer" target="_blank">
         Caltrans QuickMap
       </a>{" "}
       before you leave.
@@ -23,7 +25,7 @@ export function DataUnavailable({ message, onRetry }: { message: string; onRetry
         <button type="button" class="button" onClick={onRetry}>
           Retry
         </button>
-        <a class="button secondary" href="https://quickmap.dot.ca.gov" rel="noopener noreferrer" target="_blank">
+        <a class="button secondary" href={QUICKMAP_URL} rel="noopener noreferrer" target="_blank">
           Open Caltrans QuickMap
         </a>
       </div>
@@ -50,7 +52,7 @@ export function Footer({ notes }: { notes: readonly string[] }) {
       ))}
       <p>
         Guidance only. Conditions change fast in the Sierra.{" "}
-        <a href="https://quickmap.dot.ca.gov" rel="noopener noreferrer" target="_blank">
+        <a href={QUICKMAP_URL} rel="noopener noreferrer" target="_blank">
           Check Caltrans QuickMap
         </a>{" "}
         before you leave.

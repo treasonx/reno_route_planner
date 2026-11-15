@@ -1,3 +1,4 @@
+import { useId } from "preact/hooks";
 import { useSwipe } from "../hooks/useSwipe";
 import { formatTime, verdictClass, verdictGlyph } from "../lib/verdict";
 import { type HourOut, type PlanResponse, ROUTE_KEYS, type RouteKey } from "../types";
@@ -44,6 +45,9 @@ export function RoutesCard({ plan, hour, selected, onSelect, desktop }: Props) {
     if (next) onSelect(next);
   });
   const leaving = hour.label === "Now" ? "now" : hour.label;
+  const baseId = useId();
+  const panelId = `${baseId}-panel`;
+  const tabId = (k: RouteKey) => `${baseId}-tab-${k}`;
 
   if (desktop) {
     return (
@@ -81,13 +85,20 @@ export function RoutesCard({ plan, hour, selected, onSelect, desktop }: Props) {
     );
   }
 
+  // Arrow keys stop at the ends (no wrap) to match swipe; Home/End jump to first/last.
   const onKey = (e: KeyboardEvent) => {
-    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    const last = ROUTE_KEYS.length - 1;
+    let target: number;
+    if (e.key === "ArrowRight") target = Math.min(last, idx + 1);
+    else if (e.key === "ArrowLeft") target = Math.max(0, idx - 1);
+    else if (e.key === "Home") target = 0;
+    else if (e.key === "End") target = last;
+    else return;
     e.preventDefault();
-    const n = ROUTE_KEYS[(idx + (e.key === "ArrowRight" ? 1 : ROUTE_KEYS.length - 1)) % ROUTE_KEYS.length];
+    const n = ROUTE_KEYS[target];
     if (n) {
-      onSelect(n);
-      document.getElementById(`tab-${n}`)?.focus();
+      if (n !== selected) onSelect(n);
+      document.getElementById(tabId(n))?.focus();
     }
   };
 
@@ -104,11 +115,11 @@ export function RoutesCard({ plan, hour, selected, onSelect, desktop }: Props) {
           return (
             <button
               key={k}
-              id={`tab-${k}`}
+              id={tabId(k)}
               type="button"
               role="tab"
               aria-selected={sel}
-              aria-controls="route-panel"
+              aria-controls={panelId}
               tabIndex={sel ? 0 : -1}
               class={`tab${sel ? " selected" : ""}`}
               onClick={() => onSelect(k)}
@@ -121,7 +132,7 @@ export function RoutesCard({ plan, hour, selected, onSelect, desktop }: Props) {
           );
         })}
       </div>
-      <div id="route-panel" role="tabpanel" class="swipe-area" {...swipe}>
+      <div id={panelId} role="tabpanel" aria-labelledby={tabId(selected)} tabIndex={0} class="swipe-area" {...swipe}>
         <Detail plan={plan} hour={hour} route={selected} />
       </div>
       <div class="card-foot">

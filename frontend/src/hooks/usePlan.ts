@@ -10,13 +10,21 @@ export type PlanState =
   | { status: "error"; error: string; lastPlan?: PlanResponse };
 
 export const POLL_MS = 5 * 60 * 1000;
-const STALE_MS = 15 * 60 * 1000;
 
-/** Fetches the plan for (direction, date); keeps the last good plan when a poll fails. */
+const LOADING: PlanState = { status: "loading" };
+
+/**
+ * Fetches the plan for (direction, date); keeps the last good plan when a poll fails.
+ *
+ * State is tagged with the ``direction|date`` it was fetched for. A tag that doesn't match
+ * the current arguments reads as loading *during render*, so a new direction or day can
+ * never be painted with the previous selection's verdicts (not even for one frame).
+ */
 export function usePlan(direction: Direction, date: string | null) {
-  const [state, setState] = useState<PlanState>({ status: "loading" });
+  const key = `${direction}|${date ?? ""}`;
+  const [stored, setStored] = useState<{ key: string; state: PlanState }>({ key, state: LOADING });
   const controller = useRef<AbortController | null>(null);
-  const lastGood = useRef<PlanResponse | undefined>(undefined);
+  const lastGood = useRef<{ key: string; plan: PlanResponse } | null>(null);
 
   const load = useCallback(async () => {
     controller.current?.abort();
@@ -25,26 +33,20 @@ export function usePlan(direction: Direction, date: string | null) {
     try {
       const plan = await fetchPlan(direction, date, ac.signal);
       if (ac.signal.aborted) return;
-      lastGood.current = plan;
-      setState({ status: "ready", plan });
+      lastGood.current = { key, plan };
+      setStored({ key, state: { status: "ready", plan } });
     } catch (err) {
       if (ac.signal.aborted) return;
       const error = err instanceof Error ? err.message : "Network error";
-      const lastPlan = lastGood.current;
-      setState(lastPlan ? { status: "error", error, lastPlan } : { status: "error", error });
+      const lastPlan = lastGood.current?.key === key ? lastGood.current.plan : undefined;
+      setStored({ key, state: lastPlan ? { status: "error", error, lastPlan } : { status: "error", error } });
     }
-  }, [direction, date]);
+  }, [direction, date, key]);
 
-  // A new (direction, date) must never show the previous selection's plan.
-  useEffect(() => {
-    lastGood.current = undefined;
-    setState({ status: "loading" });
-    return () => controller.current?.abort();
-  }, [direction, date]);
+  // Abort the in-flight request when the selection changes or the component unmounts.
+  useEffect(() => () => controller.current?.abort(), [key]);
 
   usePolling(load, POLL_MS, [load]);
+  const state = stored.key === key ? stored.state : LOADING;
   return { state, reload: load };
 }
-
-export const isStale = (plan: PlanResponse, now: number = Date.now()): boolean =>
-  plan.stale || now - new Date(plan.generated_at).getTime() > STALE_MS;

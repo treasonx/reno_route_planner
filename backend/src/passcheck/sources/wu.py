@@ -7,6 +7,7 @@ day-level signal ("WU expects snow"), never spread across hourly snowfall.
 from __future__ import annotations
 
 import json
+import math
 from dataclasses import dataclass
 from datetime import date, datetime
 from typing import Any
@@ -16,10 +17,17 @@ from pydantic import SecretStr
 
 from passcheck.corridors import P
 from passcheck.domain import DayHint
-from passcheck.sources.base import HintResult, SourceKind, SourceResult, get_bytes
+from passcheck.sources.base import (
+    HintResult,
+    SourceKind,
+    SourceResult,
+    UpstreamError,
+    get_bytes,
+)
 
 URL = "https://api.weather.com/v3/wx/forecast/daily/5day"
-SUMMITS: tuple[str, ...] = ("donner", "spooner", "echo", "carson_pass")
+# Signed summits come from the corridor definitions (one source of truth).
+SUMMITS: tuple[str, ...] = tuple(pid for pid, p in P.items() if p.peak_name)
 
 
 def parse_daily(point_id: str, doc: dict[str, Any]) -> list[DayHint]:
@@ -31,9 +39,12 @@ def parse_daily(point_id: str, doc: dict[str, Any]) -> list[DayHint]:
             continue
         try:
             day = date.fromisoformat(ts[:10])
-        except ValueError:
+            amount = float(snow)
+        except (TypeError, ValueError):
             continue
-        out.append(DayHint(point_id, day, float(snow)))
+        if not math.isfinite(amount):
+            continue  # NaN/Infinity -> no hint, never a silent "no snow"
+        out.append(DayHint(point_id, day, amount))
     return out
 
 
@@ -49,8 +60,11 @@ class WuDailyForecast:
         return self.api_key is not None and bool(self.api_key.get_secret_value())
 
     async def fetch(self, client: httpx.AsyncClient) -> bytes:
-        assert self.api_key is not None
-        docs: dict[str, Any] = {}
+        if self.api_key is None:
+            raise UpstreamError(self.name, None, "not configured")
+        # Transport only: each summit's raw body is carried as a string in a JSON envelope
+        # ({point_id: raw_text}); decoding/validation happens in ``parse``.
+        docs: dict[str, str] = {}
         for pid in SUMMITS:
             p = P[pid]
             raw = await get_bytes(
@@ -65,9 +79,17 @@ class WuDailyForecast:
                     "apiKey": self.api_key.get_secret_value(),
                 },
             )
-            docs[pid] = json.loads(raw)
+            docs[pid] = raw.decode("utf-8", errors="replace")
         return json.dumps(docs).encode()
 
     def parse(self, raw: bytes, now: datetime) -> SourceResult:
-        docs: dict[str, dict[str, Any]] = json.loads(raw)
-        return HintResult([h for pid, d in docs.items() if pid in P for h in parse_daily(pid, d)])
+        # Any summit body failing to parse fails the whole source (same as Caltrans).
+        envelope: dict[str, str] = json.loads(raw)
+        return HintResult(
+            [
+                h
+                for pid, body in envelope.items()
+                if pid in P
+                for h in parse_daily(pid, json.loads(body))
+            ]
+        )

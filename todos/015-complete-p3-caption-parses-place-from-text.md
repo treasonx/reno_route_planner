@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p3
 issue_id: "015"
 tags: [code-review, correctness, quality]
@@ -24,7 +24,7 @@ dependencies: []
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1. New `domain.Reason(text, place)` (with `__str__` -> "text at place"); `Verdict.reasons` is `tuple[Reason, ...]` plus a `texts` helper. The planner sets `place` on forecast reasons; live reasons (free upstream text) never get a place. `caption_for` groups by the structured place and never parses text. Test: `test_planner.py::test_caption_never_splits_free_text`; existing caption test updated.
 
 ## Technical Details
 
@@ -38,6 +38,9 @@ _(Filled during triage.)_
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Resolved
+- Implemented as described in Recommended Action. ruff, pyright strict and pytest pass (except `test_plan_matches_golden`, pending golden regeneration by the coordinator).
 
 ## Resources
 

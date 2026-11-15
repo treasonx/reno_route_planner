@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p2
 issue_id: "002"
 tags: [code-review, architecture, reliability]
@@ -25,7 +25,7 @@ dependencies: []
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1. `/api/plan` (and `/api/status`) are `async def`, so every store/cache access happens on the event-loop thread that also runs `_rebuild`. Behavior unchanged; documented in the store docstring.
 
 ## Technical Details
 
@@ -40,6 +40,9 @@ _(Filled during triage.)_
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Resolved
+- Implemented as described in Recommended Action. ruff, pyright strict and pytest pass (except `test_plan_matches_golden`, pending golden regeneration by the coordinator).
 
 ## Resources
 

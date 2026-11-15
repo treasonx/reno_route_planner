@@ -122,14 +122,18 @@ def map_live(observations: Iterable[LiveObservation]) -> dict[frozenset[str], Li
     return out
 
 
-def merge(
-    version: int,
-    built_at: datetime,
-    forecast: Mapping[str, Iterable[RawHour]],
-    live: Iterable[LiveObservation],
-    day_hints: Iterable[DayHint] = (),
-    t: Thresholds = DEFAULT_THRESHOLDS,
-) -> Conditions:
+@dataclass(frozen=True, slots=True)
+class ForecastMatrix:
+    """The forecast-derived part of a snapshot. Depends only on the forecast results, so the
+    store reuses it when only live or hint sources update."""
+
+    hours: Mapping[tuple[str, datetime], HourlyPoint]
+    point_verdicts: Mapping[tuple[str, datetime], Verdict]
+
+
+def derive_forecast(
+    forecast: Mapping[str, Iterable[RawHour]], t: Thresholds = DEFAULT_THRESHOLDS
+) -> ForecastMatrix:
     hours: dict[tuple[str, datetime], HourlyPoint] = {}
     verdicts: dict[tuple[str, datetime], Verdict] = {}
     for point_id, series in forecast.items():
@@ -138,11 +142,32 @@ def merge(
         for h in derive_hours(point_id, series, t):
             hours[(point_id, h.time)] = h
             verdicts[(point_id, h.time)] = point_verdict(h, t)
+    return ForecastMatrix(hours, verdicts)
+
+
+def assemble(
+    version: int,
+    built_at: datetime,
+    matrix: ForecastMatrix,
+    live: Iterable[LiveObservation],
+    day_hints: Iterable[DayHint] = (),
+) -> Conditions:
     return Conditions(
         version=version,
         built_at=built_at,
-        hours=hours,
-        point_verdicts=verdicts,
+        hours=matrix.hours,
+        point_verdicts=matrix.point_verdicts,
         live=map_live(live),
         day_hints={(d.point_id, d.day): d for d in day_hints},
     )
+
+
+def merge(
+    version: int,
+    built_at: datetime,
+    forecast: Mapping[str, Iterable[RawHour]],
+    live: Iterable[LiveObservation],
+    day_hints: Iterable[DayHint] = (),
+    t: Thresholds = DEFAULT_THRESHOLDS,
+) -> Conditions:
+    return assemble(version, built_at, derive_forecast(forecast, t), live, day_hints)

@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p2
 issue_id: "019"
 tags: [code-review, safety, security]
@@ -24,7 +24,7 @@ dependencies: []
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1 implemented. openmeteo.parse_location converts every numeric field and drops the hour if any value is not `math.isfinite` (hour becomes "No forecast data" → CAUTION). Caltrans and NDOT drop observations with non-finite lat/lon; NDOT also tolerates NaN/Inf/huge LastUpdated (falls back to now). WU skips non-finite qpfSnow so it yields no hint rather than "no snow". verdict.py was not touched (owned by another agent).
 
 ## Technical Details
 
@@ -32,12 +32,16 @@ _(Filled during triage.)_
 
 ## Acceptance Criteria
 
-- [ ] NaN/Inf values never yield GO; tests cover it.
+- [x] NaN/Inf values never yield GO; tests cover it.
 
 ## Work Log
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Resolved (backend sources/corridors/security)
+- Added non-finite checks in sources/openmeteo.py, caltrans.py, ndot.py, wu.py; tests cover every Open-Meteo field × NaN/±Inf, bare NaN tokens in raw JSON, Caltrans NaN/Inf coords, NDOT bad timestamps, WU NaN snow.
+- `uv run pytest tests/test_merge_and_sources.py tests/test_scheduler.py` passes; ruff + pyright strict clean on touched files.
 
 ## Resources
 

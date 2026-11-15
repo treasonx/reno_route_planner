@@ -35,4 +35,34 @@ describe("usePolling", () => {
     await vi.advanceTimersByTimeAsync(0);
     expect(fn).toHaveBeenCalledTimes(3);
   });
+
+  it("runs a single loop when the tab flips during a pending fetch", async () => {
+    let release: () => void = () => {};
+    const fn = vi
+      .fn<() => Promise<void>>()
+      .mockImplementationOnce(() => new Promise<void>((r) => (release = r)))
+      .mockImplementation(() => Promise.resolve());
+    render(<Poller fn={fn} />);
+    expect(fn).toHaveBeenCalledTimes(1);
+
+    // Slow first fetch: user hides and re-shows the tab while it's still pending.
+    setVisibility("hidden");
+    setVisibility("visible");
+    await vi.advanceTimersByTimeAsync(500);
+    expect(fn).toHaveBeenCalledTimes(1); // nothing new started while the tick is in flight
+    release();
+
+    await vi.advanceTimersByTimeAsync(5000);
+    expect(fn).toHaveBeenCalledTimes(6); // 1 + one per interval: a second loop would double this
+  });
+
+  it("stops polling after unmount, even with a fetch in flight", async () => {
+    let release: () => void = () => {};
+    const fn = vi.fn(() => new Promise<void>((r) => (release = r)));
+    const { unmount } = render(<Poller fn={fn} />);
+    unmount();
+    release();
+    await vi.advanceTimersByTimeAsync(10_000);
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
 });

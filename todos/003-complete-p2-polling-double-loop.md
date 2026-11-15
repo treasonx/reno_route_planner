@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p2
 issue_id: "003"
 tags: [code-review, frontend, races]
@@ -25,7 +25,7 @@ In `usePolling`, `onVisibility` doesn't know whether a tick is still in flight. 
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1 + 2 combined: one timer handle owned by a `schedule()` helper that always clearTimeouts before setTimeout; an `inFlight` flag makes `tick()` re-entrant-safe and `onVisibility` a no-op while a tick runs (the tick re-arms on settle if visible). Rejections from `fn` are swallowed so the loop survives.
 
 ## Technical Details
 
@@ -33,13 +33,18 @@ _(Filled during triage.)_
 
 ## Acceptance Criteria
 
-- [ ] Tab-flipping during a slow fetch never produces more than one timer.
-- [ ] Test with fake timers and a pending promise.
+- [x] Tab-flipping during a slow fetch never produces more than one timer.
+- [x] Test with fake timers and a pending promise.
 
 ## Work Log
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Frontend resolution (complete)
+- Rewrote `frontend/src/hooks/usePolling.ts` with single timer handle + inFlight guard.
+- Added fake-timer tests in `usePolling.test.tsx`: hide/show during a pending fetch yields exactly one loop (fails on old code), and no polling after unmount even with a fetch in flight.
+- Verified: `npx tsc --noEmit && npx eslint . && npx vitest run` all pass (24 tests).
 
 ## Resources
 

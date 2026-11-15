@@ -8,7 +8,8 @@ interface Props {
   onSelect: (index: number) => void;
 }
 
-export function LeaveAtPager({ hours, index, pageSize, onSelect }: Props) {
+export function LeaveAtPager({ hours, index: rawIndex, pageSize, onSelect }: Props) {
+  const index = Math.max(0, Math.min(rawIndex, hours.length - 1));
   const pages = Math.max(1, Math.ceil(hours.length / pageSize));
   const page = Math.min(Math.floor(index / pageSize), pages - 1);
   const start = page * pageSize;
@@ -32,7 +33,7 @@ export function LeaveAtPager({ hours, index, pageSize, onSelect }: Props) {
         <button type="button" class="arrow" aria-label="Earlier hours" disabled={page === 0} onClick={() => goPage(page - 1)}>
           <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" class="icon"><path d="M15 18l-6-6 6-6" /></svg>
         </button>
-        <div class={`hours cols-${pageSize}`} role="listbox" aria-label="Departure hour">
+        <div class={`hours cols-${pageSize}`} role="group" aria-label="Departure hour">
           {visible.map((h, i) => {
             const idx = start + i;
             const isSel = idx === index;
@@ -42,8 +43,7 @@ export function LeaveAtPager({ hours, index, pageSize, onSelect }: Props) {
               <button
                 key={h.depart}
                 type="button"
-                role="option"
-                aria-selected={isSel}
+                aria-pressed={isSel}
                 class={`hour ${verdictClass(h.best.verdict)}${isSel ? " selected" : ""}`}
                 aria-label={`Leave ${formatDay(h.depart)} ${h.label}: best route ${h.best.verdict}`}
                 onClick={() => onSelect(idx)}

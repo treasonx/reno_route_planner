@@ -62,7 +62,7 @@ def redact(text: str) -> str:
 
 
 class RedactingFilter(logging.Filter):
-    """Rewrites ``key=...`` / ``apiKey=...`` in every log record."""
+    """Rewrites ``key=...`` / ``apiKey=...`` in every log record's message."""
 
     def filter(self, record: logging.LogRecord) -> bool:
         # Format first so keys passed as %-args are redacted too, then freeze the message.
@@ -75,14 +75,34 @@ class RedactingFilter(logging.Filter):
         return True
 
 
+class RedactingFormatter(logging.Formatter):
+    """Redacts the *fully formatted* output, including tracebacks and stack info.
+
+    ``RedactingFilter`` only sees ``record.msg``; text appended by ``formatException`` /
+    ``formatStack`` (e.g. an ``httpx`` error repr carrying a URL with ``?apiKey=``) is
+    only visible here.
+    """
+
+    def format(self, record: logging.LogRecord) -> str:
+        formatted = super().format(record)
+        if record.exc_text:
+            # Formatter caches the traceback on the record; scrub the cache for other handlers.
+            record.exc_text = redact(record.exc_text)
+        return redact(formatted)
+
+
+LOG_FORMAT = "%(asctime)s %(levelname)s %(name)s %(message)s"
+
+
 def configure_logging(level: str) -> None:
     root = logging.getLogger()
-    if not any(isinstance(f, RedactingFilter) for f in root.filters):
+    if not any(isinstance(h.formatter, RedactingFormatter) for h in root.handlers):
+        # Handler-level only: a root *logger* filter never sees records propagated from
+        # child loggers, so it added nothing over the handler's filter + formatter.
         handler = logging.StreamHandler()
-        handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s %(message)s"))
+        handler.setFormatter(RedactingFormatter(LOG_FORMAT))
         handler.addFilter(RedactingFilter())
         root.addHandler(handler)
-        root.addFilter(RedactingFilter())
     root.setLevel(level.upper())
     # httpx logs full request URLs (including ?apiKey=) at INFO.
     logging.getLogger("httpx").setLevel(logging.WARNING)

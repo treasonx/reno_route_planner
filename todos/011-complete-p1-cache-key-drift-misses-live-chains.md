@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p1
 issue_id: "011"
 tags: [code-review, safety, caching]
@@ -24,7 +24,7 @@ The plan cache key uses `floor_hour(now)` but `segment_verdict` compares arrival
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1. The live window is now measured from `floor_hour(now)` (same basis as the cache key) and includes the whole current hour: `verdict.in_live_window` = `arrival - floor_hour(now) <= LIVE_OVERRIDE_HOURS + 1h`. `floor_hour` moved to `domain.py` so `verdict.py` can use it. Tests: `test_verdict.py::test_live_window_depends_only_on_current_hour` (0/1/40/59 min past the hour), `test_planner.py::test_live_window_uses_cache_hour_basis` (plans at NOW and NOW+40min with the same live R-2 are identical). Existing window tests updated to the new boundary. The golden changes only in one caption that now includes the live R-2 (coordinator to regenerate).
 
 ## Technical Details
 
@@ -39,6 +39,9 @@ _(Filled during triage.)_
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Resolved
+- Implemented as described in Recommended Action. ruff, pyright strict and pytest pass (except `test_plan_matches_golden`, pending golden regeneration by the coordinator).
 
 ## Resources
 

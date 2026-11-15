@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p1
 issue_id: "001"
 tags: [code-review, safety, architecture]
@@ -26,7 +26,8 @@ When every forecast source has failed for more than 6 h, `/api/plan` sets `stale
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1. `PlanContext.forecast_stale` (from `Store.forecast_stale(now)` in `/api/plan`, also part of the cache key) makes `segment_verdict(..., forecast_stale=True)` add a CAUTION floor with reason "Forecast data is out of date" to every segment at every hour, so hours, routes, segments and days can never be GO (the floor never downgrades NO GO). The plan doc's stale section now says the same as the acceptance criteria: never GO.
+Tests: `test_verdict.py::test_stale_forecast_floors_every_hour_at_caution`, `test_planner.py::test_stale_forecast_never_produces_go`, `test_api.py::test_stale_forecast_plan_has_no_go`.
 
 ## Technical Details
 
@@ -42,6 +43,9 @@ _(Filled during triage.)_
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Resolved
+- Implemented as described in Recommended Action. ruff, pyright strict and pytest pass (except `test_plan_matches_golden`, pending golden regeneration by the coordinator).
 
 ## Resources
 

@@ -1,3 +1,4 @@
+import { useId } from "preact/hooks";
 import { verdictClass, verdictGlyph } from "../lib/verdict";
 import type { DayOut } from "../types";
 
@@ -9,21 +10,23 @@ interface Props {
 
 export function TenDay({ days, selected, onSelect }: Props) {
   const today = days[0]?.date ?? null;
+  const headingId = useId();
   return (
-    <section class="card" aria-label="Next 10 days">
+    <section class="card" aria-labelledby={headingId}>
       <div class="card-head">
-        <h2>Next 10 days</h2>
+        <h2 id={headingId}>10-day outlook</h2>
         <span class="muted">Tap a day to plan it</span>
       </div>
-      <div class="days">
+      <div class="days" role="radiogroup" aria-labelledby={headingId}>
         {days.map((d) => {
           const isSel = (selected ?? today) === d.date;
           return (
             <button
               key={d.date}
               type="button"
+              role="radio"
               class={`day ${verdictClass(d.verdict)}${isSel ? " selected" : ""}${d.low_confidence ? " low" : ""}`}
-              aria-pressed={isSel}
+              aria-checked={isSel}
               aria-label={`${d.dow} ${d.day}: ${d.verdict}${d.low_confidence ? ", low confidence" : ""}${
                 d.reasons.length ? `. ${d.reasons.join(". ")}` : ""
               }`}

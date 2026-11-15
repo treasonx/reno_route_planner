@@ -10,7 +10,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 import httpx
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.responses import FileResponse, Response
 from starlette.middleware.gzip import GZipMiddleware
 from starlette.staticfiles import StaticFiles
@@ -75,8 +75,7 @@ def _mount_frontend(app: FastAPI, static_dir: Path) -> None:
 
     @app.get("/{path:path}", include_in_schema=False)
     def spa(path: str) -> Response:
-        if path.startswith("api/"):
-            raise HTTPException(status_code=404)
+        # /api/* never reaches here: the API router (included first) owns its own 404.
         f = allowlist.get(path)
         if f is not None and path != "index.html":
             return FileResponse(f, headers={"Cache-Control": "public, max-age=3600"})
@@ -127,7 +126,6 @@ def create_app(
     )
     app.state.store = store
     app.state.clock = clock
-    app.state.settings = settings
     app.include_router(router)
     _mount_frontend(app, settings.static_dir)
     app.add_middleware(GZipMiddleware, minimum_size=1000)

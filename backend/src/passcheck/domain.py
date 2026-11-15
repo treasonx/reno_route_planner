@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable
 from dataclasses import dataclass
-from datetime import date, datetime
+from datetime import UTC, date, datetime
 from enum import IntEnum, StrEnum
 from zoneinfo import ZoneInfo
 
@@ -59,9 +59,25 @@ class LiveSourceName(StrEnum):
 
 
 @dataclass(frozen=True, slots=True)
+class Reason:
+    """One human-readable cause. ``place`` is kept apart from ``text`` so captions can group
+    reasons by place without ever parsing free text (live descriptions may contain " at ")."""
+
+    text: str
+    place: str = ""
+
+    def __str__(self) -> str:
+        return f"{self.text} at {self.place}" if self.place else self.text
+
+
+@dataclass(frozen=True, slots=True)
 class Verdict:
     level: Level
-    reasons: tuple[str, ...] = ()
+    reasons: tuple[Reason, ...] = ()
+
+    @property
+    def texts(self) -> tuple[str, ...]:
+        return tuple(str(r) for r in self.reasons)
 
 
 GO = Verdict(Level.GO)
@@ -74,7 +90,7 @@ def worst(verdicts: Iterable[Verdict]) -> Verdict:
         return GO
     top = max(v.level.severity for v in items)
     level = next(v.level for v in items if v.level.severity == top)
-    reasons: list[str] = []
+    reasons: list[Reason] = []
     for v in items:
         if v.level.severity == top:
             for r in v.reasons:
@@ -168,6 +184,11 @@ class DayHint:
 
 def to_pacific(t: datetime) -> datetime:
     return t.astimezone(PACIFIC)
+
+
+def floor_hour(t: datetime) -> datetime:
+    """Start of the UTC hour containing ``t`` (the plan cache's time bucket)."""
+    return t.astimezone(UTC).replace(minute=0, second=0, microsecond=0)
 
 
 def sanitize(text: str, limit: int = 200) -> str:

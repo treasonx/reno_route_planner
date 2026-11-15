@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p3
 issue_id: "012"
 tags: [code-review, consistency, frontend]
@@ -24,7 +24,7 @@ The frontend calls a plan stale after 15 min from `generated_at`, which is froze
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1: frontend trusts `plan.stale` and adds only its own failed-refresh signal (`state.status === 'error'`). Removed `isStale`/`STALE_MS` (15-min rule on `generated_at`).
 
 ## Technical Details
 
@@ -32,12 +32,17 @@ _(Filled during triage.)_
 
 ## Acceptance Criteria
 
-- [ ] One definition of stale; banner matches server flag.
+- [x] One definition of stale; banner matches server flag.
 
 ## Work Log
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Frontend resolution (complete)
+- Removed client staleness rule from `frontend/src/hooks/usePlan.ts`; App computes `stale = plan.stale || state.status === 'error'`.
+- App tests: banner shows on server `stale: true`; no banner when fresh; banner + last plan on failed refresh.
+- Verified: `npx tsc --noEmit && npx eslint . && npx vitest run` all pass (24 tests).
 
 ## Resources
 

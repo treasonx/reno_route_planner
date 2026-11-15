@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import io
 import logging
 from datetime import timedelta
 
@@ -11,7 +12,7 @@ from pydantic import SecretStr
 
 from passcheck.domain import LiveSourceName
 from passcheck.scheduler import refresh_once
-from passcheck.security import RedactingFilter, configure_logging, redact
+from passcheck.security import RedactingFilter, RedactingFormatter, configure_logging, redact
 from passcheck.sources.fixtures import FixtureCaltrans, FixtureForecast
 from passcheck.sources.ndot import NdotRoadConditions
 from passcheck.sources.wu import WuDailyForecast
@@ -82,6 +83,33 @@ def test_sentinel_key_never_logged(caplog: pytest.LogCaptureFixture) -> None:
     assert SENTINEL not in caplog.text
     assert "apiKey=REDACTED" in caplog.text
     assert SENTINEL not in repr(src)
+
+
+def test_exception_traceback_is_redacted() -> None:
+    configure_logging("DEBUG")
+    root = logging.getLogger()
+    handlers = [h for h in root.handlers if isinstance(h.formatter, RedactingFormatter)]
+    assert len(handlers) == 1
+    handler = handlers[0]
+    assert isinstance(handler, logging.StreamHandler)
+    configure_logging("DEBUG")  # idempotent: no second handler
+    assert sum(isinstance(h.formatter, RedactingFormatter) for h in root.handlers) == 1
+    assert not any(isinstance(f, RedactingFilter) for f in root.filters)
+
+    buf = io.StringIO()
+    old = handler.setStream(buf)
+    try:
+        try:
+            raise RuntimeError(f"GET https://api.weather.com/x?geocode=1,2&apiKey={SENTINEL}")
+        except RuntimeError:
+            logging.getLogger("passcheck.test").exception("refresh failed")
+    finally:
+        handler.setStream(old)
+    out = buf.getvalue()
+    assert "Traceback" in out
+    assert "refresh failed" in out
+    assert SENTINEL not in out
+    assert "apiKey=REDACTED" in out
 
 
 def test_redact() -> None:

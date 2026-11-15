@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p3
 issue_id: "016"
 tags: [code-review, performance]
@@ -24,7 +24,7 @@ Every live poll rebuilds the whole forecast merge (~40 ms on the event loop) and
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1 (except no ETag stabilisation, see below). `merge.py` split into `derive_forecast` (-> `ForecastMatrix`) and `assemble`; `merge()` keeps its signature. `Store` caches the matrix keyed on the identity of the forecast result objects, so live/hint updates only re-map live data and hints. `If-None-Match` is parsed with weak comparison (`W/`, comma lists, `*`) via `api.etag_matches`. Day plans are memoized in the store per (version, direction, hour, floors, forecast_stale) and shared across `?date=` requests (`build_plan(..., days=...)`). Version still bumps on every live poll on purpose: the cached body's `generated_at` drives the client's 15-minute stale check. Tests: `test_etag_matches`, `test_weak_and_listed_if_none_match_get_304`, `test_live_update_reuses_forecast_matrix`, `test_day_plans_shared_across_dates` (all in test_api.py).
 
 ## Technical Details
 
@@ -39,6 +39,9 @@ _(Filled during triage.)_
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Resolved
+- Implemented as described in Recommended Action. ruff, pyright strict and pytest pass (except `test_plan_matches_golden`, pending golden regeneration by the coordinator).
 
 ## Resources
 

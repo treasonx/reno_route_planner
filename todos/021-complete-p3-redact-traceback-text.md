@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p3
 issue_id: "021"
 tags: [code-review, security, logging]
@@ -24,7 +24,7 @@ dependencies: []
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1 implemented. security.RedactingFormatter redacts the fully formatted output (message + traceback + stack) and scrubs the cached record.exc_text; configure_logging installs it on its handler (plus the handler-level RedactingFilter) and detects idempotency via the formatter. The ineffective root-logger filter was removed.
 
 ## Technical Details
 
@@ -32,12 +32,16 @@ _(Filled during triage.)_
 
 ## Acceptance Criteria
 
-- [ ] Test logs an exception containing a sentinel key; output is redacted.
+- [x] Test logs an exception containing a sentinel key; output is redacted.
 
 ## Work Log
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Resolved (backend sources/corridors/security)
+- Added RedactingFormatter and updated configure_logging in security.py; added test_exception_traceback_is_redacted in test_scheduler.py (log.exception with a sentinel apiKey in the exception message; asserts redaction, single handler, no root filter).
+- `uv run pytest tests/test_merge_and_sources.py tests/test_scheduler.py` passes; ruff + pyright strict clean on touched files.
 
 ## Resources
 

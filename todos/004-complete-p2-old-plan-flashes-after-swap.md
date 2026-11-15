@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p2
 issue_id: "004"
 tags: [code-review, frontend, races, safety]
@@ -24,7 +24,7 @@ dependencies: []
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1: `usePlan` stores `{ key: `${direction}|${date}`, state }`; a mismatched key reads as loading during render. Last-good plan is also keyed so an error never resurfaces another selection's plan. Removed the reset effect; an effect keyed on the selection aborts in-flight requests.
 
 ## Technical Details
 
@@ -32,13 +32,19 @@ _(Filled during triage.)_
 
 ## Acceptance Criteria
 
-- [ ] After a swap, no render pairs the new direction with the old plan.
-- [ ] Test asserts the skeleton appears immediately after swap.
+- [x] After a swap, no render pairs the new direction with the old plan.
+- [x] Test asserts the skeleton appears immediately after swap.
 
 ## Work Log
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Frontend resolution (complete)
+- Rewrote `frontend/src/hooks/usePlan.ts` (keyed state).
+- Added `hooks/usePlan.test.tsx`: render probe asserts no render pairs a direction with another direction's plan and the first render after swap is loading (fails on old code).
+- Added App test: skeleton shows and old verdicts are absent immediately after swap (and after picking a day).
+- Verified: `npx tsc --noEmit && npx eslint . && npx vitest run` all pass (24 tests).
 
 ## Resources
 

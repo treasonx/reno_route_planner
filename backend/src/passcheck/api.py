@@ -9,8 +9,8 @@ from typing import Annotated
 
 from fastapi import APIRouter, Header, HTTPException, Query, Request, Response
 
-from passcheck.domain import LIVE_STALE_MINUTES, Direction, LiveSourceName, to_pacific
-from passcheck.planner import PlanContext, build_plan, floor_hour
+from passcheck.domain import Direction, LiveSourceName, floor_hour, to_pacific
+from passcheck.planner import DAYS_AHEAD, PlanContext, build_plan
 from passcheck.schemas import (
     HealthResponse,
     PlanResponse,
@@ -22,9 +22,6 @@ from passcheck.schemas import (
 from passcheck.store import Store
 
 router = APIRouter(prefix="/api")
-
-DAYS_AHEAD = 10
-FORECAST_MAX_AGE = timedelta(hours=6)
 
 
 def _store(request: Request) -> Store:
@@ -38,11 +35,17 @@ def _now(request: Request) -> datetime:
 
 
 def _sources(store: Store, now: datetime) -> dict[str, SourceOut]:
-    out: dict[str, SourceOut] = {}
-    for name, st in store.states.items():
-        max_age = timedelta(minutes=LIVE_STALE_MINUTES) if st.kind == "live" else FORECAST_MAX_AGE
-        out[name] = source_out(st, st.ok(now, max_age))
-    return out
+    return {name: source_out(st, st.fresh(now)) for name, st in store.states.items()}
+
+
+def etag_matches(if_none_match: str | None, etag: str) -> bool:
+    """RFC 9110 weak comparison: ``*``, comma-separated lists and ``W/`` prefixes."""
+    if not if_none_match:
+        return False
+    if if_none_match.strip() == "*":
+        return True
+    opaque = etag.removeprefix("W/")
+    return any(tag.strip().removeprefix("W/") == opaque for tag in if_none_match.split(","))
 
 
 @router.get("/health", response_model=HealthResponse)
@@ -52,7 +55,7 @@ def health() -> HealthResponse:
 
 
 @router.get("/status", response_model=StatusResponse)
-def status(request: Request) -> StatusResponse:
+async def status(request: Request) -> StatusResponse:
     store, now = _store(request), _now(request)
     cond = store.conditions
     return StatusResponse(
@@ -67,16 +70,20 @@ def status(request: Request) -> StatusResponse:
     response_model=PlanResponse,
     responses={304: {"description": "Not modified"}, 503: {"description": "No data yet"}},
 )
-def plan(
+async def plan(
     request: Request,
     direction: Annotated[Direction, Query()] = Direction.RENO_SAC,
     day: Annotated[date | None, Query(alias="date")] = None,
     if_none_match: Annotated[str | None, Header()] = None,
 ) -> Response:
+    # ``async def``: runs on the event-loop thread, the same thread that rebuilds the store,
+    # so the plan caches are never touched from two threads. Building a plan is ~30 ms.
     store, now = _store(request), _now(request)
     today = to_pacific(now).date()
     if day is not None and not (today <= day <= today + timedelta(days=DAYS_AHEAD)):
-        raise HTTPException(status_code=422, detail="date must be within the next 10 days")
+        raise HTTPException(
+            status_code=422, detail=f"date must be within the next {DAYS_AHEAD} days"
+        )
     if day == today:
         day = None
 
@@ -90,11 +97,16 @@ def plan(
         )
 
     floor = store.live_floor(now)
-    stale = store.forecast_stale(now) or any(floor.values())
-    key = (cond.version, direction, day, floor_hour(now), tuple(sorted(floor.items())), stale)
+    forecast_stale = store.forecast_stale(now)
+    stale = forecast_stale or any(floor.values())
+    # Everything the plan depends on besides ``day``; the planner only uses floor_hour(now).
+    basis = (cond.version, direction, floor_hour(now), tuple(sorted(floor.items())), forecast_stale)
+    key = (*basis, day)
     hit = store.cached(key)
     if hit is None:
-        built = build_plan(PlanContext(cond, now, floor), direction, day)
+        ctx = PlanContext(cond, now, floor, forecast_stale)
+        built = build_plan(ctx, direction, day, store.cached_days(basis))
+        store.put_days(basis, built.days)
         notes: list[str] = []
         ndot = store.states.get(LiveSourceName.NDOT.value)
         if ndot is None or not ndot.configured:
@@ -112,7 +124,7 @@ def plan(
 
     body, etag = hit
     headers = {"ETag": etag, "Cache-Control": "no-cache"}
-    if if_none_match == etag:
+    if etag_matches(if_none_match, etag):
         return Response(status_code=304, headers=headers)
     return Response(content=body, media_type="application/json", headers=headers)
 

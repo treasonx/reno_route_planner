@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 from dataclasses import dataclass
 from datetime import UTC, datetime
@@ -29,11 +30,12 @@ CHAIN_RE = re.compile(r"^R-?([0-3])$")
 
 
 def _timestamp(ts: dict[str, Any] | None, fallback: datetime) -> datetime:
+    if ts is None:
+        return fallback
     try:
-        assert ts is not None
         local = datetime.fromisoformat(f"{ts['statusDate']}T{ts['statusTime']}")
         return local.replace(tzinfo=PACIFIC).astimezone(UTC)
-    except (AssertionError, KeyError, TypeError, ValueError):
+    except (KeyError, TypeError, ValueError):
         return fallback
 
 
@@ -58,6 +60,8 @@ def parse_cc(doc: dict[str, Any], now: datetime) -> list[LiveObservation]:
             lat, lon = float(loc["latitude"]), float(loc["longitude"])
         except (KeyError, TypeError, ValueError):
             continue
+        if not (math.isfinite(lat) and math.isfinite(lon)):
+            continue  # NaN/Infinity would make nearest-segment mapping meaningless
         out.append(
             LiveObservation(
                 source=LiveSourceName.CALTRANS,

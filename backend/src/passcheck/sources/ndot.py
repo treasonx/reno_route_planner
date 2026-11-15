@@ -1,12 +1,13 @@
 """Nevada DOT (nvroads 511) road conditions. Optional: needs NDOT_API_KEY.
 
 Status is free text ("Chains Required…", "Holding Traffic", "Closed"), mapped
-conservatively to chain levels.
+conservatively to chain levels; unrecognised text is CAUTION, never clear.
 """
 
 from __future__ import annotations
 
 import json
+import math
 import re
 from dataclasses import dataclass
 from datetime import UTC, datetime
@@ -16,7 +17,13 @@ import httpx
 from pydantic import SecretStr
 
 from passcheck.domain import ChainLevel, LiveObservation, LiveSourceName, RouteId, sanitize
-from passcheck.sources.base import LiveResult, SourceKind, SourceResult, get_bytes
+from passcheck.sources.base import (
+    LiveResult,
+    SourceKind,
+    SourceResult,
+    UpstreamError,
+    get_bytes,
+)
 
 URL = "https://www.nvroads.com/api/v3/get/roadconditions"
 ROUTE_PATTERNS: tuple[tuple[re.Pattern[str], RouteId], ...] = (
@@ -48,17 +55,57 @@ def decode_polyline(encoded: str) -> list[tuple[float, float]]:
     return coords
 
 
+# Negated / all-clear phrases are stripped *before* hazard matching so "No Chain Controls",
+# "Chain controls lifted" or "Reopened, previously closed" never read as chains / closed.
+_NEGATIONS: tuple[re.Pattern[str], ...] = (
+    re.compile(
+        r"\bno\s+(?:chains?|chain\s+controls?|restrictions?|closures?|delays?)"
+        r"(?:\s+(?:controls?|required|in\s+effect))*\b"
+    ),
+    re.compile(
+        r"\b(?:chains?|traction)(?:\s+(?:controls?|restrictions?|requirements?|laws?))?"
+        r"\s+(?:(?:have|has|are|is|were|was)\s+(?:been\s+)?)?"
+        r"(?:lifted|removed|cancell?ed|not\s+(?:in\s+effect|required))\b"
+    ),
+    re.compile(r"\b(?:re-?opened|re-?opens?|re-?opening)\b"),
+    re.compile(r"\bpreviously\s+closed\b"),
+    re.compile(r"\b(?:lifted|not\s+in\s+effect)\b"),
+)
+_CLOSED = re.compile(r"\bclosed\b")
+_CHAIN_CODE = re.compile(r"\br-?([1-3])\b")
+_CHAINS_REQUIRED = re.compile(r"\bchains?\s+(?:are\s+)?required\b")
+_CHAINS_OR_TRACTION = re.compile(r"\b(?:chains?|traction|snow\s+tires?)\b")
+_HAZARD = re.compile(r"\b(?:holding|snow(?:y|ing)?|ice|icy|slick|slush(?:y)?|black\s+ice)\b")
+_CLEAR = re.compile(r"\b(?:dry|clear|normal|open|good)\b")
+
+
 def classify(status: str) -> tuple[ChainLevel, bool, bool]:
-    s = status.lower()
-    if "closed" in s:
+    """Map NDOT free text to ``(chain, closed, caution)``.
+
+    Order: negations are removed first, then hazards are matched on word boundaries
+    ("device" is not "ice"). Text that is neither a known hazard nor a known all-clear
+    yields CAUTION -- the same never-treat-unknown-as-clear policy as Caltrans.
+    """
+    s = " ".join(status.lower().split())
+    if not s:
+        return ChainLevel.R0, False, False
+    negated = False
+    for pat in _NEGATIONS:
+        s, n = pat.subn(" ", s)
+        negated = negated or n > 0
+    if _CLOSED.search(s):
         return ChainLevel.R0, True, False
-    if "chains required" in s:
+    if m := _CHAIN_CODE.search(s):
+        return ChainLevel(int(m.group(1))), False, False
+    if _CHAINS_REQUIRED.search(s):
         return ChainLevel.R2, False, False
-    if "chain" in s or "traction" in s:
+    if _CHAINS_OR_TRACTION.search(s):
         return ChainLevel.R1, False, False
-    if "holding" in s or "snow" in s or "ice" in s or "icy" in s:
+    if _HAZARD.search(s):
         return ChainLevel.R0, False, True
-    return ChainLevel.R0, False, False
+    if negated or _CLEAR.search(s):
+        return ChainLevel.R0, False, False
+    return ChainLevel.R0, False, True  # unknown text: never treat as clear
 
 
 def parse_conditions(items: list[dict[str, Any]], now: datetime) -> list[LiveObservation]:
@@ -75,11 +122,13 @@ def parse_conditions(items: list[dict[str, Any]], now: datetime) -> list[LiveObs
         if not pts:
             continue
         lat, lon = pts[len(pts) // 2]
+        if not (math.isfinite(lat) and math.isfinite(lon)):
+            continue
         status = str(item.get("Overall Status", ""))
         chain, closed, caution = classify(status)
         try:
             observed = datetime.fromtimestamp(int(item["LastUpdated"]), tz=UTC)
-        except (KeyError, TypeError, ValueError):
+        except (KeyError, TypeError, ValueError, OverflowError, OSError):
             observed = now
         out.append(
             LiveObservation(
@@ -110,7 +159,8 @@ class NdotRoadConditions:
         return self.api_key is not None and bool(self.api_key.get_secret_value())
 
     async def fetch(self, client: httpx.AsyncClient) -> bytes:
-        assert self.api_key is not None
+        if self.api_key is None:
+            raise UpstreamError(self.name, None, "not configured")
         return await get_bytes(
             client, self.name, URL, {"key": self.api_key.get_secret_value(), "format": "json"}
         )

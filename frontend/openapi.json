@@ -86,20 +86,13 @@
       "DayOut": {
         "properties": {
           "best_route": {
-            "anyOf": [
-              {
-                "enum": [
-                  "i80",
-                  "us50",
-                  "sr88"
-                ],
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
+            "enum": [
+              "i80",
+              "us50",
+              "sr88"
             ],
-            "title": "Best Route"
+            "title": "Best Route",
+            "type": "string"
           },
           "date": {
             "format": "date",

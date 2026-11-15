@@ -58,7 +58,7 @@ class DayOut(Model):
     dow: str
     day: int
     verdict: VerdictLevel
-    best_route: RouteKey | None
+    best_route: RouteKey
     reasons: list[str]
     low_confidence: bool
 
@@ -147,7 +147,7 @@ def _day_out(d: DayPlan) -> DayOut:
         dow=d.dow,
         day=d.day.day,
         verdict=d.level.value,
-        best_route=d.best_route.value if d.best_route else None,
+        best_route=d.best_route.value,
         reasons=list(d.reasons),
         low_confidence=d.low_confidence,
     )

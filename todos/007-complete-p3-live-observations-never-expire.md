@@ -1,5 +1,5 @@
 ---
-status: pending
+status: complete
 priority: p3
 issue_id: "007"
 tags: [code-review, architecture, safety]
@@ -24,7 +24,7 @@ The store merges the last good live result indefinitely; if Caltrans is down for
 
 ## Recommended Action
 
-_(Filled during triage.)_
+Option 1, with one deliberate deviation: the age used is our **fetch time** (the live source's `last_success`) compared to the rebuild time, not the upstream `LiveObservation.observed_at`. Caltrans `observed_at` is the upstream status timestamp, so an R-2 that has been in force for hours carries an old `observed_at`; filtering on it would silently drop active chain controls. In `Store._rebuild`, live results whose source was last fetched more than `LIVE_STALE_MINUTES` before the rebuild are not merged; the CAUTION floor covers "unknown". Test: `test_api.py::test_old_live_result_is_dropped_on_rebuild`. Residual: the snapshot only changes on a rebuild (any source success), so an expired live result may persist until the next forecast/hint refresh; the near-term floor applies alongside it in that window.
 
 ## Technical Details
 
@@ -38,6 +38,9 @@ _(Filled during triage.)_
 
 ### 2026-11-15 - Code review of PR #1
 - Found by the /workflows:review agents on branch feat/pass-check-app.
+
+### 2026-11-15 - Resolved
+- Implemented as described in Recommended Action. ruff, pyright strict and pytest pass (except `test_plan_matches_golden`, pending golden regeneration by the coordinator).
 
 ## Resources
 

@@ -259,7 +259,9 @@ def point_verdict(h: HourlyPoint | None, t: Thresholds = DEFAULT) -> Verdict:
         return Verdict(Level.NO_GO, (f"{h.snow_in:.1f} in of snow",))
     reasons: list[str] = []
     if h.freezing_rain: reasons.append("Freezing rain")
-    if 0 < h.snow_in < t.nogo_snow_in and h.temp_f <= t.freezing_f:
+    if h.snow_in >= t.nogo_snow_in:                                           # wet snow above 34°F
+        reasons.append(f"Wet snow {h.snow_in:.1f} in/hr")
+    elif h.snow_in > 0:                                                      # any snowfall ≥ CAUTION
         reasons.append("Light snow")
     elif h.snow_prob_pct >= t.caution_snow_prob_pct:                          # ≥ 20 %, incl. > 40 % w/o accumulation
         reasons.append(f"{h.snow_prob_pct}% chance of snow")
@@ -413,13 +415,14 @@ class Source(Protocol):
 ### Live vs forecast precedence
 
 - **Escalate-only,** by construction via `worst()`. A live "no chains" never downgrades a forecast NO GO.
-- **Live data applies to arrivals within 3 hours of `now`** (not of the fetch time). Beyond that, the forecast rules alone.
+- **Live data applies to arrivals within 3 hours of `now`** (not of the fetch time). Beyond that, the forecast rules alone. The window is measured from `floor_hour(now)` (the plan cache bucket) and includes that whole hour, i.e. `arrival - floor_hour(now) <= 4 h`, so a plan cached at 10:00 and one built at 10:40 apply live data identically (conservatively).
+- **Live results fetched more than 30 min ago** are dropped when the snapshot is rebuilt; the CAUTION floor covers "unknown" instead.
 - **Closed vs chains:** both are NO GO, with distinct wording ("Closed at Carson Spur" vs "Chains required (R-2) at Kingvale").
 
 ### Stale / failure behavior
 
 - **Configured live source down or older than 30 min:** near-term arrivals on its stretches get a **CAUTION floor**, so the verdict can't read better than CAUTION. A banner says "Caltrans data is delayed. Check QuickMap."
-- **Forecast older than 6 h:** banner plus `stale: true`.
+- **Forecast older than 6 h:** every segment at every hour (and every day) is floored at **CAUTION** with the reason "Forecast data is out of date", plus a banner and `stale: true`. **Never a GO.**
 - **No `Conditions` yet** (first boot, or every forecast source down): `/api/plan` returns 503 with `{"status":"unavailable"}`. The UI shows "Couldn't reach forecast sources", a Retry button and the QuickMap link. **Never a GO.**
 - **Missing data for a point/hour:** CAUTION, "No data for {place}".
 - **NO GO for all 10 days:** the hero says "No clear window in the next 10 days".
