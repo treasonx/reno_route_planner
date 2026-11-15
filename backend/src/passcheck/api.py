@@ -93,7 +93,7 @@ async def plan(
             content=b'{"status":"unavailable"}',
             status_code=503,
             media_type="application/json",
-            headers={"Cache-Control": "no-store", "Retry-After": "30"},
+            headers={"Cache-Control": "no-store", "Retry-After": "5"},
         )
 
     floor = store.live_floor(now)

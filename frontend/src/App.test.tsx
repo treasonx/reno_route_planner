@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import plan from "./__fixtures__/plan.json";
 import { App, initialHourIndex } from "./App";
-import { POLL_MS } from "./hooks/usePlan";
+import { POLL_MS, WARMUP_RETRY_MS } from "./hooks/usePlan";
 import type { PlanResponse, RouteKey } from "./types";
 
 const fixture = plan as PlanResponse;
@@ -67,10 +67,32 @@ describe("App", () => {
   });
 
   it("never shows a verdict when the API fails with no prior data", async () => {
-    mockFetch(() => Promise.resolve(new Response('{"status":"unavailable"}', { status: 503 })));
+    mockFetch(() => Promise.resolve(new Response("oops", { status: 500 })));
     render(<App />);
     expect(await screen.findByText("Couldn't reach forecast sources")).toBeTruthy();
     expect(screen.queryByText(/GO/)).toBeNull();
+  });
+
+  it("shows 'Starting up' while the server warms up and retries every few seconds", async () => {
+    vi.useFakeTimers();
+    let calls = 0;
+    mockFetch(() => (calls++ < 2 ? fail() : ok(fixture))); // 503, 503, then data
+    render(<App />);
+    await flush();
+    expect(screen.getByText("Starting up")).toBeTruthy();
+    expect(screen.queryByText("Couldn't reach forecast sources")).toBeNull();
+    expect(screen.queryByText(/GO/)).toBeNull();
+
+    await advance(WARMUP_RETRY_MS);
+    await flush();
+    expect(calls).toBe(2);
+    expect(screen.getByText("Starting up")).toBeTruthy();
+
+    await advance(WARMUP_RETRY_MS);
+    await flush();
+    expect(calls).toBe(3); // retried long before the 5-minute poll
+    expect(screen.queryByText("Starting up")).toBeNull();
+    expect(screen.getByRole("radiogroup", { name: "Highway" })).toBeTruthy();
   });
 
   it("picking another highway switches the whole page and flags it as not recommended", async () => {

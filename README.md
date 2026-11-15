@@ -45,6 +45,14 @@ falls back to an empty key (source off) or `INFO`. Keys are never logged or sent
 ### Running it for others
 
 - **Run one worker only.** Data and the refresh schedule live in the process; don't add `--workers`.
+- **Restarts.** The last good response from each source is kept in `/data` (the
+  `pass-check-data` volume in `compose.yaml`, ~1 MB, no history). After a restart the app serves
+  immediately and doesn't refetch until each source's normal interval is up. Restored data is aged
+  from when it was originally fetched, so stale data still shows CAUTION, never an old GO.
+  Snapshots older than 24 h are ignored. Without a volume it still works; it just warms up for a
+  few seconds ("Starting up") after each restart.
+- **Fetch schedule.** Open-Meteo once an hour (one request for all points), Weather Underground
+  every 3 h, Caltrans and NDOT every 5 min.
 - **No authentication.** If you expose it publicly, put it behind a reverse proxy (Caddy,
   Cloudflare Tunnel, `tailscale serve`) that provides TLS, HSTS and per-IP rate limiting, and bind
   the container to `127.0.0.1:8000`.

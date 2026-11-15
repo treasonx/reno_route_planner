@@ -1,15 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 
-import { fetchPlan } from "../api";
+import { ApiError, fetchPlan } from "../api";
 import type { Direction, PlanResponse } from "../types";
 import { usePolling } from "./usePolling";
 
 export type PlanState =
   | { status: "loading" }
   | { status: "ready"; plan: PlanResponse }
-  | { status: "error"; error: string; lastPlan?: PlanResponse };
+  | { status: "error"; error: string; lastPlan?: PlanResponse }
+  /** The server is up but has no data yet (fresh start): retried every WARMUP_RETRY_MS. */
+  | { status: "warming" };
 
 export const POLL_MS = 5 * 60 * 1000;
+export const WARMUP_RETRY_MS = 5_000;
 
 const LOADING: PlanState = { status: "loading" };
 
@@ -39,6 +42,10 @@ export function usePlan(direction: Direction, date: string | null) {
       if (ac.signal.aborted) return;
       const error = err instanceof Error ? err.message : "Network error";
       const lastPlan = lastGood.current?.key === key ? lastGood.current.plan : undefined;
+      if (!lastPlan && err instanceof ApiError && err.status === 503) {
+        setStored({ key, state: { status: "warming" } });
+        return;
+      }
       setStored({ key, state: lastPlan ? { status: "error", error, lastPlan } : { status: "error", error } });
     }
   }, [direction, date, key]);
@@ -48,5 +55,12 @@ export function usePlan(direction: Direction, date: string | null) {
 
   usePolling(load, POLL_MS, [load]);
   const state = stored.key === key ? stored.state : LOADING;
+
+  // While the server is warming up, retry quickly instead of waiting for the 5-minute poll.
+  useEffect(() => {
+    if (state.status !== "warming") return;
+    const t = setTimeout(() => void load(), WARMUP_RETRY_MS);
+    return () => clearTimeout(t);
+  }, [state, load]);
   return { state, reload: load };
 }

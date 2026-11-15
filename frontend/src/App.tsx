@@ -6,7 +6,7 @@ import { HighwaySelector } from "./components/HighwaySelector";
 import { LeaveAtPager } from "./components/LeaveAtPager";
 import { RecommendationBanner } from "./components/RecommendationBanner";
 import { RouteDetail } from "./components/RouteDetail";
-import { DataUnavailable, Footer, Skeleton, StaleBanner } from "./components/Status";
+import { DataUnavailable, Footer, Skeleton, StaleBanner, StartingUp } from "./components/Status";
 import { TenDay } from "./components/TenDay";
 import { useMediaQuery } from "./hooks/useMediaQuery";
 import { usePlan } from "./hooks/usePlan";
@@ -65,7 +65,13 @@ export function App() {
     return (
       <main class="app">
         <Header direction={direction} onSwap={swap} />
-        {state.status === "error" ? <DataUnavailable message={state.error} onRetry={() => void reload()} /> : <Skeleton />}
+        {state.status === "error" ? (
+          <DataUnavailable message={state.error} onRetry={() => void reload()} />
+        ) : state.status === "warming" ? (
+          <StartingUp />
+        ) : (
+          <Skeleton />
+        )}
         <Footer notes={[]} />
       </main>
     );

@@ -201,7 +201,7 @@ button { font: inherit; color: inherit; }
 /* Status */
 .banner { background: var(--caution-tint); border: 1px solid color-mix(in oklab, var(--caution) 40%, var(--card)); color: var(--caution-text); border-radius: 12px; padding: var(--s3); font-size: 14px; }
 .banner a { color: var(--text); }
-.unavailable h2 { font-family: var(--font-display); font-size: 28px; }
+.unavailable h2, .starting h2 { font-family: var(--font-display); font-size: 28px; }
 .actions { display: flex; gap: var(--s2); flex-wrap: wrap; }
 .button { min-height: 44px; padding: 0 18px; border-radius: 22px; border: 0; background: var(--text); color: var(--bg); font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; text-decoration: none; }
 .button.secondary { background: transparent; color: var(--text); border: 1px solid var(--line); }
