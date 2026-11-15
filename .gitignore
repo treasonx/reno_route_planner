@@ -21,3 +21,6 @@ frontend/dist/
 # Local tooling
 .claude/
 .DS_Store
+
+# Overrides a global "lib/" ignore rule
+!frontend/src/lib/
