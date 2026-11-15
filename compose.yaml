@@ -1,5 +1,5 @@
 # Example: run Pass Check from the public image.
-#   cp .env.example .env   # optional: add WU_API_KEY / NDOT_API_KEY
+#   cp .env.example .env   # optional: fill in WU_API_KEY / NDOT_API_KEY
 #   docker compose up -d
 #   open http://localhost:8000
 services:
@@ -8,9 +8,13 @@ services:
     container_name: pass-check
     ports:
       - "8000:8000"            # use "127.0.0.1:8000:8000" when a reverse proxy sits in front
-    env_file:
-      - path: .env             # optional API keys (see .env.example)
-        required: false        # runs on Caltrans + Open-Meteo with no keys at all
+    # Values come from a .env file next to this compose.yaml (Compose reads it automatically
+    # for ${...} substitution) or from your shell. Every key is optional: an empty value
+    # means that source is off, and the app still runs on Caltrans + Open-Meteo.
+    environment:
+      WU_API_KEY: ${WU_API_KEY:-}        # Weather Underground daily snow cross-check
+      NDOT_API_KEY: ${NDOT_API_KEY:-}    # Nevada 511 live road conditions
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
     read_only: true
     tmpfs:
       - /tmp

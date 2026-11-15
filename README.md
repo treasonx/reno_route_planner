@@ -38,8 +38,9 @@ Everything is optional. With no keys the app uses Caltrans + Open-Meteo.
 | `NDOT_API_KEY` | Nevada 511 developer key ([nvroads.com/developers/doc](https://www.nvroads.com/developers/doc)). Adds live conditions for the Nevada stretches; without it they are forecast-only and the app says so. |
 | `LOG_LEVEL` | Default `INFO`. |
 
-Copy `.env.example` to `.env` next to `compose.yaml` and fill in what you have. Keys are never
-logged or sent to the browser.
+Copy `.env.example` to `.env` next to `compose.yaml` and fill in what you have. `compose.yaml`
+lists each variable as `${VAR:-default}`, so Compose fills them from `.env` (or your shell) and
+falls back to an empty key (source off) or `INFO`. Keys are never logged or sent to the browser.
 
 ### Running it for others
 
