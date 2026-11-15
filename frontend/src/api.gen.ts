@@ -112,11 +112,33 @@ export interface components {
             low_confidence: boolean;
             /** Reasons */
             reasons: string[];
+            routes: components["schemas"]["DayRoutesOut"];
             /**
              * Verdict
              * @enum {string}
              */
             verdict: "GO" | "CAUTION" | "NO GO";
+        };
+        /**
+         * DayRoutesOut
+         * @description Best verdict each highway can achieve that day.
+         */
+        DayRoutesOut: {
+            /**
+             * I80
+             * @enum {string}
+             */
+            i80: "GO" | "CAUTION" | "NO GO";
+            /**
+             * Sr88
+             * @enum {string}
+             */
+            sr88: "GO" | "CAUTION" | "NO GO";
+            /**
+             * Us50
+             * @enum {string}
+             */
+            us50: "GO" | "CAUTION" | "NO GO";
         };
         /**
          * Direction
@@ -187,6 +209,8 @@ export interface components {
         RouteOut: {
             /** Caption */
             caption: string;
+            /** Go Until */
+            go_until: string | null;
             /** Segments */
             segments: ("GO" | "CAUTION" | "NO GO")[];
             /**

@@ -125,17 +125,9 @@ button { font: inherit; color: inherit; }
 .card-head h2 { font-size: 16px; font-weight: 700; }
 .card-foot { display: flex; justify-content: space-between; align-items: center; }
 
-.tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
-.tab {
-  min-height: 56px; border-radius: 12px; cursor: pointer; background: transparent; border: 1px solid var(--line);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
-}
-.tab.selected { background: var(--card-2); border-color: #c9d1db; box-shadow: inset 0 -2px var(--text); }
-.tab-name { font-weight: 700; font-size: 15px; }
-.tab-status { font-size: 11px; font-weight: 800; letter-spacing: 0.04em; }
-.tab-status.go, .pill.go { color: var(--go-text); }
-.tab-status.caution, .pill.caution { color: var(--caution-text); }
-.tab-status.nogo, .pill.nogo { color: var(--nogo-text); }
+.highway-status.go, .pill.go { color: var(--go-text); }
+.highway-status.caution, .pill.caution { color: var(--caution-text); }
+.highway-status.nogo, .pill.nogo { color: var(--nogo-text); }
 .swipe-area { touch-action: pan-y; display: flex; flex-direction: column; gap: var(--s2); }
 
 .profile { margin: 0; display: flex; flex-direction: column; gap: 4px; }
@@ -159,6 +151,37 @@ button { font: inherit; color: inherit; }
 .dot.on { width: 18px; background: var(--text); }
 
 .pill { padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; background: var(--bg); }
+
+/* Highway selector */
+.selector-row { display: flex; flex-direction: column; gap: var(--s3); }
+.highway { display: flex; flex-direction: column; gap: var(--s2); }
+.highways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding-top: 6px; }
+.highway-card {
+  position: relative; min-height: 76px; padding: 14px 4px 8px; border-radius: 14px; cursor: pointer;
+  background: var(--card); border: 1px solid var(--line);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+}
+.highway-card.selected { background: var(--card-2); border: 2px solid var(--text); }
+.highway-name { font-family: var(--font-display); font-weight: 700; font-size: 22px; }
+.highway-status { font-size: 11px; font-weight: 800; letter-spacing: 0.04em; }
+.best-badge {
+  position: absolute; top: -9px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+  padding: 2px 7px; border-radius: 999px; background: var(--go); color: var(--bg);
+  font-size: 10px; font-weight: 800; letter-spacing: 0.06em;
+}
+.rec { border-radius: 12px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: var(--s3); border: 1px solid; }
+.rec-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.rec-title { font-size: 14px; font-weight: 700; }
+.rec-sub { font-size: 12px; color: #c9d1db; }
+.rec-yes { background: color-mix(in oklab, var(--go) 10%, var(--bg)); border-color: color-mix(in oklab, var(--go) 35%, var(--bg)); }
+.rec-no { background: color-mix(in oklab, var(--caution) 10%, var(--bg)); border-color: color-mix(in oklab, var(--caution) 35%, var(--bg)); }
+.rec-none { background: color-mix(in oklab, var(--nogo) 10%, var(--bg)); border-color: color-mix(in oklab, var(--nogo) 35%, var(--bg)); }
+.rec-action {
+  flex: 0 0 auto; min-height: 44px; padding: 0 14px; border-radius: 22px; border: 0; cursor: pointer;
+  background: var(--text); color: var(--bg); font-weight: 700; font-size: 13px;
+}
+.rec-action.secondary { background: transparent; color: #c9d1db; border: 1px solid var(--line); }
+.route-detail-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; }
 
 /* Ten days */
 .days { display: grid; grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); gap: 6px; }
@@ -195,14 +218,6 @@ button { font: inherit; color: inherit; }
 /* Desktop */
 .columns { display: flex; flex-direction: column; gap: var(--s4); }
 .col-main, .col-side { display: flex; flex-direction: column; gap: var(--s4); min-width: 0; }
-.route-row { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; padding: var(--s4) var(--s3); margin: 0 calc(var(--s3) * -1); border-radius: 12px; border-top: 1px solid var(--line); }
-.route-row:first-of-type { border-top: 0; }
-.route-row.best { background: color-mix(in oklab, var(--go) 8%, var(--card)); }
-.route-info { flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
-.route-title { display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap; }
-.route-title h3 { font-family: var(--font-display); font-size: 26px; font-weight: 700; }
-.best-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--go-text); }
-.route-graphic { flex: 999 1 340px; min-width: 0; }
 
 @media (min-width: 900px) {
   .app { padding: var(--s8) var(--s6); gap: 20px; }
@@ -211,6 +226,13 @@ button { font: inherit; color: inherit; }
   .col-side { flex: 999 1 560px; }
   .card { padding: var(--s4) var(--s6); }
   .chunks { padding: 0 52px; }
+  .selector-row { flex-direction: row; align-items: flex-end; gap: var(--s4); }
+  .highway { flex: 999 1 560px; }
+  .rec { flex: 1 1 320px; }
+  .highways { gap: 10px; }
+  .highway-card { min-height: 92px; }
+  .highway-name { font-size: 28px; }
+  .route-detail-title { font-size: 26px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

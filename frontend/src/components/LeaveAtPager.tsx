@@ -1,14 +1,19 @@
 import { bestOf, formatDay, verdictClass, verdictGlyph } from "../lib/verdict";
-import type { HourOut } from "../types";
+import type { HourOut, RouteKey } from "../types";
 
 interface Props {
   hours: readonly HourOut[];
   index: number;
   pageSize: number;
+  /** Colors and verdicts follow this highway; ★ marks hours where it's the recommended one. */
+  route: RouteKey;
+  routeName: string;
   onSelect: (index: number) => void;
 }
 
-export function LeaveAtPager({ hours, index: rawIndex, pageSize, onSelect }: Props) {
+const isRecommended = (h: HourOut, route: RouteKey) => h.best.route === route && h.best.verdict !== "NO GO";
+
+export function LeaveAtPager({ hours, index: rawIndex, pageSize, route, routeName, onSelect }: Props) {
   const index = Math.max(0, Math.min(rawIndex, hours.length - 1));
   const pages = Math.max(1, Math.ceil(hours.length / pageSize));
   const page = Math.min(Math.floor(index / pageSize), pages - 1);
@@ -22,7 +27,7 @@ export function LeaveAtPager({ hours, index: rawIndex, pageSize, onSelect }: Pro
   return (
     <section class="pager" aria-label="Departure time">
       <div class="pager-head">
-        <h2 class="eyebrow">Leave at</h2>
+        <h2 class="eyebrow">Leave at · {routeName}</h2>
         {selected && (
           <span class="pager-selected">
             {formatDay(selected.depart)} {selected.label === "Now" ? "now" : selected.label} PT
@@ -39,20 +44,20 @@ export function LeaveAtPager({ hours, index: rawIndex, pageSize, onSelect }: Pro
             const isSel = idx === index;
             const prev = hours[idx - 1];
             const newDay = idx === 0 || (prev !== undefined && formatDay(prev.depart) !== formatDay(h.depart));
+            const v = h.routes[route].verdict;
+            const star = isRecommended(h, route) ? "★ " : "";
             return (
               <button
                 key={h.depart}
                 type="button"
                 aria-pressed={isSel}
-                class={`hour ${verdictClass(h.best.verdict)}${isSel ? " selected" : ""}`}
-                aria-label={`Leave ${formatDay(h.depart)} ${h.label}: best route ${h.best.verdict}`}
+                class={`hour ${verdictClass(v)}${isSel ? " selected" : ""}`}
+                aria-label={`Leave ${formatDay(h.depart)} ${h.label}: ${routeName} ${v}${star ? ", recommended" : ""}`}
                 onClick={() => onSelect(idx)}
               >
                 <span class="hour-label num">{h.label}</span>
                 <span class="hour-sub">
-                  {newDay && i === 0
-                    ? `${formatDay(h.depart)} ${verdictGlyph(h.best.verdict)}`
-                    : `${verdictGlyph(h.best.verdict)} ${h.best.verdict}`}
+                  {newDay && i === 0 ? `${formatDay(h.depart)} ${star}${verdictGlyph(v)}` : `${star}${verdictGlyph(v)} ${v}`}
                 </span>
               </button>
             );
@@ -64,7 +69,7 @@ export function LeaveAtPager({ hours, index: rawIndex, pageSize, onSelect }: Pro
       </div>
       <div class="chunks" aria-hidden="true">
         {Array.from({ length: pages }, (_, p) => {
-          const lvl = bestOf(hours.slice(p * pageSize, p * pageSize + pageSize).map((h) => h.best.verdict));
+          const lvl = bestOf(hours.slice(p * pageSize, p * pageSize + pageSize).map((h) => h.routes[route].verdict));
           return <span key={p} class={`chunk ${verdictClass(lvl)}${p === page ? " current" : ""}`} />;
         })}
       </div>

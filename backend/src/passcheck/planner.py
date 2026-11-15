@@ -56,6 +56,9 @@ class HourPlan:
     best_level: Level
     hero: Hero
     routes: Mapping[RouteId, RouteEval]
+    # Last departure of each route's GO run starting here (None unless that route is GO), so
+    # the UI can say "GO for departures until X" for whichever highway is selected.
+    go_until: Mapping[RouteId, datetime | None]
 
 
 @dataclass(frozen=True, slots=True)
@@ -66,6 +69,8 @@ class DayPlan:
     best_route: RouteId
     reasons: tuple[str, ...]
     low_confidence: bool
+    # Best verdict each route can achieve that day (same departure window as ``level``).
+    route_levels: Mapping[RouteId, Level]
 
 
 @dataclass(frozen=True, slots=True)
@@ -246,6 +251,10 @@ class Planner:
             best_level=lvl,
             hero=self.hero(t0),
             routes={r: self.route_eval(r, t0) for r in ROUTE_ORDER},
+            go_until={
+                r: self._run_end(r, t0) if self.level(r, t0) is Level.GO else None
+                for r in ROUTE_ORDER
+            },
         )
 
     def departures(self, day: date | None) -> list[datetime]:
@@ -258,6 +267,15 @@ class Planner:
             out.append(t)
             t += HOUR
         return out
+
+    def _hinted(self, route: RouteId, d: date) -> list[str]:
+        """Stops on ``route`` where the daily cross-check (WU) expects >= 0.5 in of snow."""
+        return [
+            s.point.name
+            for s in self.corridors[route].stops
+            if (hint := self.ctx.conditions.day_hints.get((s.point.id, d))) is not None
+            and hint.snow_in >= 0.5
+        ]
 
     def day_plans(self) -> list[DayPlan]:
         today = to_pacific(self.ctx.now).date()
@@ -272,16 +290,18 @@ class Planner:
             best_t = min(candidates, key=lambda t: (self.best(t)[1].severity, t))
             route, lvl = self.best(best_t)
             reasons: tuple[str, ...] = ()
-            if lvl is Level.GO:
-                hinted = [
-                    s.point.name
-                    for s in self.corridors[route].stops
-                    if (hint := self.ctx.conditions.day_hints.get((s.point.id, d))) is not None
-                    and hint.snow_in >= 0.5
-                ]
-                if hinted:
-                    lvl = Level.CAUTION
-                    reasons = (f"Weather Underground expects snow at {', '.join(hinted)}",)
+            hinted_by_route = {r: self._hinted(r, d) for r in ROUTE_ORDER}
+            if lvl is Level.GO and hinted_by_route[route]:
+                lvl = Level.CAUTION
+                reasons = (
+                    f"Weather Underground expects snow at {', '.join(hinted_by_route[route])}",
+                )
+            route_levels: dict[RouteId, Level] = {}
+            for r in ROUTE_ORDER:
+                r_lvl = min((self.level(r, t) for t in candidates), key=lambda x: x.severity)
+                if r_lvl is Level.GO and hinted_by_route[r]:
+                    r_lvl = Level.CAUTION
+                route_levels[r] = r_lvl
             out.append(
                 DayPlan(
                     day=d,
@@ -290,6 +310,7 @@ class Planner:
                     best_route=route,
                     reasons=reasons,
                     low_confidence=i >= LOW_CONFIDENCE_FROM_DAY,
+                    route_levels=route_levels,
                 )
             )
         return out
