@@ -21,3 +21,6 @@ const dayFmt = new Intl.DateTimeFormat("en-US", { timeZone: TZ, weekday: "short"
 export const formatTime = (iso: string): string => timeFmt.format(new Date(iso));
 /** "Sun" in Pacific time. */
 export const formatDay = (iso: string): string => dayFmt.format(new Date(iso));
+
+/** "now" for the current hour, else the hour label ("8 AM"), for "Leaving …" phrases. */
+export const leavingLabel = (label: string): string => (label === "Now" ? "now" : label);

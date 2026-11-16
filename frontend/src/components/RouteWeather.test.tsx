@@ -20,7 +20,7 @@ describe("RouteWeather", () => {
     renderTile(hour.routes.i80);
     expect(screen.getByRole("heading", { name: "Weather on I-80" })).toBeTruthy();
     const items = screen.getAllByRole("listitem").map((li) => li.textContent ?? "");
-    expect(items).toHaveLength(fixture.corridors.i80.stops.length);
+    expect(items).toHaveLength(fixture.corridors.i80.stops.length + 1); // + freezing level
     expect(items[0]).toMatch(/^Reno, 7:00 AM: \d+°F/);
     expect(items[2]).toMatch(/^Donner Summit, 7:50 AM/);
   });
@@ -51,17 +51,25 @@ describe("RouteWeather", () => {
     expect(container.querySelector(".wx-snow")).toBeNull();
   });
 
-  it("staggers names only for long highways and dims when stale", () => {
+  it("staggers names for 7+ stops and dims when stale", () => {
     const { container, unmount } = renderTile(hour.routes.i80);
-    expect(container.querySelector(".wx-names.stagger")).toBeNull();
+    expect(container.querySelector(".wx-names.stagger")).not.toBeNull();
     unmount();
     const us50 = renderTile(hour.routes.us50, "us50", true);
     expect(us50.container.querySelector(".wx-names.stagger")).not.toBeNull();
     expect(us50.container.querySelector(".route-weather.is-stale")).not.toBeNull();
   });
 
+  it("draws the freezing line inside the profile and tells screen readers", () => {
+    const { container } = renderTile({ ...hour.routes.i80, freezing_level_ft: 5500 });
+    expect(container.querySelector(".wx-freeze")).not.toBeNull();
+    expect(container.querySelector(".wx-freeze-key")?.textContent).toBe("32°F at 5,500′ at summit");
+    expect(screen.getByText("Freezing level over the summit: 5,500 feet")).toBeTruthy();
+  });
+
   it("hides the freezing line when the freezing level is above the summit", () => {
     const { container } = renderTile({ ...hour.routes.i80, freezing_level_ft: 328084 });
     expect(container.querySelector(".wx-freeze")).toBeNull();
+    expect(container.querySelector(".wx-freeze-key")).toBeNull();
   });
 });

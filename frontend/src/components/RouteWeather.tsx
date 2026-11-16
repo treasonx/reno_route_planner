@@ -9,6 +9,7 @@ import {
   fmtRate,
   fmtTemp,
   formatClock,
+  inchWords,
   freezeLinePct,
   profilePoints,
   stopLabel,
@@ -29,6 +30,7 @@ const DEPTH_CAP_IN = 36;
 const DEPTH_MAX_PX = 30;
 const RATE_CAP_IN = 1;
 const RATE_MAX_PX = 16;
+const TITLE_ID = "route-weather-title";
 
 /** Column count for the per-stop grids (a CSS custom property, so it is passed as a string). */
 const columns = (n: number): string => `--n:${n}`;
@@ -66,9 +68,7 @@ function WeatherProfile({ rows, freezingFt }: { rows: StopRow[]; freezingFt: num
         <path d={line} class="wx-line" vector-effect="non-scaling-stroke" />
       </svg>
       {freeze !== null && freezingFt !== null && (
-        <div class="wx-freeze" style={{ top: `${freeze}%` }}>
-          <span>32°F at {freezingFt.toLocaleString("en-US")}′</span>
-        </div>
+        <div class="wx-freeze" style={{ top: `${freeze}%` }} />
       )}
       {pts.map((p, i) => (
         <span
@@ -86,11 +86,16 @@ export function RouteWeather({ corridor, route, depart, leaving, stale }: Props)
   const rows = buildStopRows(corridor, route, depart);
   const n = rows.length;
   const snowy = anySnow(rows);
+  // The key is shown only when the line is actually drawn (same rule as the profile).
+  const showFreeze =
+    freezeLinePct(route.freezing_level_ft, elevationDomain(rows.map((r) => r.elevationFt))) !== null;
 
   return (
-    <section class={`card route-weather${stale ? " is-stale" : ""}`} aria-label={`Weather on ${corridor.name}`}>
+    <section class={`card route-weather${stale ? " is-stale" : ""}`} aria-labelledby={TITLE_ID}>
       <div class="card-head">
-        <h2 class="route-detail-title">Weather on {corridor.name}</h2>
+        <h2 id={TITLE_ID} class="route-detail-title">
+          Weather on {corridor.name}
+        </h2>
         <span class="muted">Leaving {leaving} · as you pass</span>
       </div>
 
@@ -98,6 +103,11 @@ export function RouteWeather({ corridor, route, depart, leaving, stale }: Props)
         <p class="wx-lane wx-lane-temp">
           <Thermometer />
           Air temp <span class="wx-unit">°F</span>
+          {showFreeze && route.freezing_level_ft !== null && (
+            <span class="wx-freeze-key">
+              32°F at {route.freezing_level_ft.toLocaleString("en-US")}′ at summit
+            </span>
+          )}
         </p>
         <div class="wx-cols" style={columns(n)}>
           {rows.map((r) => (
@@ -123,18 +133,18 @@ export function RouteWeather({ corridor, route, depart, leaving, stale }: Props)
         </p>
         {snowy ? (
           <div class="wx-cols" style={columns(n)}>
-            {rows.map((r) => (
+            {rows.map((r) => {
+              const depthPx = barPx(r.depth, DEPTH_CAP_IN, DEPTH_MAX_PX);
+              const ratePx = barPx(r.snowfall, RATE_CAP_IN, RATE_MAX_PX);
+              return (
               <div key={r.id} class={`wx-col wx-snow${r.isSummit ? " summit" : ""}`}>
-                {barPx(r.depth, DEPTH_CAP_IN, DEPTH_MAX_PX) > 0 && (
-                  <span class="wx-bar" style={{ height: `${barPx(r.depth, DEPTH_CAP_IN, DEPTH_MAX_PX)}px` }} />
-                )}
-                {barPx(r.snowfall, RATE_CAP_IN, RATE_MAX_PX) > 0 && (
-                  <span class="wx-bar-new" style={{ height: `${barPx(r.snowfall, RATE_CAP_IN, RATE_MAX_PX)}px` }} />
-                )}
+                {depthPx > 0 && <span class="wx-bar" style={{ height: `${depthPx}px` }} />}
+                {ratePx > 0 && <span class="wx-bar-new" style={{ height: `${ratePx}px` }} />}
                 <span class={`wx-depth num${r.depth ? "" : " none"}`}>{fmtInches(r.depth)}</span>
                 {r.snowfall !== null && r.snowfall > 0 && <span class="wx-rate num">{fmtRate(r.snowfall)}</span>}
               </div>
-            ))}
+              );
+            })}
           </div>
         ) : (
           <p class="wx-nosnow">No snow on the ground or falling</p>
@@ -144,7 +154,7 @@ export function RouteWeather({ corridor, route, depart, leaving, stale }: Props)
           {rows.map((r) => (
             <div key={r.id} class={`wx-col${r.isSummit ? " summit" : ""}`}>
               <span class="wx-name">{r.short}</span>
-              <span class="wx-eta num">{formatClock(r.eta)}</span>
+              <span class="wx-eta num">{formatClock(r.eta, depart)}</span>
             </div>
           ))}
         </div>
@@ -154,9 +164,15 @@ export function RouteWeather({ corridor, route, depart, leaving, stale }: Props)
         {rows.map((r) => (
           <li key={r.id}>{stopLabel(r)}</li>
         ))}
+        {route.freezing_level_ft !== null && (
+          <li>Freezing level over the summit: {route.freezing_level_ft.toLocaleString("en-US")} feet</li>
+        )}
       </ul>
 
-      <p class="wx-foot">{summarizeRouteWeather(rows)}</p>
+      <p class="wx-foot">
+        <span aria-hidden="true">{summarizeRouteWeather(rows)}</span>
+        <span class="sr-only">{summarizeRouteWeather(rows, inchWords)}</span>
+      </p>
     </section>
   );
 }

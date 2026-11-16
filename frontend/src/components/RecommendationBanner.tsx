@@ -1,3 +1,4 @@
+import { leavingLabel } from "../lib/verdict";
 import type { HourOut, PlanResponse, RouteKey } from "../types";
 
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
 
 /** Always states whether the selected highway is the recommended one for this departure. */
 export function RecommendationBanner({ plan, hour, selected, recommended, pinned, onUse, onAuto }: Props) {
-  const leaving = hour.label === "Now" ? "now" : hour.label;
+  const leaving = leavingLabel(hour.label);
 
   if (recommended === null) {
     return (

@@ -1,5 +1,5 @@
 import { useSwipe } from "../hooks/useSwipe";
-import { formatTime } from "../lib/verdict";
+import { formatTime, leavingLabel } from "../lib/verdict";
 import { type HourOut, type PlanResponse, ROUTE_KEYS, type RouteKey } from "../types";
 import { RouteProfile } from "./RouteProfile";
 
@@ -20,7 +20,7 @@ export function RouteDetail({ plan, hour, route, onSelect, desktop }: Props) {
   });
   const r = hour.routes[route];
   const c = plan.corridors[route];
-  const leaving = hour.label === "Now" ? "now" : hour.label;
+  const leaving = leavingLabel(hour.label);
 
   return (
     <section class="card route-detail" aria-label={`Along ${c.name}`}>

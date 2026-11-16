@@ -15,8 +15,8 @@ export interface StopRow {
 }
 
 const FREEZING_F = 32;
-/** More stops than this and names alternate between two rows so they fit at phone width. */
-export const STAGGER_FROM = 8;
+/** From this many stops, names alternate between two rows so they fit at phone width. */
+export const STAGGER_FROM = 7;
 
 const clockFmt = new Intl.DateTimeFormat("en-US", {
   timeZone: "America/Los_Angeles",
@@ -24,13 +24,23 @@ const clockFmt = new Intl.DateTimeFormat("en-US", {
   minute: "2-digit",
 });
 
-/** "7:50" in Pacific time: the column label (AM/PM is implied by the departure). */
-export const formatClock = (iso: string): string =>
-  clockFmt
-    .formatToParts(new Date(iso))
+const clockParts = (iso: string) => {
+  const parts = clockFmt.formatToParts(new Date(iso));
+  const hm = parts
     .filter((p) => p.type === "hour" || p.type === "minute" || (p.type === "literal" && p.value === ":"))
     .map((p) => p.value)
     .join("");
+  return { hm, period: parts.find((p) => p.type === "dayPeriod")?.value ?? "" };
+};
+
+/**
+ * "7:50" in Pacific time for a stop's column. The AM/PM is left off while it matches the
+ * departure's, and shown compactly ("1:15p") once the trip crosses noon or midnight.
+ */
+export const formatClock = (iso: string, departIso: string): string => {
+  const { hm, period } = clockParts(iso);
+  return period === clockParts(departIso).period ? hm : `${hm}${period.charAt(0).toLowerCase()}`;
+};
 
 export const etaFor = (depart: string, minutes: number): string =>
   new Date(Date.parse(depart) + minutes * 60_000).toISOString();
@@ -63,8 +73,16 @@ export const barPx = (value: number | null, cap: number, maxPx: number): number 
 
 export const fmtTemp = (t: number | null): string => (t === null ? "–" : `${t}°`);
 
-export const fmtInches = (d: number | null): string =>
-  d === null ? "–" : d === 0 ? "0″" : d < 1 ? `${d.toFixed(1)}″` : `${Math.round(d)}″`;
+/** "0.3" under an inch, whole inches above. */
+const inchNumber = (d: number): string => (d > 0 && d < 1 ? d.toFixed(1) : String(Math.round(d)));
+
+export const fmtInches = (d: number | null): string => (d === null ? "–" : `${inchNumber(d)}″`);
+
+/** Spelled-out inches for screen readers ("″" reads aloud as "double prime"). */
+export const inchWords = (d: number): string => {
+  const n = inchNumber(d);
+  return `${n} ${n === "1" ? "inch" : "inches"}`;
+};
 
 export const fmtRate = (r: number | null): string => (r === null ? "–" : r.toFixed(1));
 
@@ -96,11 +114,6 @@ export const freezeLinePct = (ft: number | null, d: ElevationDomain): number | n
 const hasSnow = (r: StopRow): boolean => (r.depth ?? 0) > 0 || (r.snowfall ?? 0) > 0;
 export const anySnow = (rows: readonly StopRow[]): boolean => rows.some(hasSnow);
 
-const inchWords = (d: number): string => {
-  const n = d < 1 ? d.toFixed(1) : String(Math.round(d));
-  return `${n} ${n === "1" ? "inch" : "inches"}`;
-};
-
 /** Screen-reader sentence for one stop (spelled-out units; "″" reads badly aloud). */
 export function stopLabel(r: StopRow): string {
   const head = `${r.name}, ${formatTime(r.eta)}`;
@@ -120,25 +133,43 @@ function freezingClause(rows: readonly StopRow[]): string {
     return rows.every((r) => r.temp !== null) ? "Above freezing the whole way" : "Above freezing where forecast";
   }
   const name = (i: number) => rows[i]?.name ?? "";
+  if (cold.length === rows.length) return "Below freezing the whole way";
   if (cold.length === 1) return `Below freezing at ${name(first)}`;
   if (last - first + 1 === cold.length) return `Below freezing from ${name(first)} to ${name(last)}`;
+  if (cold.length > 3) return `Below freezing at ${cold.length} stops`;
   return `Below freezing at ${cold.map(name).join(", ")}`;
 }
 
-function snowClause(rows: readonly StopRow[]): string | null {
-  let deepest: StopRow | null = null;
+/** The stop with the largest value (first in driving order on ties), or null if none is > 0. */
+function peak(rows: readonly StopRow[], value: (r: StopRow) => number | null): StopRow | null {
+  let best: StopRow | null = null;
   for (const r of rows) {
-    if (r.depth !== null && r.depth > 0 && (deepest === null || r.depth > (deepest.depth ?? 0))) deepest = r;
+    const v = value(r);
+    if (v !== null && v > 0 && (best === null || v > (value(best) ?? 0))) best = r;
   }
-  if (deepest) return `deepest snow ${fmtInches(deepest.depth)} at ${deepest.name}`;
-  return rows.some((r) => r.depth !== null) ? "no snow on the ground" : null;
+  return best;
 }
 
-/** One weather-only sentence for the footer (never a safety call; the verdict does that). */
-export function summarizeRouteWeather(rows: readonly StopRow[]): string {
+type InchFormat = (d: number) => string;
+
+function snowClauses(rows: readonly StopRow[], inches: InchFormat): string[] {
+  const out: string[] = [];
+  const deepest = peak(rows, (r) => r.depth);
+  if (deepest?.depth != null) out.push(`deepest snow ${inches(deepest.depth)} at ${deepest.name}`);
+  else if (rows.every((r) => r.depth !== null)) out.push("no snow on the ground");
+  else if (rows.some((r) => r.depth !== null)) out.push("no snow on the ground where forecast");
+  const heaviest = peak(rows, (r) => r.snowfall);
+  if (heaviest) out.push(`snowing at ${heaviest.name}`);
+  return out;
+}
+
+/**
+ * One weather-only sentence for the footer (never a safety call; the verdict does that).
+ * ``inches`` formats depths: the glyph form for display, spelled out for screen readers.
+ */
+export function summarizeRouteWeather(rows: readonly StopRow[], inches: InchFormat = (d) => `${inchNumber(d)}″`): string {
   const known = rows.filter((r) => r.temp !== null).length;
   if (known === 0) return "No forecast for this trip";
   if (known * 2 < rows.length) return "Forecast doesn't reach this far";
-  const snow = snowClause(rows);
-  return snow ? `${freezingClause(rows)} · ${snow}` : freezingClause(rows);
+  return [freezingClause(rows), ...snowClauses(rows, inches)].join(" · ");
 }

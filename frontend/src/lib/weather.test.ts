@@ -8,6 +8,7 @@ import {
   elevationDomain,
   etaFor,
   fmtInches,
+  inchWords,
   formatClock,
   freezeLinePct,
   stopLabel,
@@ -64,8 +65,12 @@ describe("weather helpers", () => {
 
   it("computes ETAs from the departure and formats them as a clock", () => {
     expect(etaFor("2026-11-15T07:00:00-08:00", 50)).toBe("2026-11-15T15:50:00.000Z");
-    expect(formatClock("2026-11-15T15:50:00Z")).toBe("7:50");
-    expect(formatClock("2026-11-15T20:05:00Z")).toBe("12:05");
+    const sevenAm = "2026-11-15T15:00:00Z";
+    expect(formatClock("2026-11-15T15:50:00Z", sevenAm)).toBe("7:50");
+    // Crossing noon / midnight adds a compact period so "1:15" can't read as before "10:00".
+    expect(formatClock("2026-11-15T21:15:00Z", "2026-11-15T18:00:00Z")).toBe("1:15p");
+    expect(formatClock("2026-11-16T09:50:00Z", "2026-11-16T07:00:00Z")).toBe("1:50a");
+    expect(formatClock("2026-11-15T19:45:00Z", "2026-11-15T18:00:00Z")).toBe("11:45");
   });
 
   it("joins stops and weather by id, in the corridor's driving order", () => {
@@ -85,7 +90,8 @@ describe("weather helpers", () => {
       ],
     } as RouteOut;
     const rows = buildStopRows(corridor, route, "2026-11-15T07:00:00-08:00");
-    expect(rows.map((r) => [r.short, r.temp, formatClock(r.eta)])).toEqual([
+    const depart = "2026-11-15T07:00:00-08:00";
+    expect(rows.map((r) => [r.short, r.temp, formatClock(r.eta, depart)])).toEqual([
       ["Sac", 54, "7:00"],
       ["Donner", 24, "8:25"],
     ]);
@@ -110,11 +116,23 @@ describe("summarizeRouteWeather", () => {
     ["single stop", [row("Reno", 38), row("Donner", 31), row("Sac", 50)],
       "Below freezing at Donner · no snow on the ground"],
     ["all warm", [row("Reno", 40), row("Sac", 55)], "Above freezing the whole way · no snow on the ground"],
+    ["all cold", [row("Truckee", 28), row("Donner", 24)], "Below freezing the whole way · no snow on the ground"],
+    ["many broken", [row("A", 30), row("B", 40), row("C", 30), row("D", 40), row("E", 30), row("F", 30), row("G", 40)],
+      "Below freezing at 4 stops · no snow on the ground"],
+    ["snowing on bare ground", [row("Reno", 38), row("Donner", 33, 0, 0.5), row("Sac", 50)],
+      "Above freezing the whole way · no snow on the ground · snowing at Donner"],
+    ["sparse depth", [row("Reno", 38, 0), row("Donner", 33, null), row("Sac", 50, null)],
+      "Above freezing the whole way · no snow on the ground where forecast"],
     ["some missing", [row("Reno", 40), row("Truckee", 41), row("Sac", null, null, null)],
-      "Above freezing where forecast · no snow on the ground"],
+      "Above freezing where forecast · no snow on the ground where forecast"],
     ["mostly missing", [row("Reno", 40), row("A", null, null), row("B", null, null)], "Forecast doesn't reach this far"],
     ["all missing", [row("Reno", null, null), row("Sac", null, null)], "No forecast for this trip"],
   ] as const)("%s", (_case, rows, expected) => {
     expect(summarizeRouteWeather(rows)).toBe(expected);
+  });
+
+  it("spells out inches for screen readers", () => {
+    const rows = [row("Truckee", 29, 6), row("Donner", 24, 18)];
+    expect(summarizeRouteWeather(rows, inchWords)).toBe("Below freezing the whole way · deepest snow 18 inches at Donner");
   });
 });

@@ -12,6 +12,7 @@ import { TenDay } from "./components/TenDay";
 import { useMediaQuery } from "./hooks/useMediaQuery";
 import { usePlan } from "./hooks/usePlan";
 import { loadDirection, saveDirection } from "./lib/storage";
+import { leavingLabel } from "./lib/verdict";
 import type { Direction, PlanResponse, RouteKey } from "./types";
 
 const DESKTOP = "(min-width: 900px)";
@@ -138,7 +139,7 @@ export function App() {
             corridor={plan.corridors[route]}
             route={hour.routes[route]}
             depart={hour.depart}
-            leaving={hour.label === "Now" ? "now" : hour.label}
+            leaving={leavingLabel(hour.label)}
             stale={stale}
           />
           {!desktop && (
