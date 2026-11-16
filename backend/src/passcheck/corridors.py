@@ -22,6 +22,11 @@ class Point:
     state: str  # "CA" | "NV"
     live_source: LiveSourceName
     peak_name: str = ""  # short summit name; non-empty only for signed summits
+    short_name: str = ""  # narrow-column label; empty means ``name`` is already short
+
+    @property
+    def short_label(self) -> str:
+        return self.short_name or self.name
 
     @property
     def peak_label(self) -> str:
@@ -61,30 +66,92 @@ P: dict[str, Point] = {
     p.id: p
     for p in [
         Point("reno", "Reno", 39.5296, -119.8138, 4505, "NV", NV),
-        Point("sacramento", "Sacramento", 38.5816, -121.4944, 30, "CA", CT),
+        Point("sacramento", "Sacramento", 38.5816, -121.4944, 30, "CA", CT, short_name="Sac"),
         # I-80
         Point("truckee", "Truckee", 39.3280, -120.1833, 5820, "CA", CT),
         # Summit elevations are the posted (signed) summit heights; they are what Open-Meteo
         # downscales to and what the profile label shows.
-        Point("donner", "Donner Summit", 39.3392, -120.3481, 7056, "CA", CT, "Donner Summit"),
+        Point(
+            "donner",
+            "Donner Summit",
+            39.3392,
+            -120.3481,
+            7056,
+            "CA",
+            CT,
+            "Donner Summit",
+            short_name="Donner",
+        ),
         Point("kingvale", "Kingvale", 39.3142, -120.4461, 6076, "CA", CT),
         Point("yuba_gap", "Yuba Gap", 39.3168, -120.6145, 5770, "CA", CT),
         Point("colfax", "Colfax", 39.0967, -120.9494, 2421, "CA", CT),
         # US-50
-        Point("carson_city", "Carson City", 39.1638, -119.7674, 4688, "NV", NV),
-        Point("spooner", "Spooner Summit", 39.1036, -119.8964, 7146, "NV", NV, "Spooner"),
-        Point("south_lake_tahoe", "South Lake Tahoe", 38.9399, -119.9772, 6270, "CA", CT),
+        Point(
+            "carson_city", "Carson City", 39.1638, -119.7674, 4688, "NV", NV, short_name="Carson"
+        ),
+        Point(
+            "spooner",
+            "Spooner Summit",
+            39.1036,
+            -119.8964,
+            7146,
+            "NV",
+            NV,
+            "Spooner",
+            short_name="Spooner",
+        ),
+        Point(
+            "south_lake_tahoe",
+            "South Lake Tahoe",
+            38.9399,
+            -119.9772,
+            6270,
+            "CA",
+            CT,
+            short_name="Tahoe",
+        ),
         Point("meyers", "Meyers", 38.8495, -120.0255, 6341, "CA", CT),
-        Point("echo", "Echo Summit", 38.8131, -120.0297, 7382, "CA", CT, "Echo Summit"),
-        Point("twin_bridges", "Twin Bridges", 38.8114, -120.1228, 6158, "CA", CT),
+        Point(
+            "echo",
+            "Echo Summit",
+            38.8131,
+            -120.0297,
+            7382,
+            "CA",
+            CT,
+            "Echo Summit",
+            short_name="Echo",
+        ),
+        Point(
+            "twin_bridges",
+            "Twin Bridges",
+            38.8114,
+            -120.1228,
+            6158,
+            "CA",
+            CT,
+            short_name="Twin Br.",
+        ),
         Point("kyburz", "Kyburz", 38.7741, -120.2963, 4075, "CA", CT),
-        Point("placerville", "Placerville", 38.7296, -120.7985, 1863, "CA", CT),
+        Point(
+            "placerville", "Placerville", 38.7296, -120.7985, 1863, "CA", CT, short_name="Placer."
+        ),
         # SR-88
         Point("minden", "Minden", 38.9541, -119.7655, 4727, "NV", NV),
-        Point("woodfords", "Woodfords", 38.7799, -119.8187, 5535, "CA", CT),
-        Point("carson_pass", "Carson Pass", 38.6946, -119.9890, 8574, "CA", CT, "Carson Pass"),
+        Point("woodfords", "Woodfords", 38.7799, -119.8187, 5535, "CA", CT, short_name="Woodf."),
+        Point(
+            "carson_pass",
+            "Carson Pass",
+            38.6946,
+            -119.9890,
+            8574,
+            "CA",
+            CT,
+            "Carson Pass",
+            short_name="Carson P.",
+        ),
         Point("kirkwood", "Kirkwood", 38.7027, -120.0715, 7723, "CA", CT),
-        Point("carson_spur", "Carson Spur", 38.7056, -120.1090, 7972, "CA", CT),
+        Point("carson_spur", "Carson Spur", 38.7056, -120.1090, 7972, "CA", CT, short_name="Spur"),
         Point("jackson", "Jackson", 38.3488, -120.7741, 1223, "CA", CT),
     ]
 }

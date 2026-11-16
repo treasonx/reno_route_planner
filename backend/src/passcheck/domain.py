@@ -144,6 +144,7 @@ class HourlyPoint:
     precip_prev_12h_in: float
     temp_max_prev_12h_f: float
     snow_depth_in: float
+    freezing_level_ft: float
 
 
 @dataclass(frozen=True, slots=True)

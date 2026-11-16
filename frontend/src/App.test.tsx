@@ -1,4 +1,4 @@
-import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/preact";
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/preact";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import plan from "./__fixtures__/plan.json";
@@ -146,6 +146,20 @@ describe("App", () => {
     fireEvent.click(screen.getByRole("button", { name: /Leave \w+ 9 AM/ }));
     expect(highway(/^I-80/).getAttribute("aria-checked")).toBe("true"); // following again
     expect(screen.queryByRole("button", { name: "Auto" })).toBeNull();
+  });
+
+  it("the weather tile follows the selected highway and departure", async () => {
+    mockFetch(() => Promise.resolve(new Response(JSON.stringify(fixture), { status: 200 })));
+    render(<App />);
+    await loaded();
+    expect(screen.getByRole("heading", { name: "Weather on US-50" })).toBeTruthy();
+    fireEvent.click(highway(/^I-80/));
+    expect(screen.getByRole("heading", { name: "Weather on I-80" })).toBeTruthy();
+    const firstStop = () =>
+      within(screen.getByRole("region", { name: "Weather on I-80" })).getAllByRole("listitem")[0]?.textContent ?? "";
+    expect(firstStop()).toMatch(/^Reno, 7:00 AM/);
+    fireEvent.click(screen.getByRole("button", { name: /Leave \w+ 8 AM/ }));
+    expect(firstStop()).toMatch(/^Reno, 8:00 AM/);
   });
 
   it("arrow keys move between highways", async () => {

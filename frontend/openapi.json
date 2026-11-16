@@ -346,6 +346,17 @@
             "title": "Caption",
             "type": "string"
           },
+          "freezing_level_ft": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Freezing Level Ft"
+          },
           "go_until": {
             "anyOf": [
               {
@@ -382,6 +393,13 @@
             ],
             "title": "Verdict",
             "type": "string"
+          },
+          "weather": {
+            "items": {
+              "$ref": "#/components/schemas/StopWeatherOut"
+            },
+            "title": "Weather",
+            "type": "array"
           }
         },
         "required": [
@@ -389,7 +407,9 @@
           "caption",
           "summit_eta",
           "segments",
-          "go_until"
+          "go_until",
+          "weather",
+          "freezing_level_ft"
         ],
         "title": "RouteOut",
         "type": "object"
@@ -505,12 +525,24 @@
             "title": "Id",
             "type": "string"
           },
+          "is_summit": {
+            "title": "Is Summit",
+            "type": "boolean"
+          },
+          "minutes": {
+            "title": "Minutes",
+            "type": "integer"
+          },
           "name": {
             "title": "Name",
             "type": "string"
           },
           "peak_label": {
             "title": "Peak Label",
+            "type": "string"
+          },
+          "short_label": {
+            "title": "Short Label",
             "type": "string"
           },
           "x": {
@@ -528,9 +560,62 @@
           "x",
           "y",
           "elevation_ft",
-          "peak_label"
+          "peak_label",
+          "short_label",
+          "minutes",
+          "is_summit"
         ],
         "title": "StopOut",
+        "type": "object"
+      },
+      "StopWeatherOut": {
+        "description": "Forecast at a stop when you pass it (ETA = departure + ``StopOut.minutes``).",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "snow_depth_in": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snow Depth In"
+          },
+          "snowfall_in_hr": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snowfall In Hr"
+          },
+          "temp_f": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Temp F"
+          }
+        },
+        "required": [
+          "id",
+          "temp_f",
+          "snow_depth_in",
+          "snowfall_in_hr"
+        ],
+        "title": "StopWeatherOut",
         "type": "object"
       },
       "ValidationError": {

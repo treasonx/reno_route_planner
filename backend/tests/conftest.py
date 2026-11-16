@@ -44,6 +44,7 @@ def make_hour(**overrides: Any) -> HourlyPoint:
         "precip_prev_12h_in": 0.0,
         "temp_max_prev_12h_f": 45.0,
         "snow_depth_in": 0.0,
+        "freezing_level_ft": 9000.0,
     }
     base.update(overrides)
     return HourlyPoint(**base)

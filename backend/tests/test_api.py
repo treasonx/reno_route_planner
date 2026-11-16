@@ -249,3 +249,31 @@ def test_day_plans_shared_across_dates(client: TestClient) -> None:
     dated_days = client.get("/api/plan", params={"date": "2026-11-18"}).json()["days"]
     assert now_days == dated_days
     assert all(d["best_route"] in ("i80", "us50", "sr88") for d in now_days)
+
+
+@pytest.mark.parametrize(
+    ("raw", "out"),
+    [(None, None), (0.0, 0.0), (0.04, 0.1), (0.05, 0.1), (0.25, 0.2), (0.95, 0.9), (1.26, 1.3)],
+)
+def test_snow_amounts_never_round_a_trace_to_zero(raw: float | None, out: float | None) -> None:
+    from passcheck.schemas import _tenths  # pyright: ignore[reportPrivateUsage]
+
+    assert _tenths(raw) == out
+
+
+def test_plan_has_weather_for_every_stop(client: TestClient) -> None:
+    body = client.get("/api/plan").json()
+    for key, corridor in body["corridors"].items():
+        stops = corridor["stops"]
+        assert sum(s["is_summit"] for s in stops) == 1
+        assert stops[0]["minutes"] == 0
+        assert all(s["short_label"] for s in stops)
+        for hour in body["hours"]:
+            weather = hour["routes"][key]["weather"]
+            assert [w["id"] for w in weather] == [s["id"] for s in stops]
+            assert all(isinstance(w["temp_f"], int | None) for w in weather)
+    weather = [w for h in body["hours"] for r in h["routes"].values() for w in r["weather"]]
+    assert any(w["snowfall_in_hr"] and w["snowfall_in_hr"] > 0 for w in weather)  # fixture storm
+    assert all(type(w["temp_f"]) is int for w in weather)
+    donner = next(s for s in body["corridors"]["i80"]["stops"] if s["id"] == "donner")
+    assert (donner["short_label"], donner["is_summit"]) == ("Donner", True)

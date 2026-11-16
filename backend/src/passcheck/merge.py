@@ -74,6 +74,7 @@ def derive_hours(point_id: str, series: Iterable[RawHour], t: Thresholds) -> lis
                 precip_prev_12h_in=round(sum(w.precip_in for w in window), 3),
                 temp_max_prev_12h_f=max((w.temp_f for w in window), default=r.temp_f),
                 snow_depth_in=r.snow_depth_in,
+                freezing_level_ft=r.freezing_level_ft,
             )
         )
     return out

@@ -9,11 +9,12 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, time, timedelta
 
-from passcheck.corridors import CORRIDORS, Stop, segment_key
+from passcheck.corridors import CORRIDORS, Corridor, Stop, segment_key
 from passcheck.domain import (
     PACIFIC,
     ROUTE_ORDER,
     Direction,
+    HourlyPoint,
     Level,
     LiveSourceName,
     Reason,
@@ -30,6 +31,30 @@ HOUR = timedelta(hours=1)
 DAYS_AHEAD = 10  # the single definition of the day horizon (the API validates against it)
 DAY_WINDOW = (6, 20)  # departures from 6 AM through 8 PM count toward a day's verdict
 LOW_CONFIDENCE_FROM_DAY = 7
+
+
+# Real freezing levels never come near this; anything above it is the source's "missing" filler.
+MAX_REAL_FREEZING_LEVEL_FT = 50_000.0
+
+
+@dataclass(frozen=True, slots=True)
+class StopWeather:
+    """Forecast at one stop for the moment you pass it. ``None`` = no forecast for that time."""
+
+    temp_f: float | None
+    snow_depth_in: float | None
+    snowfall_in_hr: float | None
+
+
+NO_WEATHER = StopWeather(None, None, None)
+
+
+@dataclass(frozen=True, slots=True)
+class RouteWeather:
+    # One entry per corridor stop, in driving order (aligned with ``Corridor.stops``).
+    stops: tuple[StopWeather, ...]
+    # Freezing level over the summit when you cross it (None if unknown).
+    freezing_level_ft: float | None
 
 
 @dataclass(frozen=True, slots=True)
@@ -59,6 +84,8 @@ class HourPlan:
     # Last departure of each route's GO run starting here (None unless that route is GO), so
     # the UI can say "GO for departures until X" for whichever highway is selected.
     go_until: Mapping[RouteId, datetime | None]
+    # Weather at each stop when you pass it, per route (display only; never affects verdicts).
+    weather: Mapping[RouteId, RouteWeather]
 
 
 @dataclass(frozen=True, slots=True)
@@ -110,6 +137,72 @@ def local_midnight(d: date) -> datetime:
 
 def _place(v: Verdict, name: str) -> Verdict:
     return Verdict(v.level, tuple(r if r.place else Reason(r.text, name) for r in v.reasons))
+
+
+def _lerp(a: float, b: float, frac: float) -> float:
+    return a + (b - a) * frac
+
+
+def _bracket(
+    conditions: Conditions, point_id: str, arrival: datetime
+) -> tuple[HourlyPoint, HourlyPoint, float] | None:
+    """The forecast hours around ``arrival`` and how far between them it is.
+
+    An exact-hour arrival reads only that hour (like the verdict's ``_point_at``). If one of the
+    two hours is missing the other is used for both; if both are, there is nothing to show.
+    """
+    lo = floor_hour(arrival)
+    a = conditions.hours.get((point_id, lo))
+    b = a if arrival == lo else conditions.hours.get((point_id, lo + HOUR))
+    a = a or b
+    b = b or a
+    if a is None or b is None:
+        return None
+    return a, b, (arrival - lo) / HOUR
+
+
+def weather_at(conditions: Conditions, stop: Stop, arrival: datetime) -> StopWeather:
+    """Conditions at ``stop`` when you pass it at ``arrival``.
+
+    Temperature and snow depth are interpolated between the bracketing hours. Snowfall takes the
+    larger of the two hours, the same hours (and the same conservatism) as the verdict. Unlike the
+    verdict, which treats a missing hour as CAUTION, the tile shows nothing it doesn't have.
+    """
+    found = _bracket(conditions, stop.point.id, arrival)
+    if found is None:
+        return NO_WEATHER
+    a, b, frac = found
+    return StopWeather(
+        temp_f=_lerp(a.temp_f, b.temp_f, frac),
+        snow_depth_in=_lerp(a.snow_depth_in, b.snow_depth_in, frac),
+        snowfall_in_hr=max(a.snow_in, b.snow_in),
+    )
+
+
+def _real_freezing_level(h: HourlyPoint) -> float | None:
+    return h.freezing_level_ft if h.freezing_level_ft <= MAX_REAL_FREEZING_LEVEL_FT else None
+
+
+def freezing_level_at(conditions: Conditions, stop: Stop, arrival: datetime) -> float | None:
+    """Freezing level at ``stop`` at ``arrival``, never mixing in the "missing" filler value."""
+    found = _bracket(conditions, stop.point.id, arrival)
+    if found is None:
+        return None
+    a, b, frac = found
+    fa, fb = _real_freezing_level(a), _real_freezing_level(b)
+    if fa is not None and fb is not None:
+        return _lerp(fa, fb, frac)
+    return fa if fa is not None else fb
+
+
+def route_weather(conditions: Conditions, corridor: Corridor, t0: datetime) -> RouteWeather:
+    def at(stop: Stop) -> datetime:
+        return t0 + timedelta(minutes=stop.minutes)
+
+    return RouteWeather(
+        stops=tuple(weather_at(conditions, s, at(s)) for s in corridor.stops),
+        freezing_level_ft=freezing_level_at(conditions, corridor.summit, at(corridor.summit)),
+    )
 
 
 def caption_for(v: Verdict) -> str:
@@ -257,6 +350,9 @@ class Planner:
             go_until={
                 r: self._run_end(r, t0) if self.level(r, t0) is Level.GO else None
                 for r in ROUTE_ORDER
+            },
+            weather={
+                r: route_weather(self.ctx.conditions, self.corridors[r], t0) for r in ROUTE_ORDER
             },
         )
 

@@ -1,4 +1,4 @@
-import { verdictClass, verdictGlyph } from "../lib/verdict";
+import { leavingLabel, verdictClass, verdictGlyph } from "../lib/verdict";
 import type { HourOut, PlanResponse, RouteKey } from "../types";
 
 interface Props {
@@ -14,7 +14,7 @@ export function Hero({ plan, hour, route, recommended, stale }: Props) {
   const r = hour.routes[route];
   const name = plan.corridors[route].name;
   const v = r.verdict;
-  const leaving = hour.label === "Now" ? "now" : hour.label;
+  const leaving = leavingLabel(hour.label);
   const sub =
     v === "GO"
       ? r.go_until
