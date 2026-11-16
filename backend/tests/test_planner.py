@@ -5,7 +5,7 @@ from datetime import UTC, date, datetime, timedelta
 
 import pytest
 
-from passcheck.corridors import CORRIDORS, P
+from passcheck.corridors import CORRIDORS, P, Stop
 from passcheck.domain import (
     ChainLevel,
     DayHint,
@@ -22,9 +22,11 @@ from passcheck.merge import merge
 from passcheck.planner import (
     PlanContext,
     Planner,
+    StopWeather,
     build_plan,
     caption_for,
     hour_label,
+    weather_at,
 )
 
 NOW = datetime(2026, 11, 15, 15, 0, tzinfo=UTC)  # 7 AM PST Sunday
@@ -55,8 +57,10 @@ def ctx(
     hints: list[DayHint] | None = None,
     start: datetime | None = None,
     forecast_stale: bool = False,
+    hours_count: int = 24 * 13,
 ) -> PlanContext:
-    cond = merge(1, now, series(weather, start or now - timedelta(days=1)), live or [], hints or [])
+    raw = series(weather, start or now - timedelta(days=1), hours_count)
+    cond = merge(1, now, raw, live or [], hints or [])
     return PlanContext(cond, now, floor or NO_FLOOR, forecast_stale)
 
 
@@ -387,3 +391,71 @@ def test_wu_hint_downgrades_only_the_hinted_highway() -> None:
     day = next(x for x in plan.days if x.day == d)
     assert day.route_levels[RouteId.SR88] is Level.CAUTION
     assert day.route_levels[RouteId.I80] is Level.GO
+
+
+# --- weather along the route ----------------------------------------------------------------
+
+
+def _ramp(pid: str, t: datetime) -> RawHour:
+    """Temp rises 6 F/hour from 20 F at NOW; depth +6 in/hour; snowfall only in hour NOW+1."""
+    k = (t - NOW) / timedelta(hours=1)
+    snow = 0.4 if k == 1 else 0.0
+    return RawHour(t, 20.0 + 6 * k, 10.0, snow, snow, 80, 71, 5000.0 + 600 * k, 6.0 * k)
+
+
+def _stop(route: RouteId, pid: str, direction: Direction = Direction.RENO_SAC) -> Stop:
+    return next(s for s in CORRIDORS[direction][route].stops if s.point.id == pid)
+
+
+def test_weather_interpolates_between_hours_and_takes_max_snowfall() -> None:
+    cond = ctx(_ramp).conditions
+    w = weather_at(cond, _stop(RouteId.I80, "truckee"), NOW + timedelta(minutes=35))
+    assert w.eta == NOW + timedelta(minutes=35)
+    assert w.temp_f == pytest.approx(20 + 6 * 35 / 60)
+    assert w.snow_depth_in == pytest.approx(6 * 35 / 60)
+    assert w.freezing_level_ft == pytest.approx(5000 + 600 * 35 / 60)
+    assert w.snowfall_in_hr == pytest.approx(0.4)  # max(hour 0, hour 1), not interpolated
+
+
+def test_weather_exact_hour_ignores_next_hour() -> None:
+    cond = ctx(_ramp, start=NOW - timedelta(days=1), hours_count=25).conditions
+    w = weather_at(cond, _stop(RouteId.I80, "reno"), NOW)  # NOW+1h is not in the forecast
+    assert w.temp_f == pytest.approx(20.0)
+    assert w.snowfall_in_hr == 0.0
+
+
+def test_weather_uses_the_hour_that_exists_and_none_beyond_the_forecast() -> None:
+    cond = ctx(_ramp, start=NOW - timedelta(days=1), hours_count=25).conditions
+    stop = _stop(RouteId.I80, "reno")
+    half = weather_at(cond, stop, NOW + timedelta(minutes=30))  # only NOW exists
+    assert half.temp_f == pytest.approx(20.0)
+    gone = weather_at(cond, stop, NOW + timedelta(hours=3))
+    assert gone == StopWeather(NOW + timedelta(hours=3), None, None, None, None)
+
+
+@pytest.mark.parametrize("direction", list(Direction))
+@pytest.mark.parametrize("route", list(RouteId))
+def test_route_weather_follows_the_corridor(direction: Direction, route: RouteId) -> None:
+    planner = Planner(ctx(), direction)
+    e = planner.route_eval(route, NOW)
+    corridor = CORRIDORS[direction][route]
+    assert len(e.weather) == len(corridor.stops)
+    for s, w in zip(corridor.stops, e.weather, strict=True):
+        assert w.eta == NOW + timedelta(minutes=s.minutes)
+    summit = corridor.stops.index(corridor.summit)
+    assert e.weather[summit].eta == e.summit_eta
+    assert e.freezing_level_ft == e.weather[summit].freezing_level_ft
+
+
+def test_sac_to_reno_reaches_donner_after_85_minutes() -> None:
+    e = Planner(ctx(), Direction.SAC_RENO).route_eval(RouteId.I80, NOW)
+    corridor = CORRIDORS[Direction.SAC_RENO][RouteId.I80]
+    ids = [s.point.id for s in corridor.stops]
+    assert ids[0] == "sacramento"
+    assert e.weather[0].eta == NOW
+    assert e.weather[ids.index("donner")].eta == NOW + timedelta(minutes=85)
+
+
+def test_stale_forecast_still_shows_numbers() -> None:
+    e = Planner(ctx(forecast_stale=True), Direction.RENO_SAC).route_eval(RouteId.I80, NOW)
+    assert all(w.temp_f is not None for w in e.weather)

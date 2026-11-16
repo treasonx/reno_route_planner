@@ -9,7 +9,7 @@ from pydantic import BaseModel, ConfigDict
 
 from passcheck.corridors import CORRIDORS, Corridor
 from passcheck.domain import Direction, RouteId, to_pacific
-from passcheck.planner import DayPlan, HourPlan, Plan, RouteEval, hour_label
+from passcheck.planner import DayPlan, HourPlan, Plan, RouteEval, StopWeather, hour_label
 from passcheck.store import SourceState
 
 VerdictLevel = Literal["GO", "CAUTION", "NO GO"]
@@ -27,12 +27,23 @@ class HeroOut(Model):
     body: str
 
 
+class StopWeatherOut(Model):
+    """Forecast at a stop when you pass it (ETA = departure + ``StopOut.minutes``)."""
+
+    id: str
+    temp_f: int | None
+    snow_depth_in: float | None
+    snowfall_in_hr: float | None
+
+
 class RouteOut(Model):
     verdict: VerdictLevel
     caption: str
     summit_eta: datetime
     segments: list[VerdictLevel]
     go_until: str | None  # "12 PM" label of the last GO departure in this run; None unless GO
+    weather: list[StopWeatherOut]  # one per corridor stop, in driving order
+    freezing_level_ft: int | None  # over the summit when you cross it
 
 
 class RoutesOut(Model):
@@ -80,6 +91,9 @@ class StopOut(Model):
     y: float
     elevation_ft: int
     peak_label: str
+    short_label: str
+    minutes: int  # driving minutes from the start of this direction
+    is_summit: bool
 
 
 class CorridorOut(Model):
@@ -128,26 +142,49 @@ class HealthResponse(Model):
 # --- converters -------------------------------------------------------------------------
 
 
-def _route_out(e: RouteEval, go_until: datetime | None) -> RouteOut:
+def _tenths(x: float | None) -> float | None:
+    """One decimal; any amount above zero shows as at least 0.1 so a trace never reads as 0."""
+    if x is None:
+        return None
+    if x <= 0:
+        return 0.0
+    return max(0.1, round(x, 1))
+
+
+def _stop_weather_out(stop_id: str, w: StopWeather) -> StopWeatherOut:
+    return StopWeatherOut(
+        id=stop_id,
+        temp_f=round(w.temp_f) if w.temp_f is not None else None,
+        snow_depth_in=_tenths(w.snow_depth_in),
+        snowfall_in_hr=_tenths(w.snowfall_in_hr),
+    )
+
+
+def _route_out(e: RouteEval, go_until: datetime | None, corridor: Corridor) -> RouteOut:
     return RouteOut(
         verdict=e.verdict.level.value,
         caption=e.caption,
         summit_eta=to_pacific(e.summit_eta),
         segments=[lvl.value for lvl in e.segments],
         go_until=hour_label(go_until) if go_until is not None else None,
+        weather=[
+            _stop_weather_out(s.point.id, w) for s, w in zip(corridor.stops, e.weather, strict=True)
+        ],
+        freezing_level_ft=round(e.freezing_level_ft) if e.freezing_level_ft is not None else None,
     )
 
 
-def _hour_out(h: HourPlan) -> HourOut:
+def _hour_out(h: HourPlan, direction: Direction) -> HourOut:
+    cs = CORRIDORS[direction]
     return HourOut(
         depart=to_pacific(h.depart),
         label=h.label,
         best=BestOut(route=h.best_route.value, verdict=h.best_level.value),
         hero=HeroOut(title=h.hero.title, sub=h.hero.sub, body=h.hero.body),
         routes=RoutesOut(
-            i80=_route_out(h.routes[RouteId.I80], h.go_until[RouteId.I80]),
-            us50=_route_out(h.routes[RouteId.US50], h.go_until[RouteId.US50]),
-            sr88=_route_out(h.routes[RouteId.SR88], h.go_until[RouteId.SR88]),
+            i80=_route_out(h.routes[RouteId.I80], h.go_until[RouteId.I80], cs[RouteId.I80]),
+            us50=_route_out(h.routes[RouteId.US50], h.go_until[RouteId.US50], cs[RouteId.US50]),
+            sr88=_route_out(h.routes[RouteId.SR88], h.go_until[RouteId.SR88], cs[RouteId.SR88]),
         ),
     )
 
@@ -181,6 +218,9 @@ def _corridor_out(c: Corridor) -> CorridorOut:
                 y=s.y,
                 elevation_ft=s.point.elevation_ft,
                 peak_label=s.point.peak_label,
+                short_label=s.point.short_label,
+                minutes=s.minutes,
+                is_summit=s.point.id == c.summit_id,
             )
             for s in c.stops
         ],
@@ -220,7 +260,7 @@ def plan_response(
         snapshot_version=version,
         direction=plan.direction.value,
         corridors=corridors_out(plan.direction),
-        hours=[_hour_out(h) for h in plan.hours],
+        hours=[_hour_out(h, plan.direction) for h in plan.hours],
         days=[_day_out(d) for d in plan.days],
         sources=sources,
         stale=stale,

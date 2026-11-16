@@ -13,7 +13,10 @@
      "x": 10.0,
      "y": 75.7,
      "elevation_ft": 4505,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Reno",
+     "minutes": 0,
+     "is_summit": false
     },
     {
      "id": "truckee",
@@ -21,7 +24,10 @@
      "x": 97.6,
      "y": 59.2,
      "elevation_ft": 5820,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Truckee",
+     "minutes": 35,
+     "is_summit": false
     },
     {
      "id": "donner",
@@ -29,7 +35,10 @@
      "x": 135.2,
      "y": 43.8,
      "elevation_ft": 7056,
-     "peak_label": "Donner Summit 7,056′"
+     "peak_label": "Donner Summit 7,056′",
+     "short_label": "Donner",
+     "minutes": 50,
+     "is_summit": true
     },
     {
      "id": "kingvale",
@@ -37,7 +46,10 @@
      "x": 152.7,
      "y": 56.0,
      "elevation_ft": 6076,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Kingvale",
+     "minutes": 57,
+     "is_summit": false
     },
     {
      "id": "yuba_gap",
@@ -45,7 +57,10 @@
      "x": 180.3,
      "y": 59.9,
      "elevation_ft": 5770,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Yuba Gap",
+     "minutes": 68,
+     "is_summit": false
     },
     {
      "id": "colfax",
@@ -53,7 +68,10 @@
      "x": 240.3,
      "y": 101.7,
      "elevation_ft": 2421,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Colfax",
+     "minutes": 92,
+     "is_summit": false
     },
     {
      "id": "sacramento",
@@ -61,7 +79,10 @@
      "x": 348.0,
      "y": 131.6,
      "elevation_ft": 30,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Sac",
+     "minutes": 135,
+     "is_summit": false
     }
    ],
    "towns": [
@@ -81,7 +102,10 @@
      "x": 10.0,
      "y": 75.7,
      "elevation_ft": 4505,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Reno",
+     "minutes": 0,
+     "is_summit": false
     },
     {
      "id": "carson_city",
@@ -89,7 +113,10 @@
      "x": 81.7,
      "y": 73.4,
      "elevation_ft": 4688,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Carson",
+     "minutes": 35,
+     "is_summit": false
     },
     {
      "id": "spooner",
@@ -97,7 +124,10 @@
      "x": 112.4,
      "y": 42.7,
      "elevation_ft": 7146,
-     "peak_label": "Spooner 7,146′"
+     "peak_label": "Spooner 7,146′",
+     "short_label": "Spooner",
+     "minutes": 50,
+     "is_summit": false
     },
     {
      "id": "south_lake_tahoe",
@@ -105,7 +135,10 @@
      "x": 149.3,
      "y": 53.6,
      "elevation_ft": 6270,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Tahoe",
+     "minutes": 68,
+     "is_summit": false
     },
     {
      "id": "meyers",
@@ -113,7 +146,10 @@
      "x": 169.8,
      "y": 52.7,
      "elevation_ft": 6341,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Meyers",
+     "minutes": 78,
+     "is_summit": false
     },
     {
      "id": "echo",
@@ -121,7 +157,10 @@
      "x": 184.1,
      "y": 39.7,
      "elevation_ft": 7382,
-     "peak_label": "Echo Summit 7,382′"
+     "peak_label": "Echo Summit 7,382′",
+     "short_label": "Echo",
+     "minutes": 85,
+     "is_summit": true
     },
     {
      "id": "twin_bridges",
@@ -129,7 +168,10 @@
      "x": 198.5,
      "y": 55.0,
      "elevation_ft": 6158,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Twin Br.",
+     "minutes": 92,
+     "is_summit": false
     },
     {
      "id": "kyburz",
@@ -137,7 +179,10 @@
      "x": 225.1,
      "y": 81.1,
      "elevation_ft": 4075,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Kyburz",
+     "minutes": 105,
+     "is_summit": false
     },
     {
      "id": "placerville",
@@ -145,7 +190,10 @@
      "x": 276.3,
      "y": 108.7,
      "elevation_ft": 1863,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Placer.",
+     "minutes": 130,
+     "is_summit": false
     },
     {
      "id": "sacramento",
@@ -153,7 +201,10 @@
      "x": 348.0,
      "y": 131.6,
      "elevation_ft": 30,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Sac",
+     "minutes": 165,
+     "is_summit": false
     }
    ],
    "towns": [
@@ -173,7 +224,10 @@
      "x": 10.0,
      "y": 75.7,
      "elevation_ft": 4505,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Reno",
+     "minutes": 0,
+     "is_summit": false
     },
     {
      "id": "minden",
@@ -181,7 +235,10 @@
      "x": 96.7,
      "y": 72.9,
      "elevation_ft": 4727,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Minden",
+     "minutes": 50,
+     "is_summit": false
     },
     {
      "id": "woodfords",
@@ -189,7 +246,10 @@
      "x": 131.3,
      "y": 62.8,
      "elevation_ft": 5535,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Woodf.",
+     "minutes": 70,
+     "is_summit": false
     },
     {
      "id": "carson_pass",
@@ -197,7 +257,10 @@
      "x": 174.7,
      "y": 24.8,
      "elevation_ft": 8574,
-     "peak_label": "Carson Pass 8,574′"
+     "peak_label": "Carson Pass 8,574′",
+     "short_label": "Carson P.",
+     "minutes": 95,
+     "is_summit": true
     },
     {
      "id": "kirkwood",
@@ -205,7 +268,10 @@
      "x": 186.8,
      "y": 35.5,
      "elevation_ft": 7723,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Kirkwood",
+     "minutes": 102,
+     "is_summit": false
     },
     {
      "id": "carson_spur",
@@ -213,7 +279,10 @@
      "x": 193.7,
      "y": 32.3,
      "elevation_ft": 7972,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Spur",
+     "minutes": 106,
+     "is_summit": false
     },
     {
      "id": "jackson",
@@ -221,7 +290,10 @@
      "x": 270.0,
      "y": 116.7,
      "elevation_ft": 1223,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Jackson",
+     "minutes": 150,
+     "is_summit": false
     },
     {
      "id": "sacramento",
@@ -229,7 +301,10 @@
      "x": 348.0,
      "y": 131.6,
      "elevation_ft": 30,
-     "peak_label": ""
+     "peak_label": "",
+     "short_label": "Sac",
+     "minutes": 195,
+     "is_summit": false
     }
    ],
    "towns": [
@@ -266,7 +341,52 @@
       "CAUTION",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 29,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "donner",
+       "temp_f": 29,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 29,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 30,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "colfax",
+       "temp_f": 52,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 63,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "us50": {
      "verdict": "GO",
@@ -283,7 +403,70 @@
       "GO",
       "GO"
      ],
-     "go_until": "10 AM"
+     "go_until": "10 AM",
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 32,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 36,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "meyers",
+       "temp_f": 36,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "echo",
+       "temp_f": 32,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 38,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 46,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 56,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 64,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "sr88": {
      "verdict": "NO GO",
@@ -298,7 +481,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 39,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "jackson",
+       "temp_f": 59,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 65,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     }
    }
   },
@@ -327,7 +561,52 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 43,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 35,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "donner",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 38,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 40,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "colfax",
+       "temp_f": 54,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 65,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "us50": {
      "verdict": "GO",
@@ -344,7 +623,70 @@
       "GO",
       "GO"
      ],
-     "go_until": "10 AM"
+     "go_until": "10 AM",
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 43,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 43,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 38,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "meyers",
+       "temp_f": 38,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "echo",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 39,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 48,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 58,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 66,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "sr88": {
      "verdict": "NO GO",
@@ -359,7 +701,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 43,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 44,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 41,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "jackson",
+       "temp_f": 61,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 67,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     }
    }
   },
@@ -388,7 +781,52 @@
       "GO",
       "GO"
      ],
-     "go_until": "11 AM"
+     "go_until": "11 AM",
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 45,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 41,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "donner",
+       "temp_f": 36,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 40,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "colfax",
+       "temp_f": 56,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 67,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "us50": {
      "verdict": "GO",
@@ -405,7 +843,70 @@
       "GO",
       "GO"
      ],
-     "go_until": "10 AM"
+     "go_until": "10 AM",
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 45,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 45,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 36,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 40,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "meyers",
+       "temp_f": 40,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "echo",
+       "temp_f": 36,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 41,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 50,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 59,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 67,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "sr88": {
      "verdict": "NO GO",
@@ -420,7 +921,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 45,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 46,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 43,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "jackson",
+       "temp_f": 62,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 68,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     }
    }
   },
@@ -449,7 +1001,52 @@
       "GO",
       "GO"
      ],
-     "go_until": "11 AM"
+     "go_until": "11 AM",
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 47,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "donner",
+       "temp_f": 38,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 44,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "colfax",
+       "temp_f": 58,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 68,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "us50": {
      "verdict": "GO",
@@ -466,7 +1063,70 @@
       "GO",
       "GO"
      ],
-     "go_until": "10 AM"
+     "go_until": "10 AM",
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 47,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 47,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 38,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "meyers",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "echo",
+       "temp_f": 38,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 43,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 51,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 61,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 69,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "sr88": {
      "verdict": "NO GO",
@@ -481,7 +1141,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 47,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 47,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 45,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 31,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.7
+      },
+      {
+       "id": "jackson",
+       "temp_f": 64,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 69,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     }
    }
   },
@@ -510,7 +1221,52 @@
       "GO",
       "GO"
      ],
-     "go_until": "11 AM"
+     "go_until": "11 AM",
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 48,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 44,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "donner",
+       "temp_f": 39,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 44,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 45,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "colfax",
+       "temp_f": 59,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 69,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "us50": {
      "verdict": "CAUTION",
@@ -527,7 +1283,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 48,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 49,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 39,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 43,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "meyers",
+       "temp_f": 40,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "echo",
+       "temp_f": 37,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 38,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 52,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 62,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 69,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "sr88": {
      "verdict": "GO",
@@ -542,7 +1361,58 @@
       "GO",
       "GO"
      ],
-     "go_until": "1 PM"
+     "go_until": "1 PM",
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 48,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 49,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 46,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 38,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 37,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "jackson",
+       "temp_f": 65,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 70,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     }
    }
   },
@@ -571,7 +1441,52 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 50,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 45,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "donner",
+       "temp_f": 35,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 45,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 46,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "colfax",
+       "temp_f": 60,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 70,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "us50": {
      "verdict": "CAUTION",
@@ -588,7 +1503,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 50,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 50,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 40,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 44,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "meyers",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "echo",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 53,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 62,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 70,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "sr88": {
      "verdict": "GO",
@@ -603,7 +1581,58 @@
       "GO",
       "GO"
      ],
-     "go_until": "1 PM"
+     "go_until": "1 PM",
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 50,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 50,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 47,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 35,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 39,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 38,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "jackson",
+       "temp_f": 65,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 63,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     }
    }
   },
@@ -632,7 +1661,52 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 51,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 46,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "donner",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 45,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 47,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "colfax",
+       "temp_f": 60,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 63,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "us50": {
      "verdict": "CAUTION",
@@ -649,7 +1723,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 51,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 51,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 41,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 45,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "meyers",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "echo",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 54,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 59,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 49,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "sr88": {
      "verdict": "GO",
@@ -664,7 +1801,58 @@
       "GO",
       "GO"
      ],
-     "go_until": "1 PM"
+     "go_until": "1 PM",
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 51,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 51,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 48,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 36,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 39,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 38,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "jackson",
+       "temp_f": 54,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     }
    }
   },
@@ -693,7 +1881,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 52,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 47,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "donner",
+       "temp_f": 34,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 46,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 44,
+       "snow_depth_in": 3.2,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 51,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 9000
     },
     "us50": {
      "verdict": "NO GO",
@@ -710,7 +1943,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 52,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 51,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 41,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 43,
+       "snow_depth_in": 3.2,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 32,
+       "snow_depth_in": 7.2,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 31,
+       "snow_depth_in": 10.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 30,
+       "snow_depth_in": 12.8,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 45,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 7125
     },
     "sr88": {
      "verdict": "NO GO",
@@ -725,7 +2021,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 52,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 51,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 44,
+       "snow_depth_in": 4.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 31,
+       "snow_depth_in": 14.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 31,
+       "snow_depth_in": 16.8,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 30,
+       "snow_depth_in": 18.4,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 6375
     }
    }
   },
@@ -754,7 +2101,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 52,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 35,
+       "snow_depth_in": 14.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 28,
+       "snow_depth_in": 20.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 28,
+       "snow_depth_in": 22.8,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 5250
     },
     "us50": {
      "verdict": "NO GO",
@@ -771,7 +2163,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 52,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 46,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 29,
+       "snow_depth_in": 20.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -786,7 +2241,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 52,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 44,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -815,7 +2321,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -832,7 +2383,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -847,7 +2461,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -876,7 +2541,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -893,7 +2603,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -908,7 +2681,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -937,7 +2761,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -954,7 +2823,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -969,7 +2901,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -998,7 +2981,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1015,7 +3043,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1030,7 +3121,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -1059,7 +3201,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1076,7 +3263,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1091,7 +3341,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -1120,7 +3421,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1137,7 +3483,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1152,7 +3561,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -1181,7 +3641,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1198,7 +3703,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1213,7 +3781,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -1242,7 +3861,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1259,7 +3923,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1274,7 +4001,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -1303,7 +4081,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1320,7 +4143,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1335,7 +4221,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -1364,7 +4301,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1381,7 +4363,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1396,7 +4441,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -1425,7 +4521,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1442,7 +4583,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1457,7 +4661,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -1486,7 +4741,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1503,7 +4803,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1518,7 +4881,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -1547,7 +4961,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1564,7 +5023,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1579,7 +5101,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -1608,7 +5181,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1625,7 +5243,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1640,7 +5321,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   },
@@ -1669,7 +5401,52 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "truckee",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "donner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kingvale",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "yuba_gap",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "colfax",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "us50": {
      "verdict": "NO GO",
@@ -1686,7 +5463,70 @@
       "GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "carson_city",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "spooner",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "south_lake_tahoe",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "meyers",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "echo",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "twin_bridges",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kyburz",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "placerville",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     },
     "sr88": {
      "verdict": "NO GO",
@@ -1701,7 +5541,58 @@
       "NO GO",
       "GO"
      ],
-     "go_until": null
+     "go_until": null,
+     "weather": [
+      {
+       "id": "reno",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "minden",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "woodfords",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_pass",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "kirkwood",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "carson_spur",
+       "temp_f": 27,
+       "snow_depth_in": 24.0,
+       "snowfall_in_hr": 1.5
+      },
+      {
+       "id": "jackson",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      },
+      {
+       "id": "sacramento",
+       "temp_f": 42,
+       "snow_depth_in": 0.0,
+       "snowfall_in_hr": 0.0
+      }
+     ],
+     "freezing_level_ft": 4500
     }
    }
   }

@@ -33,12 +33,27 @@ LOW_CONFIDENCE_FROM_DAY = 7
 
 
 @dataclass(frozen=True, slots=True)
+class StopWeather:
+    """Forecast at one stop for the moment you pass it. ``None`` = no forecast for that time."""
+
+    eta: datetime
+    temp_f: float | None
+    snow_depth_in: float | None
+    snowfall_in_hr: float | None
+    freezing_level_ft: float | None
+
+
+@dataclass(frozen=True, slots=True)
 class RouteEval:
     route: RouteId
     verdict: Verdict
     caption: str
     segments: tuple[Level, ...]
     summit_eta: datetime
+    # One entry per corridor stop, in driving order (aligned with ``Corridor.stops``).
+    weather: tuple[StopWeather, ...] = ()
+    # Freezing level over the summit when you cross it.
+    freezing_level_ft: float | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -112,6 +127,38 @@ def _place(v: Verdict, name: str) -> Verdict:
     return Verdict(v.level, tuple(r if r.place else Reason(r.text, name) for r in v.reasons))
 
 
+def _lerp(a: float, b: float, frac: float) -> float:
+    return a + (b - a) * frac
+
+
+def weather_at(conditions: Conditions, stop: Stop, arrival: datetime) -> StopWeather:
+    """Conditions at ``stop`` when you pass it at ``arrival``.
+
+    Temperature, snow depth and freezing level are interpolated between the two forecast hours
+    around the arrival (or taken from the one that exists). Snowfall takes the larger of the two
+    hours: Open-Meteo's ``snowfall`` at hour H is the total for the hour before H, so the hour
+    after the arrival covers it, and ``max`` stays as conservative as the verdict. Unlike the
+    verdict (which treats a missing hour as CAUTION) the tile shows nothing it doesn't have.
+    """
+    lo = floor_hour(arrival)
+    a = conditions.hours.get((stop.point.id, lo))
+    b = a if arrival == lo else conditions.hours.get((stop.point.id, lo + HOUR))
+    if a is None and b is None:
+        return StopWeather(arrival, None, None, None, None)
+    if a is None or b is None:
+        only = a if a is not None else b
+        assert only is not None
+        a = b = only
+    frac = (arrival - lo) / HOUR
+    return StopWeather(
+        eta=arrival,
+        temp_f=_lerp(a.temp_f, b.temp_f, frac),
+        snow_depth_in=_lerp(a.snow_depth_in, b.snow_depth_in, frac),
+        snowfall_in_hr=max(a.snow_in, b.snow_in),
+        freezing_level_ft=_lerp(a.freezing_level_ft, b.freezing_level_ft, frac),
+    )
+
+
 def caption_for(v: Verdict) -> str:
     """Group (X, A), (X, B) into "X at A, B" using the structured place, never the text."""
     if not v.reasons:
@@ -178,12 +225,19 @@ class Planner:
                 )
             )
         overall = worst(segs)
+        weather = tuple(
+            weather_at(self.ctx.conditions, s, t0 + timedelta(minutes=s.minutes))
+            for s in corridor.stops
+        )
+        summit_index = corridor.stops.index(corridor.summit)
         result = RouteEval(
             route=route,
             verdict=overall,
             caption=caption_for(overall),
             segments=tuple(s.level for s in segs),
             summit_eta=t0 + timedelta(minutes=corridor.summit.minutes),
+            weather=weather,
+            freezing_level_ft=weather[summit_index].freezing_level_ft,
         )
         self._cache[key] = result
         return result
