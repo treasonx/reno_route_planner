@@ -8,6 +8,7 @@ export type DayOut = Schemas["DayOut"];
 export type RouteOut = Schemas["RouteOut"];
 export type CorridorOut = Schemas["CorridorOut"];
 export type StopOut = Schemas["StopOut"];
+export type StopWeatherOut = Schemas["StopWeatherOut"];
 export type VerdictLevel = RouteOut["verdict"];
 export type RouteKey = Schemas["BestOut"]["route"];
 export type Direction = PlanResponse["direction"];

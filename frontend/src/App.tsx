@@ -6,6 +6,7 @@ import { HighwaySelector } from "./components/HighwaySelector";
 import { LeaveAtPager } from "./components/LeaveAtPager";
 import { RecommendationBanner } from "./components/RecommendationBanner";
 import { RouteDetail } from "./components/RouteDetail";
+import { RouteWeather } from "./components/RouteWeather";
 import { DataUnavailable, Footer, Skeleton, StaleBanner, StartingUp } from "./components/Status";
 import { TenDay } from "./components/TenDay";
 import { useMediaQuery } from "./hooks/useMediaQuery";
@@ -133,6 +134,13 @@ export function App() {
         </div>
         <div class="col-side">
           <RouteDetail plan={plan} hour={hour} route={route} onSelect={pickRoute} desktop={desktop} />
+          <RouteWeather
+            corridor={plan.corridors[route]}
+            route={hour.routes[route]}
+            depart={hour.depart}
+            leaving={hour.label === "Now" ? "now" : hour.label}
+            stale={stale}
+          />
           {!desktop && (
             <TenDay days={plan.days} selected={date} route={route} routeName={routeName} onSelect={setDate} />
           )}

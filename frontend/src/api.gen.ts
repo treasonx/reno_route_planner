@@ -209,6 +209,8 @@ export interface components {
         RouteOut: {
             /** Caption */
             caption: string;
+            /** Freezing Level Ft */
+            freezing_level_ft: number | null;
             /** Go Until */
             go_until: string | null;
             /** Segments */
@@ -223,6 +225,8 @@ export interface components {
              * @enum {string}
              */
             verdict: "GO" | "CAUTION" | "NO GO";
+            /** Weather */
+            weather: components["schemas"]["StopWeatherOut"][];
         };
         /** RoutesOut */
         RoutesOut: {
@@ -260,14 +264,34 @@ export interface components {
             elevation_ft: number;
             /** Id */
             id: string;
+            /** Is Summit */
+            is_summit: boolean;
+            /** Minutes */
+            minutes: number;
             /** Name */
             name: string;
             /** Peak Label */
             peak_label: string;
+            /** Short Label */
+            short_label: string;
             /** X */
             x: number;
             /** Y */
             y: number;
+        };
+        /**
+         * StopWeatherOut
+         * @description Forecast at a stop when you pass it (ETA = departure + ``StopOut.minutes``).
+         */
+        StopWeatherOut: {
+            /** Id */
+            id: string;
+            /** Snow Depth In */
+            snow_depth_in: number | null;
+            /** Snowfall In Hr */
+            snowfall_in_hr: number | null;
+            /** Temp F */
+            temp_f: number | null;
         };
         /** ValidationError */
         ValidationError: {
