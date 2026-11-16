@@ -206,8 +206,11 @@ class Planner:
             return cached
 
         def score(r: RouteId) -> tuple[int, float, int]:
-            run = (self._run_end(r, t0) - t0) / HOUR
-            return (self.level(r, t0).severity, -run, ROUTE_ORDER.index(r))
+            lvl = self.level(r, t0)
+            # Any GO highway is fine, so prefer the main route (I-80 first, by ROUTE_ORDER).
+            # Below GO, prefer the highway whose current level holds the longest.
+            run = 0.0 if lvl is Level.GO else (self._run_end(r, t0) - t0) / HOUR
+            return (lvl.severity, -run, ROUTE_ORDER.index(r))
 
         route = min(ROUTE_ORDER, key=score)
         result = (route, self.level(route, t0))

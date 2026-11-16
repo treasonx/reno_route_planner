@@ -489,12 +489,12 @@
    "depart": "2026-11-15T11:00:00-08:00",
    "label": "11 AM",
    "best": {
-    "route": "sr88",
+    "route": "i80",
     "verdict": "GO"
    },
    "hero": {
-    "title": "Take SR-88",
-    "sub": "GO for departures until 1 PM",
+    "title": "Take I-80",
+    "sub": "GO for departures until 11 AM",
     "body": "Clear the whole way."
    },
    "routes": {
