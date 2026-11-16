@@ -9,7 +9,7 @@ from pydantic import BaseModel, ConfigDict
 
 from passcheck.corridors import CORRIDORS, Corridor
 from passcheck.domain import Direction, RouteId, to_pacific
-from passcheck.planner import DayPlan, HourPlan, Plan, RouteEval, StopWeather, hour_label
+from passcheck.planner import DayPlan, HourPlan, Plan, StopWeather, hour_label
 from passcheck.store import SourceState
 
 VerdictLevel = Literal["GO", "CAUTION", "NO GO"]
@@ -160,7 +160,8 @@ def _stop_weather_out(stop_id: str, w: StopWeather) -> StopWeatherOut:
     )
 
 
-def _route_out(e: RouteEval, go_until: datetime | None, corridor: Corridor) -> RouteOut:
+def _route_out(h: HourPlan, route: RouteId, corridor: Corridor) -> RouteOut:
+    e, go_until, weather = h.routes[route], h.go_until[route], h.weather[route]
     return RouteOut(
         verdict=e.verdict.level.value,
         caption=e.caption,
@@ -168,9 +169,12 @@ def _route_out(e: RouteEval, go_until: datetime | None, corridor: Corridor) -> R
         segments=[lvl.value for lvl in e.segments],
         go_until=hour_label(go_until) if go_until is not None else None,
         weather=[
-            _stop_weather_out(s.point.id, w) for s, w in zip(corridor.stops, e.weather, strict=True)
+            _stop_weather_out(s.point.id, w)
+            for s, w in zip(corridor.stops, weather.stops, strict=True)
         ],
-        freezing_level_ft=round(e.freezing_level_ft) if e.freezing_level_ft is not None else None,
+        freezing_level_ft=(
+            round(weather.freezing_level_ft) if weather.freezing_level_ft is not None else None
+        ),
     )
 
 
@@ -182,9 +186,9 @@ def _hour_out(h: HourPlan, direction: Direction) -> HourOut:
         best=BestOut(route=h.best_route.value, verdict=h.best_level.value),
         hero=HeroOut(title=h.hero.title, sub=h.hero.sub, body=h.hero.body),
         routes=RoutesOut(
-            i80=_route_out(h.routes[RouteId.I80], h.go_until[RouteId.I80], cs[RouteId.I80]),
-            us50=_route_out(h.routes[RouteId.US50], h.go_until[RouteId.US50], cs[RouteId.US50]),
-            sr88=_route_out(h.routes[RouteId.SR88], h.go_until[RouteId.SR88], cs[RouteId.SR88]),
+            i80=_route_out(h, RouteId.I80, cs[RouteId.I80]),
+            us50=_route_out(h, RouteId.US50, cs[RouteId.US50]),
+            sr88=_route_out(h, RouteId.SR88, cs[RouteId.SR88]),
         ),
     )
 

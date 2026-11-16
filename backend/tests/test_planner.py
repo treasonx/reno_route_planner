@@ -20,12 +20,14 @@ from passcheck.domain import (
 )
 from passcheck.merge import merge
 from passcheck.planner import (
+    NO_WEATHER,
     PlanContext,
     Planner,
-    StopWeather,
     build_plan,
     caption_for,
+    freezing_level_at,
     hour_label,
+    route_weather,
     weather_at,
 )
 
@@ -409,53 +411,72 @@ def _stop(route: RouteId, pid: str, direction: Direction = Direction.RENO_SAC) -
 
 def test_weather_interpolates_between_hours_and_takes_max_snowfall() -> None:
     cond = ctx(_ramp).conditions
-    w = weather_at(cond, _stop(RouteId.I80, "truckee"), NOW + timedelta(minutes=35))
-    assert w.eta == NOW + timedelta(minutes=35)
+    stop = _stop(RouteId.I80, "truckee")
+    w = weather_at(cond, stop, NOW + timedelta(minutes=35))
     assert w.temp_f == pytest.approx(20 + 6 * 35 / 60)
     assert w.snow_depth_in == pytest.approx(6 * 35 / 60)
-    assert w.freezing_level_ft == pytest.approx(5000 + 600 * 35 / 60)
     assert w.snowfall_in_hr == pytest.approx(0.4)  # max(hour 0, hour 1), not interpolated
+    level = freezing_level_at(cond, stop, NOW + timedelta(minutes=35))
+    assert level == pytest.approx(5000 + 600 * 35 / 60)
 
 
 def test_weather_exact_hour_ignores_next_hour() -> None:
-    cond = ctx(_ramp, start=NOW - timedelta(days=1), hours_count=25).conditions
-    w = weather_at(cond, _stop(RouteId.I80, "reno"), NOW)  # NOW+1h is not in the forecast
+    cond = ctx(_ramp, hours_count=25).conditions  # forecast ends at NOW
+    w = weather_at(cond, _stop(RouteId.I80, "reno"), NOW)
     assert w.temp_f == pytest.approx(20.0)
     assert w.snowfall_in_hr == 0.0
 
 
-def test_weather_uses_the_hour_that_exists_and_none_beyond_the_forecast() -> None:
-    cond = ctx(_ramp, start=NOW - timedelta(days=1), hours_count=25).conditions
+def test_weather_uses_whichever_hour_exists() -> None:
     stop = _stop(RouteId.I80, "reno")
-    half = weather_at(cond, stop, NOW + timedelta(minutes=30))  # only NOW exists
-    assert half.temp_f == pytest.approx(20.0)
-    gone = weather_at(cond, stop, NOW + timedelta(hours=3))
-    assert gone == StopWeather(NOW + timedelta(hours=3), None, None, None, None)
+    ends_at_now = ctx(_ramp, hours_count=25).conditions
+    assert weather_at(ends_at_now, stop, NOW + timedelta(minutes=30)).temp_f == pytest.approx(20.0)
+    starts_next_hour = ctx(_ramp, start=NOW + timedelta(hours=1)).conditions
+    later = weather_at(starts_next_hour, stop, NOW + timedelta(minutes=30))
+    assert later.temp_f == pytest.approx(26.0)
+    assert later.snowfall_in_hr == pytest.approx(0.4)
+    assert weather_at(ends_at_now, stop, NOW + timedelta(hours=3)) == NO_WEATHER
+
+
+def test_missing_freezing_level_is_never_mixed_into_a_real_one() -> None:
+    def weather(pid: str, t: datetime) -> RawHour:
+        level = 4000.0 if t == NOW else 99999.0 / 0.3048  # source's "missing" filler, in feet
+        return RawHour(t, 30.0, 20.0, 0.0, 0.0, 0, 0, level, 0.0)
+
+    cond = ctx(weather).conditions
+    stop = _stop(RouteId.I80, "donner")
+    assert freezing_level_at(cond, stop, NOW + timedelta(minutes=30)) == pytest.approx(4000.0)
+    assert freezing_level_at(cond, stop, NOW + timedelta(hours=2)) is None
 
 
 @pytest.mark.parametrize("direction", list(Direction))
 @pytest.mark.parametrize("route", list(RouteId))
 def test_route_weather_follows_the_corridor(direction: Direction, route: RouteId) -> None:
-    planner = Planner(ctx(), direction)
-    e = planner.route_eval(route, NOW)
     corridor = CORRIDORS[direction][route]
-    assert len(e.weather) == len(corridor.stops)
-    for s, w in zip(corridor.stops, e.weather, strict=True):
-        assert w.eta == NOW + timedelta(minutes=s.minutes)
-    summit = corridor.stops.index(corridor.summit)
-    assert e.weather[summit].eta == e.summit_eta
-    assert e.freezing_level_ft == e.weather[summit].freezing_level_ft
+    rw = route_weather(ctx(_ramp).conditions, corridor, NOW)
+    assert len(rw.stops) == len(corridor.stops)
+    # Each stop is read at its own arrival time (temp rises 6 F per hour of driving).
+    for s, w in zip(corridor.stops, rw.stops, strict=True):
+        assert w.temp_f == pytest.approx(20 + 6 * s.minutes / 60)
+    assert rw.freezing_level_ft == pytest.approx(5000 + 600 * corridor.summit.minutes / 60)
 
 
 def test_sac_to_reno_reaches_donner_after_85_minutes() -> None:
-    e = Planner(ctx(), Direction.SAC_RENO).route_eval(RouteId.I80, NOW)
     corridor = CORRIDORS[Direction.SAC_RENO][RouteId.I80]
+    rw = route_weather(ctx(_ramp).conditions, corridor, NOW)
     ids = [s.point.id for s in corridor.stops]
     assert ids[0] == "sacramento"
-    assert e.weather[0].eta == NOW
-    assert e.weather[ids.index("donner")].eta == NOW + timedelta(minutes=85)
+    assert rw.stops[0].temp_f == pytest.approx(20.0)
+    assert rw.stops[ids.index("donner")].temp_f == pytest.approx(20 + 6 * 85 / 60)
 
 
-def test_stale_forecast_still_shows_numbers() -> None:
-    e = Planner(ctx(forecast_stale=True), Direction.RENO_SAC).route_eval(RouteId.I80, NOW)
-    assert all(w.temp_f is not None for w in e.weather)
+def test_hour_plans_carry_weather_and_stale_data_still_shows() -> None:
+    plan = build_plan(ctx(forecast_stale=True), Direction.RENO_SAC, None)
+    weather = plan.hours[0].weather
+    assert set(weather) == set(RouteId)
+    assert all(w.temp_f is not None for w in weather[RouteId.I80].stops)
+
+
+def test_short_label_falls_back_to_name() -> None:
+    assert P["truckee"].short_label == "Truckee"
+    assert P["donner"].short_label == "Donner"
