@@ -72,6 +72,21 @@ def test_all_clear_prefers_shortest_ties_by_route_order() -> None:
     assert len(plan.days) == 11
 
 
+def test_i80_is_recommended_whenever_it_is_go() -> None:
+    # Snow at Donner from 10 AM PST: I-80 is GO now but only for a few hours, while
+    # US-50 stays GO all day. A GO I-80 still wins; the longer GO run does not matter.
+    def weather(pid: str, t: datetime) -> RawHour:
+        if pid == "donner" and t >= NOW + timedelta(hours=3):
+            return snowy(pid, t)
+        return clear(pid, t)
+
+    planner = Planner(ctx(weather), Direction.RENO_SAC)
+    assert planner.level(RouteId.US50, NOW) is Level.GO
+    assert planner.best(NOW) == (RouteId.I80, Level.GO)
+    # Once I-80 is no longer GO, the next GO highway is recommended.
+    assert planner.best(NOW + timedelta(hours=3)) == (RouteId.US50, Level.GO)
+
+
 def test_segment_counts_match_corridors() -> None:
     plan = build_plan(ctx(), Direction.RENO_SAC, None)
     counts = {r: len(e.segments) for r, e in plan.hours[0].routes.items()}
