@@ -15,3 +15,8 @@ updates:
     groups:
       dev-tooling:
         dependency-type: development
+    ignore:
+      # typescript-eslint (<6.1) and openapi-typescript (^5) don't support TypeScript 6/7 yet,
+      # so a major bump breaks `npm ci`. Remove once both widen their peer ranges.
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
